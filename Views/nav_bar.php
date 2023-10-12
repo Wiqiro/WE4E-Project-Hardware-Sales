@@ -35,9 +35,9 @@
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li> -->
                     <li class="nav-item"><a class="nav-link" href="compte.php">Compte</a></li>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
+                        <button class="btn btn-outline-light" type="submit">
+                            <!-- <i class="bi-cart-fill me-1"></i> -->
+                            Panier
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
