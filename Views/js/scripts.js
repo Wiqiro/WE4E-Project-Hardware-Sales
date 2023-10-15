@@ -52,3 +52,12 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+
+function openForm() {
+    document.getElementById("popupLogin").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("popupLogin").style.display = "none";
+  }

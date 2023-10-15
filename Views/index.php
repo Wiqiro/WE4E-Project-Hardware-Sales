@@ -228,7 +228,7 @@
                 </div>
             </div>
             <div class="center">
-                <button class="btn btn-primary btn-xl text-uppercase">Voir plus</button>
+                <a href="catalogue.php"><button class="btn btn-primary btn-xl text-uppercase">Voir plus</button></a>
             </div>
         </div>
 

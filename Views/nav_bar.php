@@ -1,3 +1,5 @@
+<?php $test = false; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +9,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Navigation</title>
+    <!-- JSQuery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -22,7 +29,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.php">LDLD</a>
+            <a class="navbar-brand" href="index.php">LD<span class="color-red">LD</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i>
@@ -33,7 +40,11 @@
                     <!-- <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li> -->
-                    <li class="nav-item"><a class="nav-link" href="compte.php">Compte</a></li>
+                    <?php if ($test == false) { ?>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="openPopup()">Login</a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="compte.php">Compte</a></li>
+                    <?php } ?>
                     <form class="d-flex">
                         <button class="btn btn-outline-light" type="submit">
                             <!-- <i class="bi-cart-fill me-1"></i> -->
@@ -45,6 +56,8 @@
             </div>
         </div>
     </nav>
+    <section id="popup" class="popup"><?php require("popup_login.php"); ?></section>
+    <!-- <script src="js/popup.js"></script> -->
 </body>
 
 </html>
