@@ -1,3 +1,11 @@
+<?php
+
+$name = 'William';
+$isConnected = false;
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +33,11 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading">Bienvenue dans notre studio !</div>
+            <?php if ($isConnected) { ?>
+                <div class="masthead-subheading">Bienvenue dans notre studio <?php echo $name; ?> !</div>
+            <?php } else { ?>
+                <div class="masthead-subheading">Bienvenue dans notre studio !</div>
+            <?php } ?>
             <div class="masthead-heading text-uppercase">Prêt pour une nouvelle config ?</div>
             <a class="btn btn-primary btn-xl text-uppercase" href="catalogue.php">C'est parti !</a>
         </div>

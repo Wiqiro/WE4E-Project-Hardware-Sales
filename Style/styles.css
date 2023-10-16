@@ -11370,3 +11370,25 @@ section#contact form#contactForm :-ms-input-placeholder {
   padding: 0em;
   justify-content: center;
 }
+
+.btn-back-catalog {
+  flex-shrink: 0 !important;
+  text-align: center;
+  border: 2px solid black;
+  width: 10em;
+}
+
+.back-arrow {
+  margin-bottom: 0.2em;
+  width: 1em;
+  height: 1em;
+}
+
+.back-catalog {
+  text-decoration: none;
+  color: black;
+}
+
+.back-catalog:hover {
+  color: var(--bs-red);
+}

@@ -1,4 +1,5 @@
-<?php $test = false; ?>
+<?php $isConnected = true;
+$name = 'William'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,10 +41,12 @@
                     <!-- <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li> -->
-                    <?php if ($test == false) { ?>
+                    <?php if ($isConnected == false) { ?>
                         <li class="nav-item"><a class="nav-link" href="#" onclick="openPopup()">Login</a></li>
                     <?php } else { ?>
-                        <li class="nav-item"><a class="nav-link" href="compte.php">Compte</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Compte</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="compte.php"><?php //echo $name; ?></a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="">Se déconnecter</a></li> -->
                     <?php } ?>
                     <form class="d-flex">
                         <button class="btn btn-outline-light" type="submit">
