@@ -1,4 +1,7 @@
-<?php $catalog_name = 'Nom du catalogue'; ?>
+<?php
+$catalog_name = 'Nom du catalogue';
+$userConnected = false;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,16 +39,30 @@
             <span>$40.00</span>
           </div>
           <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
-          <div class="d-flex">
-            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-              <i class="bi-cart-fill me-1"></i>
-              Ajouter au panier
-            </button>
-            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-              Commander maintenant
-            </button>
-          </div>
+          <?php if ($userConnected == true) { ?>
+            <div class="d-flex">
+              <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+              <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                <i class="bi-cart-fill me-1"></i>
+                Ajouter au panier
+              </button>
+              <div class="space"></div>
+              <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                Commander maintenant
+              </button>
+            </div>
+          <?php } else { ?>
+            <div class="d-flex">
+              <span class="shadow-text">Pour commander, vous
+                devez être un utilisateur inscrit. Cliquez ce lien pour créer un compte et commencer vos
+                achats !</span>
+              <a href="compte.php">
+                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                  Login
+                </button>
+              </a>
+            </div>
+          <?php } ?>
         </div>
       </div>
     </div>

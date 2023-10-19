@@ -11375,6 +11375,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   flex-shrink: 0 !important;
   text-align: center;
   border: 2px solid black;
+  border-radius: 0.5em;
   width: 10em;
 }
 
@@ -11391,4 +11392,13 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .back-catalog:hover {
   color: var(--bs-red);
+}
+
+.space {
+  width: 5px;
+}
+
+.shadow-text {
+  font-weight: lighter;
+  color: grey;
 }
