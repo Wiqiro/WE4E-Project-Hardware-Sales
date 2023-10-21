@@ -18,11 +18,11 @@
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">
+
           <div class="card">
             <div class="card-body p-4">
 
               <div class="row">
-
                 <div class="col-lg-7">
                   <h5 class="mb-3"><a href="catalogue.php" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
                   <hr>
@@ -178,7 +178,9 @@
                             <img src="https://ik.imagekit.io/pimberly/595e406f0f15f30010780448/tr:w-1000,h-1000,cm-pad_resize/696d6cec/5d70c6b06cb2114d580001de.jpg?product_name=Coca-Cola-Soft-Drink-330ml-Can-(Pack-of-24)-402002.jpg" class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
                           </div>
                           <div class="ms-3">
-                            <a class="link-style" href="produit.php"><h5>Iphone 11 pro</h5></a>
+                            <a class="link-style" href="produit.php">
+                              <h5>Iphone 11 pro</h5>
+                            </a>
                             <p class="small mb-0">256GB, Navy Blue</p>
                           </div>
                         </div>
@@ -194,6 +196,7 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
                 <div class="col-lg-5">
 
@@ -271,10 +274,12 @@
 
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </section>
+
   <!-- Footer-->
   <?php require("footer.php"); ?>
 
