@@ -51,3 +51,7 @@ function newUser() {
     jQuery(".forgot").toggleClass("forgot-left");
     jQuery(this).removeClass("idle").addClass("active");
 };
+
+function openAccount() {
+    document.getElementById('account').style.display = 'flex';
+}

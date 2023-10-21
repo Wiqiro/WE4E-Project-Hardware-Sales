@@ -1,4 +1,4 @@
-<?php $isConnected = false;
+<?php $isConnected = true;
 $name = 'William'; ?>
 
 <!DOCTYPE html>
@@ -44,7 +44,7 @@ $name = 'William'; ?>
                     <?php if ($isConnected == false) { ?>
                         <li class="nav-item"><a class="nav-link" href="#" onclick="openPopup()">Login</a></li>
                     <?php } else { ?>
-                        <li class="nav-item"><a class="nav-link" href="#">Compte</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="openAccount()">Compte</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="compte.php"><?php //echo $name; 
                                                                                         ?></a></li>
                         <li class="nav-item"><a class="nav-link" onclick="">Se déconnecter</a></li> -->
@@ -63,6 +63,7 @@ $name = 'William'; ?>
         </div>
     </nav>
     <section id="popup" class="popup"><?php require("popup_login.php"); ?></section>
+    <section id="account" class="account"><?php require("compte.php");?></section>
     <!-- <script src="js/popup.js"></script> -->
 </body>
 
