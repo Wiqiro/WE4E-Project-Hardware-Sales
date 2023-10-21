@@ -1,4 +1,4 @@
-<?php $isConnected = true;
+<?php $isConnected = false;
 $name = 'William'; ?>
 
 <!DOCTYPE html>

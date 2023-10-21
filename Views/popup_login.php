@@ -37,9 +37,15 @@
                 <form class="form-signup" action="" method="post" name="form">
                     <label for="fullname">Full name</label>
                     <input class="form-styling" type="text" name="email" placeholder="" />
+                    <label for="birthday">Date de naissance</label>
+                    <input class="form-styling" type="text" name="birthday" placeholder="" />
+                    <label for="address">Adresse</label>
+                    <input class="form-styling" type="text" name="address" placeholder="" />
                     <label for="email">Email</label>
                     <input class="form-styling" type="text" name="dlno" placeholder="" />
                     <label for="password">Create password</label>
+                    <input class="form-styling" type="text" name="password" placeholder="" />
+                    <label for="confirmpassword">Confirm password</label>
                     <input class="form-styling" type="text" name="confirmpassword" placeholder="" />
                     <a ng-click="checked = !checked" class="btn-signup">REGISTER</a>
                     <button class="btn-animate-second">Fermer</button>

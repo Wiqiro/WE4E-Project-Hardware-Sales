@@ -97,3 +97,17 @@
 .space {
     margin-left: 0.5em;
 }
+
+.black {
+    background-color: white;
+    border: 3px solid var(--bs-black);
+}
+
+.black:hover {
+    background-color: white;
+    border: 3px solid var(--bs-black);
+}
+
+.margin {
+    margin-top: 0.5em;
+}

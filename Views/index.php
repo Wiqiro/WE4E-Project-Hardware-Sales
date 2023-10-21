@@ -1,7 +1,7 @@
 <?php
 
-$name = 'William';
-$isConnected = false;
+// $name = 'William';
+// $isConnected = false;
 
 ?>
 
