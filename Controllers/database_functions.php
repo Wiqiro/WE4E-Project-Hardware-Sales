@@ -17,3 +17,12 @@ function disconnectDatabase() {
     global $conn;
     $conn->close();
 }
+
+function register($firstname, $lastname, $username, $email, $password) {
+    global $conn;
+
+    $query = "INSERT INTO utilisateur(nom, prenom, pseudo, email, mot_de_passe) 
+    VALUES (".$firstname.",".$lastname.",".$username.",".$email.",".$password.")";
+
+    $result = $conn->query($query);
+}

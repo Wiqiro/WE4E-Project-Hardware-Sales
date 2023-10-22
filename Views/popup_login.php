@@ -16,8 +16,8 @@
         <div class="frame">
             <div class="nav">
                 <ul class="links">
-                    <li class="signin-active"><a class="btn" onclick="newUser()">Existing User</a></li>
-                    <li class="signup-inactive"><a class="btn" onclick="newUser()">New User</a></li>
+                    <li class="signin-active"><a class="btn" onclick="newUser()">Connexion</a></li>
+                    <li class="signup-inactive"><a class="btn" onclick="newUser()">Inscription</a></li>
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
@@ -25,29 +25,28 @@
                     <label for="user">Nom d'utilisateur / email</label>
                     <input class="form-styling" type="text" name="user" placeholder="" />
                     <label for="password">Mot de passe</label>
-                    <input class="form-styling" type="text" name="password" placeholder="" />
+                    <input class="form-styling" type="password" name="password" placeholder="" />
                     <input type="checkbox" id="checkbox" />
-                    <label for="checkbox"><span class="ui"></span>Keep me signed in</label>
+                    <label for="checkbox"><span class="ui"></span>Se rappeler de moi</label>
 
-                    <div class="btn-animate">
-                        <a class="btn-signin">Login to your account</a>
-                    </div>
-                    <button type="submit" class="btn-animate-second">Fermer</button>
+                    <button type="submit" class="btn-animate-second">Se connecter</button>
+
+                    <button class="btn-animate-second">Fermer</button>
                 </form>
                 <form class="form-signup" action="" method="post" name="form">
-                    <label for="fullname">Full name</label>
+                    <label for="firstname">Prénom</label>
                     <input class="form-styling" type="text" name="email" placeholder="" />
-                    <label for="birthday">Date de naissance</label>
+                    <label for="lastname">Nom</label>
                     <input class="form-styling" type="text" name="birthday" placeholder="" />
-                    <label for="address">Adresse</label>
+                    <label for="username">Nom d'utilisateur</label>
                     <input class="form-styling" type="text" name="address" placeholder="" />
                     <label for="email">Email</label>
                     <input class="form-styling" type="text" name="dlno" placeholder="" />
-                    <label for="password">Create password</label>
-                    <input class="form-styling" type="text" name="password" placeholder="" />
-                    <label for="confirmpassword">Confirm password</label>
-                    <input class="form-styling" type="text" name="confirmpassword" placeholder="" />
-                    <a ng-click="checked = !checked" class="btn-signup">REGISTER</a>
+                    <label for="password">Mot de passe</label>
+                    <input class="form-styling" type="password" name="password" placeholder="" />
+                    <label for="confirmpassword">Mot de passe (confirmer)</label>
+                    <input class="form-styling" type="password" name="confirmpassword" placeholder="" />
+                    <button type="submit" class="btn-animate-second">S'inscrire</button>
                     <button class="btn-animate-second">Fermer</button>
                 </form>
             </div>
