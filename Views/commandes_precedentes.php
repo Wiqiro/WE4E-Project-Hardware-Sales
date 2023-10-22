@@ -1,4 +1,7 @@
-<?php $nbCommand = 2; ?>
+<?php
+$nbCommand = 2;
+$isAdmin = false; 
+?>
 
 
 <!doctype html>
@@ -43,96 +46,8 @@
                     </div>
                   </div>
 
-                  <!--
-Affichant pour chacune le nom du client, la date/heure, le prix total, ainsi que les
-produits contenus dans cette commande (références avec images et/ou textes selon votre
-préférence).
-                    -->
-
-
-                  <div class="card mb-3">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                          <div>
-                          <img src="../Style/assets/commandes.png" class="img-fluid rounded-3" alt="image commande" style="width: 65px;">
-                            </div>
-                          <div class="ms-3">
-                            <a class="link-style" href="produit.php">
-                              <h5>Numéro de commande</h5>
-                            </a>
-                            <p class="medium mb-3">Date/Heure de commande</p>
-                            <div class="row">
-                              <div class="col-lg-6">
-                                <p class="small mb-0">Produit 1</p>
-                                <p class="small mb-0">Produit 2</p>
-                                <p class="small mb-0">Produit 3</p>
-                                <p class="small mb-0">Produit 4</p>
-                                <p class="small mb-0">Produit 5</p>
-                              </div>
-                              <div class="col-lg-6">
-                                <p class="small mb-0">Produit 6</p>
-                                <p class="small mb-0">Produit 7</p>
-                                <p class="small mb-0">Produit 8</p>
-                                <p class="small mb-0">Produit 9</p>
-                                <p class="small mb-0">Produit 10</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                          <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">3</h5>
-                          </div>
-                          <div style="width: 80px;">
-                            <h5 class="mb-0">$Total</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                          <div>
-                            <img src="../Style/assets/commandes.png" class="img-fluid rounded-3" alt="image commande" style="width: 65px;">
-                          </div>
-                          <div class="ms-3">
-                            <a class="link-style" href="produit.php">
-                              <h5>Numéro de commande</h5>
-                            </a>
-                            <p class="medium mb-3">Date/Heure de commande</p>
-                            <div class="row">
-                              <div class="col-lg-6">
-                                <p class="small mb-0">Produit 1</p>
-                                <p class="small mb-0">Produit 2</p>
-                                <p class="small mb-0">Produit 3</p>
-                                <p class="small mb-0">Produit 4</p>
-                                <p class="small mb-0">Produit 5</p>
-                              </div>
-                              <div class="col-lg-6">
-                                <p class="small mb-0">Produit 6</p>
-                                <p class="small mb-0">Produit 7</p>
-                                <p class="small mb-0">Produit 8</p>
-                                <p class="small mb-0">Produit 9</p>
-                                <p class="small mb-0">Produit 10</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                          <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">1</h5>
-                          </div>
-                          <div style="width: 80px;">
-                            <h5 class="mb-0">$Total</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <?php require("carte_commande.php"); ?>
+                  <?php require("carte_commande.php"); ?>
 
                 </div>
               </div>
