@@ -21,10 +21,10 @@
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
-                <form class="form-signin" action="" method="post" name="form">
-                    <label for="fullname">Full name</label>
-                    <input class="form-styling" type="text" name="username" placeholder="" />
-                    <label for="password">Password</label>
+                <form class="form-signin" action="#" method="post" name="form">
+                    <label for="user">Nom d'utilisateur / email</label>
+                    <input class="form-styling" type="text" name="user" placeholder="" />
+                    <label for="password">Mot de passe</label>
                     <input class="form-styling" type="text" name="password" placeholder="" />
                     <input type="checkbox" id="checkbox" />
                     <label for="checkbox"><span class="ui"></span>Keep me signed in</label>
@@ -32,7 +32,7 @@
                     <div class="btn-animate">
                         <a class="btn-signin">Login to your account</a>
                     </div>
-                    <button class="btn-animate-second">Fermer</button>
+                    <button type="submit" class="btn-animate-second">Fermer</button>
                 </form>
                 <form class="form-signup" action="" method="post" name="form">
                     <label for="fullname">Full name</label>

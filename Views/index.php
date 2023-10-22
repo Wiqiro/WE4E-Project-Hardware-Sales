@@ -1,10 +1,14 @@
 <?php
+global $loginSuccessful, $username;
 
-// $name = 'William';
-// $isConnected = false;
+require("../Controllers/login_cookies.php");/* 
+destroyLoginCookie(); */
+require("../Controllers/database_functions.php");
+connectDatabase();
 
+
+include("../Controllers/login.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +37,8 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <?php if ($isConnected) { ?>
-                <div class="masthead-subheading">Bienvenue dans notre studio <?php echo $name; ?> !</div>
+            <?php if ($loginSuccessful) { ?>
+                <div class="masthead-subheading">Bienvenue dans notre studio <?php echo $username; ?> !</div>
             <?php } else { ?>
                 <div class="masthead-subheading">Bienvenue dans notre studio !</div>
             <?php } ?>
@@ -42,7 +46,6 @@
             <a class="btn btn-primary btn-xl text-uppercase" href="catalogue.php">C'est parti !</a>
         </div>
     </header>
-
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">

@@ -1,5 +1,6 @@
-<?php $isConnected = true;
-$name = 'William'; ?>
+<?php
+global $loginSuccessful;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +39,7 @@ $name = 'William'; ?>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="catalogue.php">Catalogue</a></li>
-                    <?php if ($isConnected == false) { ?>
+                    <?php if ($loginSuccessful == false) { ?>
                         <li class="nav-item"><a class="nav-link" onclick="openPopup()">Login</a></li>
                     <?php } else { ?>
                         <li class="nav-item"><a class="nav-link cursor" onclick="openAccount()">Compte</a></li>

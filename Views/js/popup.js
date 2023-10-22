@@ -6,6 +6,10 @@ function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
 
+function loginButton() {
+    
+}
+
 document.getElementById('openPopup').addEventListener('click', openPopup);
 
 
