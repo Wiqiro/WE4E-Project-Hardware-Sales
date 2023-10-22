@@ -11415,3 +11415,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-weight: lighter;
   color: grey;
 }
+
+.cursor {
+  cursor: pointer;
+}

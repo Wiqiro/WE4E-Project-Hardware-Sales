@@ -39,9 +39,9 @@ $name = 'William'; ?>
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="catalogue.php">Catalogue</a></li>
                     <?php if ($isConnected == false) { ?>
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="openPopup()">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="openPopup()">Login</a></li>
                     <?php } else { ?>
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="openAccount()">Compte</a></li>
+                        <li class="nav-item"><a class="nav-link cursor" onclick="openAccount()">Compte</a></li>
                     <?php } ?>
                     <div class="d-flex">
                         <a href="panier.php">

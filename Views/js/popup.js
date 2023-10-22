@@ -23,6 +23,9 @@ function openAccount() {
     document.getElementById('account').style.display = 'flex';
 }
 
-function closePopup() {
-    document.getElementById('account').style.display = 'none';
+function closeAccount() {
+    var popup = document.querySelector('.account');
+    popup.style.display = 'none';
 }
+
+document.getElementById('closeaccount').addEventListener('click', closeAccount);

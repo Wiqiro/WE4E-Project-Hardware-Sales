@@ -111,3 +111,8 @@
 .margin {
     margin-top: 0.5em;
 }
+
+.icon {
+    width: 5em;
+    height: 5em;
+}
