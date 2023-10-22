@@ -61,7 +61,7 @@ préférence).
                             <a class="link-style" href="produit.php">
                               <h5>Numéro de commande</h5>
                             </a>
-                            <p class="medium mb-3">Date de commande</p>
+                            <p class="medium mb-3">Date/Heure de commande</p>
                             <div class="row">
                               <div class="col-lg-6">
                                 <p class="small mb-0">Produit 1</p>
@@ -103,7 +103,7 @@ préférence).
                             <a class="link-style" href="produit.php">
                               <h5>Numéro de commande</h5>
                             </a>
-                            <p class="medium mb-3">Date de commande</p>
+                            <p class="medium mb-3">Date/Heure de commande</p>
                             <div class="row">
                               <div class="col-lg-6">
                                 <p class="small mb-0">Produit 1</p>
