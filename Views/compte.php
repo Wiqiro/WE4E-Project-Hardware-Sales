@@ -22,14 +22,16 @@
       </div>
       <div ng-app ng-init="checked = false">
         <div class="form-signin center">
-          <label for="fullname" class="margin">Full name</label>
-          <label for="birthday" class="margin">Date de naissance</label>
-          <label for="address" class="margin">Adresse</label>
-          <label for="email" class="margin">Email</label>
-          <label for="password" class="margin">Create password</label>
-          <label for="confirmpassword" class="margin">Confirm password</label>
-          <a href="commandes_precedentes.php"><button class="btn-animate-second">Commandes précédentes</button></a>
-          <button class="btn-animate-second" class="margin">Fermer</button>
+          <form>
+            <label for="fullname" class="margin">Full name</label>
+            <label for="birthday" class="margin">Date de naissance</label>
+            <label for="address" class="margin">Adresse</label>
+            <label for="email" class="margin">Email</label>
+            <label for="password" class="margin">Create password</label>
+            <label for="confirmpassword" class="margin">Confirm password</label>
+            <a href="commandes_precedentes.php"><button class="btn-signup">Commandes précédentes</button></a>
+            <button class="btn-animate-second">Fermer</button>
+          </form>
         </div>
         <form class="form-signup" action="" method="post" name="form">
           <label for="fullname">Full name</label>
