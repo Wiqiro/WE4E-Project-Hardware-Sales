@@ -1,5 +1,6 @@
 <?php
-function connectDatabase() {
+function connectDatabase()
+{
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -13,16 +14,22 @@ function connectDatabase() {
     }
 }
 
-function disconnectDatabase() {
+function disconnectDatabase()
+{
     global $conn;
     $conn->close();
 }
 
-function register($firstname, $lastname, $username, $email, $password) {
-    global $conn;
+function register($firstname, $lastname, $username, $email, $password)
+{
+    global $conn, $error;
+    $error = NULL;
 
     $query = "INSERT INTO utilisateur(nom, prenom, pseudo, email, mot_de_passe) 
-    VALUES (".$firstname.",".$lastname.",".$username.",".$email.",".$password.")";
+    VALUES ('" . $firstname . "','" . $lastname . "','" . $username . "','" . $email . "','" . $password . "')";
 
     $result = $conn->query($query);
+    if (!$result) {
+        $error = "Erreur lors de l'inscription, veuillez rééssayer";
+    }
 }

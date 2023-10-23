@@ -2,9 +2,9 @@
 global $loginSuccessful, $username;
 
 require("../Controllers/login_cookies.php");
-
+/* 
 destroyLoginCookie();
-
+ */
 require("../Controllers/database_functions.php");
 connectDatabase();
 

@@ -2,11 +2,23 @@
 $formUserInput;
 global $conn, $userID, $username, $loginSuccessful;
 
-$loginSuccessful = false;
+$loginAttempted = false;
 $error = NULL;
 
-
-//Données reçues via formulaire?
+//Données d'inscription reçues via le formulaire ?
+if (isset($_POST["register-submit"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+    $firstname = $_POST["firstname"];
+    $lastname = $_POST["lastname"];
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    register($firstname, $lastname, $username, $email, $password);
+    if ($error == NULL) {
+        createLoginCookie($username, $password);
+        header("Refresh:0");
+    }
+}
+//Données de connexion reçues via formulaire?
 if (isset($_POST["user"]) && isset($_POST["password"])) {
     $formUserInput = $_POST["user"];
     $password = /* md5 */ ($_POST["password"]);

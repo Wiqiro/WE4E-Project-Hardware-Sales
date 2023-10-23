@@ -23,30 +23,28 @@
             <div ng-app ng-init="checked = false">
                 <form class="form-signin" action="#" method="post" name="form">
                     <label for="user">Nom d'utilisateur / email</label>
-                    <input class="form-styling" type="text" name="user" placeholder="" />
+                    <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" />
                     <label for="password">Mot de passe</label>
-                    <input class="form-styling" type="password" name="password" placeholder="" />
+                    <input class="form-styling" type="password" name="password"/>
                     <input type="checkbox" id="checkbox" />
                     <label for="checkbox"><span class="ui"></span>Se rappeler de moi</label>
-
-                    <button type="submit" class="btn-animate-second">Se connecter</button>
-
+                    <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit"/>
                     <button class="btn-animate-second">Fermer</button>
                 </form>
-                <form class="form-signup" action="" method="post" name="form">
+                <form class="form-signup" action="#" method="post" name="form">
                     <label for="firstname">Prénom</label>
-                    <input class="form-styling" type="text" name="email" placeholder="" />
+                    <input class="form-styling" type="text" name="firstname" placeholder="Prenom" />
                     <label for="lastname">Nom</label>
-                    <input class="form-styling" type="text" name="birthday" placeholder="" />
+                    <input class="form-styling" type="text" name="lastname" placeholder="Nom" />
                     <label for="username">Nom d'utilisateur</label>
-                    <input class="form-styling" type="text" name="address" placeholder="" />
+                    <input class="form-styling" type="text" name="username" placeholder="Pseudo" />
                     <label for="email">Email</label>
-                    <input class="form-styling" type="text" name="dlno" placeholder="" />
+                    <input class="form-styling" type="text" name="email" placeholder="adresse@example.com" />
                     <label for="password">Mot de passe</label>
-                    <input class="form-styling" type="password" name="password" placeholder="" />
+                    <input class="form-styling" type="password" name="password" />
                     <label for="confirmpassword">Mot de passe (confirmer)</label>
-                    <input class="form-styling" type="password" name="confirmpassword" placeholder="" />
-                    <button type="submit" class="btn-animate-second">S'inscrire</button>
+                    <input class="form-styling" type="password" name="confirmpassword" />
+                    <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit"/>
                     <button class="btn-animate-second">Fermer</button>
                 </form>
             </div>
