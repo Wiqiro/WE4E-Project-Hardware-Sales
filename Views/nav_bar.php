@@ -1,5 +1,5 @@
 <?php
-global $loginSuccessful;
+global $loginSuccessful, $firstname, $lastname, $username, $email, $birthdate, $address;
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ global $loginSuccessful;
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="catalogue.php">Catalogue</a></li>
                     <?php if ($loginSuccessful == false) { ?>
-                        <li class="nav-item"><a class="nav-link" onclick="openPopup()">Login</a></li>
+                        <li class="nav-item"><a class="nav-link cursor" onclick="openPopup()">Login</a></li>
                     <?php } else { ?>
                         <li class="nav-item"><a class="nav-link cursor" onclick="openAccount()">Compte</a></li>
                     <?php } ?>
@@ -58,7 +58,7 @@ global $loginSuccessful;
         </div>
     </nav>
     <section id="popup" class="popup"><?php require("popup_login.php"); ?></section>
-    <section id="account" class="account"><?php require("compte.php");?></section>
+    <section id="account" class="account"><?php require("compte.php"); ?></section>
     <!-- <script src="js/popup.js"></script> -->
 </body>
 

@@ -8,7 +8,6 @@ destroyLoginCookie();
 require("../Controllers/database_functions.php");
 connectDatabase();
 
-
 include("../Controllers/login.php");
 ?>
 

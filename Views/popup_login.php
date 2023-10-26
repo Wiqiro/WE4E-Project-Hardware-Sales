@@ -27,7 +27,7 @@
                     <label for="password">Mot de passe</label>
                     <input class="form-styling" type="password" name="password"/>
                     <input type="checkbox" id="checkbox" />
-                    <label for="checkbox"><span class="ui"></span>Se rappeler de moi</label>
+                    <label for="checkbox"><span class="ui"></span>J'accepte les conditions d'utilisation</label>
                     <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit"/>
                     <button class="btn-animate-second">Fermer</button>
                 </form>
@@ -39,7 +39,11 @@
                     <label for="username">Nom d'utilisateur</label>
                     <input class="form-styling" type="text" name="username" placeholder="Pseudo" />
                     <label for="email">Email</label>
-                    <input class="form-styling" type="text" name="email" placeholder="adresse@example.com" />
+                    <input class="form-styling" type="email" name="email" placeholder="adresse@example.com" />
+                    <label for="birthdate">Date de naissance</label>
+                    <input class="form-styling" type="date" name="birthdate" placeholder="10/11/1953" />
+                    <label for="address">Adresse</label>
+                    <input class="form-styling" type="text" name="address" placeholder="1 rue de la Montagne, Belfort" />
                     <label for="password">Mot de passe</label>
                     <input class="form-styling" type="password" name="password" />
                     <label for="confirmpassword">Mot de passe (confirmer)</label>

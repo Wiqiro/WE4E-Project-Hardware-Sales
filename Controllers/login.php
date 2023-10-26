@@ -1,6 +1,6 @@
 <?php
 $formUserInput;
-global $conn, $userID, $username, $loginSuccessful;
+global $conn, $userID, $firstname, $lastname, $username, $email, $birthdate, $address, $loginSuccessful;
 
 $loginAttempted = false;
 $error = NULL;
@@ -11,8 +11,10 @@ if (isset($_POST["register-submit"]) && isset($_POST["firstname"]) && isset($_PO
     $lastname = $_POST["lastname"];
     $username = $_POST["username"];
     $email = $_POST["email"];
+    $birthdate = $_POST["birthdate"];
+    $address = $_POST["address"];
     $password = $_POST["password"];
-    register($firstname, $lastname, $username, $email, $password);
+    register($firstname, $lastname, $username, $email, $birthdate, $address, $password);
     if ($error == NULL) {
         createLoginCookie($username, $password);
         header("Refresh:0");
@@ -43,19 +45,16 @@ if ($loginAttempted) {
     if ($result->num_rows != 0) {
         $row = $result->fetch_assoc();
         $userID = $row["id"];
+        $firstname = $row["prenom"];
+        $lastname = $row["nom"];
         $username = $row["pseudo"];
+        $email = $row["email"];
+        $birthdate = $row["date_naissance"];
+        $address = $row["adresse"];
+        $password = $row["mot_de_passe"];
         createLoginCookie($username, $password);
         $loginSuccessful = true;
     } else {
         $error = "Ce couple login/mot de passe n'existe pas. Créez un Compte";
     }
 }
-/* 
-$resultArray = [
-    'successful' => $loginSuccessful,
-    'attempted' => $loginAttempted,
-    'errorMessage' => $error,
-    'userID' => $userID,
-    'username' => $username
-];
- */

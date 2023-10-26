@@ -1,3 +1,9 @@
+<?php
+global $firstname, $lastname, $username, $email, $birthdate, $address;
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,31 +29,35 @@
       <div ng-app ng-init="checked = false">
         <div class="form-signin center">
 
-          <label for="fullname" class="margin">Full name</label>
-          <label for="birthday" class="margin">Date de naissance</label>
-          <label for="address" class="margin">Adresse</label>
-          <label for="email" class="margin">Email</label>
-          <label for="password" class="margin">Create password</label>
-          <label for="confirmpassword" class="margin">Confirm password</label>
+          <label for="firstname" class="margin"><?php echo $firstname ?></label>
+          <label for="lastname" class="margin"><?php echo $lastname ?></label>
+          <label for="username" class="margin"><?php echo $username ?></label>
+          <label for="birthdate" class="margin"><?php echo $birthdate ?></label>
+          <label for="address" class="margin"><?php echo $address ?></label>
+          <label for="email" class="margin"><?php echo $email ?></label>
           <a href="commandes_precedentes.php"><button class="btn-signup">Commandes précédentes</button></a>
           <button class="btn-animate-second" id="closeaccount" onclick="closeAccount()">Fermer</button>
 
         </div>
         <form class="form-signup" action="" method="post" name="form">
-          <label for="fullname">Full name</label>
-          <input class="form-styling" type="text" name="email" value="A définir avec une var php" />
-          <label for="birthday">Date de naissance</label>
-          <input class="form-styling" type="text" name="birthday" value="" />
-          <label for="address">Adresse</label>
-          <input class="form-styling" type="text" name="address" value="" />
+          <label for="firstname">Full name</label>
+          <input class="form-styling" type="text" name="firstname" value=<?php echo $firstname ?> />
+          <label for="lastname">Full name</label>
+          <input class="form-styling" type="text" name="lastname" value=<?php echo $lastname ?> />
+          <label for="username">Nom d'utilisateur</label>
+          <input class="form-styling" type="text" name="username" value=<?php echo $username ?> />
+          <label for="birthdate">Date de naissance</label>
+          <input class="form-styling" type="date" name="birthdate" value=<?php echo $birthdate ?> />
           <label for="email">Email</label>
-          <input class="form-styling" type="text" name="dlno" value="" />
-          <label for="password">Create password</label>
-          <input class="form-styling" type="text" name="password" value="" />
-          <label for="confirmpassword">Confirm password</label>
-          <input class="form-styling" type="text" name="confirmpassword" value="" />
-          <a class="btn-signup">MODIFIER</a>
-          <button class="btn-animate-second">Fermer</button>
+          <input class="form-styling" type="email" name="email" value=<?php echo $email ?> />
+          <label for="address">Adresse</label>
+          <input class="form-styling" type="text" name="address" value=<?php echo $address ?> />
+          <label for="password">Nouveau mot de passe (optionnel)</label>
+          <input class="form-styling" type="password" name="password" value="" />
+          <label for="confirmpassword">Nouveau mot de passe (confirmer)</label>
+          <input class="form-styling" type="password" name="confirmpassword" value="" />
+          <input type="submit" class="btn-animate-second" value="Mettre à jour" name="update-submit"/>
+          <button class="btn-animate-second">FERMER</button>
         </form>
       </div>
     </div>

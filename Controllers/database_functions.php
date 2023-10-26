@@ -20,13 +20,13 @@ function disconnectDatabase()
     $conn->close();
 }
 
-function register($firstname, $lastname, $username, $email, $password)
+function register($firstname, $lastname, $username, $email, $birthdate, $address, $password)
 {
     global $conn, $error;
     $error = NULL;
 
-    $query = "INSERT INTO utilisateur(nom, prenom, pseudo, email, mot_de_passe) 
-    VALUES ('" . $firstname . "','" . $lastname . "','" . $username . "','" . $email . "','" . $password . "')";
+    $query = "INSERT INTO utilisateur(nom, prenom, pseudo, email, date_naissance, adresse, mot_de_passe) 
+    VALUES ('" . $firstname . "','" . $lastname . "','" . $username . "','" . $email . "','" . $birthdate . "','" . $address . "','" . $password . "')";
 
     $result = $conn->query($query);
     if (!$result) {

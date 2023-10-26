@@ -195,7 +195,6 @@ li {
 
 label {
     font-weight: 400;
-    text-transform: uppercase;
     font-size: 13px;
     padding-left: 15px;
     color: rgba(255, 255, 255, .7);
@@ -285,13 +284,13 @@ textarea:focus {
 }
 
 [type="checkbox"]:not(:checked)+label .ui:before {
-    content: "no";
-    left: 32px;
+    content: "Non";
+    left: 26px;
     color: rgba(255, 255, 255, .7)
 }
 
 [type="checkbox"]:checked+label .ui:after {
-    content: "yes";
+    content: "Oui";
     color: #ffffff
 }
 
