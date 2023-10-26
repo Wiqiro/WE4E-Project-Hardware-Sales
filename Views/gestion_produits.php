@@ -29,9 +29,7 @@ $monthMoney = 2000;
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <?php require("carte_produit.php"); ?>
-                                        <?php require("carte_produit.php"); ?>
-                                        <?php require("carte_produit.php"); ?>
+                                        <?php require("carte_gestion_produit.php"); ?>
                                     </div>
                                     <div class="col-lg-6">
                                         <form action="">

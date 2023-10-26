@@ -16,15 +16,12 @@ $salesRevenue = 15000;
 </head>
 
 <body>
-
     <section style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">
-
                     <div class="card">
                         <div class="card-body p-4">
-
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h5 class="mb-3">
@@ -34,7 +31,6 @@ $salesRevenue = 15000;
                                         </a>
                                     </h5>
                                     <hr>
-
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
                                             <p class="mb-0">Il y a <?php echo $nbCommand; ?>
@@ -49,13 +45,10 @@ $salesRevenue = 15000;
 
                                     <?php require("carte_commande.php"); ?>
                                     <?php require("carte_commande.php"); ?>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

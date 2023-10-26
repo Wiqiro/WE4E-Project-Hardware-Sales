@@ -58,7 +58,7 @@ li {
     font-size: 18px;
     display: inline;
     text-align: left;
-    text-transform: uppercase;
+
     padding-right: 10px;
     color: #ffffff
 }
@@ -302,7 +302,7 @@ textarea:focus {
 .btn-signup {
     float: left;
     font-weight: 700;
-    text-transform: uppercase;
+
     font-size: 13px;
     text-align: center;
     color: #ffffff;
@@ -328,7 +328,7 @@ textarea:focus {
 .btn-animate {
     float: left;
     font-weight: 700;
-    text-transform: uppercase;
+
     font-size: 13px;
     text-align: center;
     color: rgba(255, 255, 255, 1);
@@ -347,7 +347,7 @@ textarea:focus {
 .btn-animate-second {
     float: left;
     font-weight: 700;
-    text-transform: uppercase;
+
     font-size: 13px;
     text-align: center;
     color: red;
@@ -365,7 +365,7 @@ textarea:focus {
 .btn-animate-second:hover {
     float: left;
     font-weight: 700;
-    text-transform: uppercase;
+
     font-size: 13px;
     text-align: center;
     color: white;
@@ -494,7 +494,7 @@ h1 {
     height: 35px;
     border-radius: 20px;
     font-weight: 700;
-    text-transform: uppercase;
+
     font-size: 13px;
     text-align: center;
     color: #1059FF;
