@@ -1,5 +1,5 @@
 <?php
-global $loginSuccessful, $firstname, $lastname, $username, $email, $birthdate, $address;
+global $loginSuccessful, $userInfo;
 ?>
 
 <!DOCTYPE html>

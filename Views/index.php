@@ -1,14 +1,10 @@
 <?php
-global $loginSuccessful, $username;
+global $loginSuccessful, $userInfo;
 
-require("../Controllers/login_cookies.php");
-/* 
-destroyLoginCookie();
+
+include("../Controllers/initialize.php");
+/* destroyLoginCookie();
  */
-require("../Controllers/database_functions.php");
-connectDatabase();
-
-include("../Controllers/login.php");
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +35,7 @@ include("../Controllers/login.php");
     <header class="masthead">
         <div class="container">
             <?php if ($loginSuccessful) { ?>
-                <div class="masthead-subheading">Bienvenue dans notre studio <?php echo $username; ?> !</div>
+                <div class="masthead-subheading">Bienvenue dans notre studio <?php echo $userInfo["pseudo"]; ?> !</div>
             <?php } else { ?>
                 <div class="masthead-subheading">Bienvenue dans notre studio !</div>
             <?php } ?>

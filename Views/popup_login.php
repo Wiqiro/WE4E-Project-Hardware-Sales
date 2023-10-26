@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
-                <form class="form-signin" action="#" method="post" name="form">
+                <form class="form-signin" action="" method="post" name="form">
                     <label for="user">Nom d'utilisateur / email</label>
                     <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" />
                     <label for="password">Mot de passe</label>

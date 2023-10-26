@@ -1,3 +1,7 @@
+<?php
+include("../Controllers/initialize.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
