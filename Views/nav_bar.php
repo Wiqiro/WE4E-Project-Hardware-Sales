@@ -42,7 +42,16 @@ global $loginSuccessful, $userInfo;
                     <?php if ($loginSuccessful == false) { ?>
                         <li class="nav-item"><a class="nav-link cursor" onclick="openPopup()">Login</a></li>
                     <?php } else { ?>
-                        <li class="nav-item"><a class="nav-link cursor" onclick="openAccount()">Compte</a></li>
+                        <li class="nav-item hover-properties">
+                            <a class="nav-link cursor" onclick="openAccount()">Compte</a>
+                            <div class="logout-popup">
+                                <?php echo $userInfo['prenom'], ' ', $userInfo['nom']; ?>
+                                <br>
+                                <form action="" method="POST">
+                                    <input type="submit" class="btn-logout" value="Se déconnecter" name="disconnect" />
+                                </form>
+                            </div>
+                        </li>
                     <?php } ?>
                     <div class="d-flex">
                         <a href="panier.php">
