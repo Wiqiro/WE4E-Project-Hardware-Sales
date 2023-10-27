@@ -30,6 +30,8 @@ $monthMoney = 2000;
                 <div class="col-lg-12 center">
                   <div class="row">
                     <div class="col-lg-6">
+                      <a class="btn-index-site" href="index.php"><button>Acceuil du site</button></a>
+                      <br><br>
                       <h5>Stats de la journée</h5>
                       <p><?php echo $dayMoney; ?>$</p>
                       <h5>Stats du mois</h5>

@@ -1,7 +1,7 @@
 <?php
 
 global $userInfo;
-$isAdmin = false;
+$isAdmin = true;
 
 
 ?>

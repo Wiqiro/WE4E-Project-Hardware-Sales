@@ -592,3 +592,7 @@ a.btn-goback:hover {
 .product-style {
     text-align: center;
 }
+
+.btn-index-site {
+    float: left;
+}
