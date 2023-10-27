@@ -1,5 +1,7 @@
 <?php
+
 global $userInfo;
+$isAdmin = false;
 
 
 ?>
@@ -35,8 +37,13 @@ global $userInfo;
           <label for="email" class="margin">Email: <?php echo $userInfo["email"] ?></label>
           <label for="birthdate" class="margin">Date de naissance: <?php echo $userInfo["date_naissance"] ?></label>
           <label for="address" class="margin">Adresse: <?php echo $userInfo["adresse"] ?></label>
-          <a href="commandes_precedentes.php"><button class="btn-signup">Commandes précédentes</button></a>
+          <?php if ($isAdmin) { ?>
+            <a href="index_admin.php"><button class="btn-signup">Gestion du site</button></a>
+          <?php } else { ?>
+            <a href="commandes_precedentes.php"><button class="btn-signup">Commandes précédentes</button></a>
+          <?php } ?>
           <button class="btn-animate-second" id="closeaccount" onclick="closeAccount()">Fermer</button>
+          <button class="btn-animate-second" id="deconnection" onclick="">Se déconnecter</button>
 
         </div>
         <form class="form-signup" action="" method="post" name="form">
@@ -54,7 +61,7 @@ global $userInfo;
           <input class="form-styling" type="text" name="address" value=<?php echo $userInfo["adresse"] ?> />
           <label for="password">Entrez votre mot de passe pour valider</label>
           <input class="form-styling" type="password" name="password" value="" />
-          <input type="submit" class="btn-animate-second" value="Mettre à jour" name="update-submit"/>
+          <input type="submit" class="btn-animate-second" value="Mettre à jour" name="update-submit" />
           <button class="btn-animate-second">FERMER</button>
         </form>
       </div>
