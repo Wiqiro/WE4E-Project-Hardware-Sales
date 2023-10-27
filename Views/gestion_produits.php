@@ -24,7 +24,6 @@ $monthMoney = 2000;
                 <a href="index_admin.php"><button>Retour</button></a>
                 <div class="card">
                     <div class="card-body p-4">
-
                         <div class="row">
                             <div class="col-lg-12 center">
                                 <div class="row">
@@ -34,15 +33,13 @@ $monthMoney = 2000;
                                     <div class="col-lg-6">
                                         <form action="">
                                             <label class="label-design" for="catalog-name"></label>
-                                            <input class="catalog-name product-style" id="catalog-name" type="text" placeholder="Nom du catalogue">
+                                            <input class="catalog-name product-style" id="catalog" type="text" placeholder="Nom du catalogue">
                                             <label class="label-design" for="product-name"></label><br>
-                                            <input class="product-name product-style" id="product-name" type="text" placeholder="Nom du produit">
+                                            <input class="product-name product-style" id="name" type="text" placeholder="Nom du produit">
                                             <label class="label-design" for="product-price"></label><br>
-                                            <input class="product-price product-style" id="product-price" type="text" placeholder="Prix">
-                                            <label class="label-design" for="product-category"></label><br>
-                                            <input class="product-category product-style" id="product-category" type="text" placeholder="Catégorie">
-                                            <label class="label-design" for="product-image"></label><br>
-                                            <input class="product-image product-style" id="product-image" type="text" placeholder="Lien image">
+                                            <input class="product-price product-style" id="price" type="text" placeholder="Prix">
+                                            <label class="label-design" for="image"></label><br>
+                                            <input class="product-image product-style" id="image" type="text" placeholder="Lien image">
                                             <br>
                                             <br>
                                             <button>Ajouter le catalogue</button>

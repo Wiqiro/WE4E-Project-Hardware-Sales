@@ -1,38 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Style/panier_style.css" />
-    <title>Card</title>
-</head>
-
-<body>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between">
-                <div class="d-flex flex-row align-items-center">
-                    <div>
-                        <img src="../Style/assets/catalog.jpg" class="img-fluid rounded-3" alt="image commande" style="width: 65px;">
-                    </div>
-                    <div class="ms-3">
-                        <a class="link-style" href="produit.php">
-                            <h5>Nom du catalogue</h5>
-                        </a>
-                        <p class="medium mb-3">Le catalogue possède n produits</p>
-                        
-                    </div>
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Popular Item</h5>
+                <!-- Product reviews-->
+                <div class="d-flex justify-content-center small text-warning mb-2">
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
                 </div>
-                <div class="d-flex flex-row align-items-center">
-                    <div>
-                        <button>Renommer</button>
-                        <button>Supprimer</button>
-                    </div>
-                </div>
+                <!-- Product price-->
+                $40.00
             </div>
         </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        </div>
     </div>
-</body>
-
-</html>
+</div>

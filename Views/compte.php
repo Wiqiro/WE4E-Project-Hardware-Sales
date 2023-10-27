@@ -52,7 +52,7 @@ global $userInfo;
           <input class="form-styling" type="date" name="birthdate" value=<?php echo $userInfo["date_naissance"] ?> />
           <label for="address">Adresse</label>
           <input class="form-styling" type="text" name="address" value=<?php echo $userInfo["adresse"] ?> />
-          <label for="password">Mot de passe pour validation</label>
+          <label for="password">Entrez votre mot de passe pour valider</label>
           <input class="form-styling" type="password" name="password" value="" />
           <input type="submit" class="btn-animate-second" value="Mettre à jour" name="update-submit"/>
           <button class="btn-animate-second">FERMER</button>

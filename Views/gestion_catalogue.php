@@ -22,9 +22,9 @@
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <?php require("carte_catalogue.php"); ?>
-                                        <?php require("carte_catalogue.php"); ?>
-                                        <?php require("carte_catalogue.php"); ?>
+                                        <?php require("carte_gestion_catalogue.php"); ?>
+                                        <?php require("carte_gestion_catalogue.php"); ?>
+                                        <?php require("carte_gestion_catalogue.php"); ?>
                                     </div>
                                     <div class="col-lg-6">
                                         <form action="">
