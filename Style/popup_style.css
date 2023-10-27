@@ -16,7 +16,7 @@ body * {
 } */
 
 .frame {
-    height: 600px;
+    height: 610px;
     width: 420px;
     /* background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82mL0lCjn8cUhnzzoE1oYnjPkobX4USGFXw&usqp=CAU) no-repeat center center; */
     background-color: black;
@@ -31,7 +31,7 @@ body * {
 }
 
 .frame-long {
-    height: 700px
+    height: 750px
 }
 
 .frame-short {
@@ -102,7 +102,7 @@ li {
     font-weight: 300;
     padding-left: 37px;
     padding-right: 37px;
-    padding-top: 55px;
+    padding-top: 30px;
     transition: opacity .5s ease, transform .5s ease
 }
 
@@ -118,7 +118,7 @@ li {
     font-weight: 300;
     padding-left: 37px;
     padding-right: 37px;
-    padding-top: 55px;
+    /* padding-top: 55px; */
     position: relative;
     top: -375px;
     left: 400px;
@@ -347,7 +347,6 @@ textarea:focus {
 .btn-animate-second {
     float: left;
     font-weight: 700;
-
     font-size: 13px;
     text-align: center;
     color: red;
@@ -356,7 +355,7 @@ textarea:focus {
     height: 35px;
     border: none;
     border-radius: 20px;
-    margin-top: 23px;
+    margin-top: 3px;
     background-color: black;
     left: 0px;
     top: 0px;
@@ -374,7 +373,7 @@ textarea:focus {
     height: 35px;
     border: none;
     border-radius: 20px;
-    margin-top: 23px;
+    margin-top: 3px;
     background-color: red;
     left: 0px;
     top: 0px;
