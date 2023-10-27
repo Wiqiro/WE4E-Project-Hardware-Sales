@@ -9,8 +9,11 @@ global $conn, $error, $userInfo, $loginSuccessful;
 $loginAttempted = false;
 $error = NULL;
 
+if (isset($_POST["disconnect"])) {
+    destroyLoginCookie();
+}
 //Données d'inscription reçues via le formulaire ?
-if (isset($_POST["register-submit"])) {
+elseif (isset($_POST["register-submit"])) {
     if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["birthdate"]) && isset($_POST["address"]) && isset($_POST["password"])) {
         $firstname = $_POST["firstname"];
         $lastname = $_POST["lastname"];

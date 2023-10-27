@@ -43,7 +43,10 @@ $isAdmin = false;
             <a href="commandes_precedentes.php"><button class="btn-signup">Commandes précédentes</button></a>
           <?php } ?>
           <button class="btn-animate-second" id="closeaccount" onclick="closeAccount()">Fermer</button>
-          <button class="btn-animate-second" id="deconnection" onclick="">Se déconnecter</button>
+
+          <form action="" method="POST">
+            <input type="submit" class="btn-animate-second" value="Se déconnecter" name="disconnect" />
+          </form>
 
         </div>
         <form class="form-signup" action="" method="post" name="form">
