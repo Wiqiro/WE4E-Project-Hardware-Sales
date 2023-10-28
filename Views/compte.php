@@ -49,9 +49,9 @@ global $userInfo;
 
         </div>
         <form class="form-signup" action="" method="post" name="form">
-          <label for="firstname">Full name</label>
+          <label for="firstname">Prénom</label>
           <input class="form-styling" type="text" name="firstname" value=<?php echo $userInfo["prenom"] ?> />
-          <label for="lastname">Full name</label>
+          <label for="lastname">Nom</label>
           <input class="form-styling" type="text" name="lastname" value=<?php echo $userInfo["nom"] ?> />
           <label for="username">Nom d'utilisateur</label>
           <input class="form-styling" type="text" name="username" value=<?php echo $userInfo["pseudo"] ?> />
