@@ -75,3 +75,35 @@ function updateUserInfo($userID, $firstname, $lastname, $username, $email, $birt
         $error = "Erreur lors de la mise à jour du profil, veuillez rééssayer";
     }
 }
+
+function createCatalog($catalogName) {
+    global $conn, $error;
+    $error = NULL;
+    $query = "INSERT INTO catalogue(nom) VALUES ('". $catalogName . "')";
+    $result = $conn->query($query);
+    if (!$result) {
+        $error = "Erreur lors de la création du catalogue, veuillez rééssayer";
+    }
+}
+
+function removeCatalog($id) {
+    global $conn, $error;
+    $error = NULL;
+    $query = "DELETE FROM catalogue WHERE id = '" . $id . "'";
+    $result = $conn->query($query);
+    if (!$result) {
+        $error = "Erreur lors de la suppression du catalogue " . $id . ", veuillez rééssayer";
+    }
+}
+
+function getCatalogList() {
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT C.id AS id, C.nom AS nom, COUNT(P.id) AS nb_produits FROM catalogue AS C LEFT JOIN produit AS P ON C.id = P.id_catalogue GROUP BY C.id";
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_all(MYSQLI_ASSOC);
+}

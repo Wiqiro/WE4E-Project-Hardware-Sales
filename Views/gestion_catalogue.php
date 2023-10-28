@@ -1,3 +1,17 @@
+<?php
+include("../Controllers/initialize.php");
+include("carte_gestion_catalogue.php");
+
+
+if (isset($_POST["add"]) && isset($_POST["catalog-name"])) {
+    createCatalog($_POST["catalog-name"]);
+} elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
+    removeCatalog($_POST["id"]);
+}
+
+$catalogList = getCatalogList();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -17,22 +31,23 @@
                 <a href="index_admin.php"><button>Retour</button></a>
                 <div class="card">
                     <div class="card-body p-4">
-
                         <div class="row">
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <?php require("carte_gestion_catalogue.php"); ?>
-                                        <?php require("carte_gestion_catalogue.php"); ?>
-                                        <?php require("carte_gestion_catalogue.php"); ?>
+                                        <?php 
+                                        for ($i = 0; $i < count($catalogList); $i++) {
+                                            showCatalogManagementCard($catalogList[$i]);
+                                        }
+                                        ?>
                                     </div>
                                     <div class="col-lg-6">
-                                        <form action="">
+                                        <form action="" , method="POST">
                                             <label class="label-design" for="catalog-name"></label>
-                                            <input class="catalog-name" id="catalog-name" type="text" placeholder="Nom du catalogue">
+                                            <input class="catalog-name" name="catalog-name" type="text" placeholder="Nom du catalogue">
                                             <br>
                                             <br>
-                                            <button>Ajouter le catalogue</button>
+                                            <input type="submit" value="Ajouter le catalogue" name="add" />
                                         </form>
                                     </div>
                                 </div>
