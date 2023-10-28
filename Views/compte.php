@@ -1,7 +1,6 @@
 <?php
 
 global $userInfo;
-$isAdmin = true;
 
 
 ?>
@@ -37,7 +36,7 @@ $isAdmin = true;
           <label for="email" class="margin">Email: <?php echo $userInfo["email"] ?></label>
           <label for="birthdate" class="margin">Date de naissance: <?php echo $userInfo["date_naissance"] ?></label>
           <label for="address" class="margin">Adresse: <?php echo $userInfo["adresse"] ?></label>
-          <?php if ($isAdmin) { ?>
+          <?php if ($userInfo["admin"]) { ?>
             <a href="index_admin.php"><button class="btn-signup">Gestion du site</button></a>
           <?php } else { ?>
             <a href="commandes_precedentes.php"><button class="btn-signup">Commandes précédentes</button></a>

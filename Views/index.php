@@ -3,6 +3,8 @@ global $loginSuccessful, $userInfo;
 
 
 include("../Controllers/initialize.php");
+include("carte_produit.php");
+
 /* destroyLoginCookie();
  */
 ?>
@@ -51,14 +53,14 @@ include("../Controllers/initialize.php");
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                 <?php
-                include("carte_produit.php");
-                include("carte_produit.php");
-                include("carte_produit.php");
-                include("carte_produit.php");
-                include("carte_produit.php");
-                include("carte_produit.php");
-                include("carte_produit.php");
-                include("carte_produit.php");
+                showProduct(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                showProduct(2, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                showProduct(3, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                showProduct(4, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                showProduct(5, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                showProduct(6, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                showProduct(7, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                showProduct(8, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
 
                 ?>
             </div>

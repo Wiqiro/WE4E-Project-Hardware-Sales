@@ -1,12 +1,17 @@
+
+<?php
+
+function showProduct($id, $name, $price, $imageAddress) {
+?>
 <div class="col mb-5">
     <div class="card h-100">
         <!-- Product image-->
-        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <img class="card-img-top" src="<?php echo $imageAddress?>" alt="Unable to find image" />
         <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">Popular Item</h5>
+                <h5 class="fw-bolder"><?php echo $name ?></h5>
                 <!-- Product reviews-->
                 <div class="d-flex justify-content-center small text-warning mb-2">
                     <div class="bi-star-fill"></div>
@@ -16,7 +21,7 @@
                     <div class="bi-star-fill"></div>
                 </div>
                 <!-- Product price-->
-                $40.00
+                <?php echo "$".$price ?>
             </div>
         </div>
         <!-- Product actions-->
@@ -25,3 +30,7 @@
         </div>
     </div>
 </div>
+
+<?php
+}
+?>
