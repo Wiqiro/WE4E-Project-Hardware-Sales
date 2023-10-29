@@ -9,9 +9,7 @@ $dayMoney = 1000;
 $monthMoney = 2000;
 
 
-if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"])) {
-    
-    
+if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"])) {    
     $specs = NULL;
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
         for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
@@ -19,12 +17,12 @@ if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["descripti
             $specs[$i]["value"] = $_POST["specs-vals"][$i];
         }
     }
-    addProduct($_POST["name"], $_POST["description"], $_POST["price"], 0, $_POST["catalog"], $specs);
+    addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $specs);
 }
 
 $catalogList = getCatalogList();
 $brandList = getBrandList();
-
+$productList = getProducts();
 ?>
 
 <!doctype html>
@@ -50,7 +48,9 @@ $brandList = getBrandList();
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <?php /* showProductCardCard(); */ ?>
+                                        <?php foreach ($productList as $product) {
+                                            showProductManagementCard($product);
+                                        } ?>
                                     </div>
                                     <div class="col-lg-6">
                                         <form action="" method="POST">
@@ -90,10 +90,8 @@ $brandList = getBrandList();
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

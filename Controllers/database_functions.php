@@ -1,5 +1,6 @@
 <?php
-function connectDatabase() {
+function connectDatabase()
+{
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -13,12 +14,14 @@ function connectDatabase() {
     }
 }
 
-function disconnectDatabase() {
+function disconnectDatabase()
+{
     global $conn;
     $conn->close();
 }
 
-function getUserInfoFromLogin($usernameOrEmail, $password) {
+function getUserInfoFromLogin($usernameOrEmail, $password)
+{
     global $conn, $error;
     $error = NULL;
 
@@ -34,7 +37,8 @@ function getUserInfoFromLogin($usernameOrEmail, $password) {
     return $result->fetch_assoc();
 }
 
-function getUserInfoFromCookie($userID, $password) {
+function getUserInfoFromCookie($userID, $password)
+{
     global $conn, $error;
     $error = NULL;
 
@@ -50,7 +54,8 @@ function getUserInfoFromCookie($userID, $password) {
 }
 
 
-function registerUser($firstname, $lastname, $username, $email, $birthdate, $address, $password) {
+function registerUser($firstname, $lastname, $username, $email, $birthdate, $address, $password)
+{
     global $conn, $error;
     $error = NULL;
 
@@ -63,7 +68,8 @@ function registerUser($firstname, $lastname, $username, $email, $birthdate, $add
     }
 }
 
-function updateUserInfo($userID, $firstname, $lastname, $username, $email, $birthdate, $address) {
+function updateUserInfo($userID, $firstname, $lastname, $username, $email, $birthdate, $address)
+{
     global $conn, $error;
     $error = NULL;
 
@@ -76,17 +82,19 @@ function updateUserInfo($userID, $firstname, $lastname, $username, $email, $birt
     }
 }
 
-function createCatalog($catalogName) {
+function createCatalog($catalogName)
+{
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO catalogue(nom) VALUES ('". $catalogName . "')";
+    $query = "INSERT INTO catalogue(nom) VALUES ('" . $catalogName . "')";
     $result = $conn->query($query);
     if (!$result) {
         $error = "Erreur lors de la création du catalogue, veuillez rééssayer";
     }
 }
 
-function removeCatalog($id) {
+function removeCatalog($id)
+{
     global $conn, $error;
     $error = NULL;
     $query = "DELETE FROM catalogue WHERE id = '" . $id . "'";
@@ -96,7 +104,8 @@ function removeCatalog($id) {
     }
 }
 
-function getCatalogList() {
+function getCatalogList()
+{
     global $conn, $error;
     $error = NULL;
     $query = "SELECT C.id AS id, C.nom AS nom, COUNT(P.id) AS nb_produits FROM catalogue AS C LEFT JOIN produit AS P ON C.id = P.id_catalogue GROUP BY C.id";
@@ -108,7 +117,8 @@ function getCatalogList() {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function getBrandList() {
+function getBrandList()
+{
     global $conn, $error;
     $error = NULL;
     $query = "SELECT * FROM marque";
@@ -122,12 +132,13 @@ function getBrandList() {
 
 
 
-function addProduct($name, $description, $price, $catalogID, $brandID, $specs) {
+function addProduct($name, $description, $price, $catalogID, $brandID, $specs)
+{
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO produit(nom, description, id_marque, id_catalogue) VALUES ('". $name . "','". $description . "',". $catalogID . ",". $brandID . ");";
+    $query = "INSERT INTO produit(nom, description, id_marque, id_catalogue) VALUES ('" . $name . "','" . $description . "'," . $catalogID . "," . $brandID . ");";
     $result = $conn->query($query);
-    
+
     $query = "SELECT LAST_INSERT_ID() as ID";
     $result = $conn->query($query);
     $prodID = $result->fetch_assoc()["ID"];
@@ -135,7 +146,7 @@ function addProduct($name, $description, $price, $catalogID, $brandID, $specs) {
 
     if ($specs) {
         $query = "INSERT INTO specification(id_produit, nom, valeur) VALUES ";
-    
+
         $values = [];
         foreach ($specs as $spec) {
             $values[] = "(" . $prodID . ",'" . $spec["name"] . "','" . $spec["value"] . "')";
@@ -143,5 +154,17 @@ function addProduct($name, $description, $price, $catalogID, $brandID, $specs) {
         $query = $query . implode(",", $values);
         $result = $conn->query($query);
     }
+}
 
+function getProducts()
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT P.id, P.nom, P.description, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_all(MYSQLI_ASSOC);
 }

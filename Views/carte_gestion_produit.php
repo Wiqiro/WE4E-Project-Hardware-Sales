@@ -1,5 +1,5 @@
 <?php
-function showProductCardCard($product) {
+function showProductManagementCard($product) {
 ?>
 
 <link rel="stylesheet" href="../Style/panier_style.css" />
@@ -17,8 +17,9 @@ function showProductCardCard($product) {
                         <a class="link-style" href="produit.php">
                             <h5><?php echo $product["nom"]?></h5>
                         </a>
-                        <p class="medium mb-3"><?php $product["id"]?></p>
-                        <p class="medium mb-3">Catégorie</p>
+                        <p class="medium mb-3">Identifient: <?php echo $product["id"]?></p>
+                        <p class="medium mb-3">Catégorie: <?php echo $product["categorie"]?></p>
+                        <p class="medium mb-3">Marque: <?php echo $product["marque"]?></p>
 
                     </div>
                 </div>
