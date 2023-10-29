@@ -2,6 +2,8 @@
 
 require("../Controllers/login_cookies.php");
 require("../Controllers/database_functions.php");
+require("../Controllers/panier.php");
+
 connectDatabase();
 
 global $conn, $error, $userInfo, $loginSuccessful;

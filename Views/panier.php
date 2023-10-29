@@ -1,4 +1,7 @@
-<?php $nbItem = 6; ?>
+<?php 
+require("../Controllers/initialize.php");
+$nbItem = 6; 
+?>
 
 
 <!doctype html>

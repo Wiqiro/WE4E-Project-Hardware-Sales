@@ -58,7 +58,7 @@ global $loginSuccessful, $userInfo;
                             <button class="btn btn-outline-light" type="button">
                                 <!-- <i class="bi-cart-fill me-1"></i> -->
                                 Panier
-                                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                                <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo getCartItemCount() ?></span>
                             </button>
                         </a>
                     </div>
