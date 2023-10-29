@@ -2,7 +2,6 @@
 require("../Controllers/initialize.php");
 require("carte_gestion_produit.php");
 
-$catalogList = getCatalogList();
 
 $isLogin = true;
 $isAdmin = true;
@@ -10,12 +9,8 @@ $dayMoney = 1000;
 $monthMoney = 2000;
 
 
-/* foreach($_POST["dynamic-inputs"] as $spec) {
-    print_r($_POST["dynamic-inputs"]);
-} */
-
 if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"])) {
-
+    
     
     $specs = NULL;
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
@@ -26,6 +21,9 @@ if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["descripti
     }
     addProduct($_POST["name"], $_POST["description"], $_POST["price"], 0, $_POST["catalog"], $specs);
 }
+
+$catalogList = getCatalogList();
+$brandList = getBrandList();
 
 ?>
 
@@ -63,6 +61,14 @@ if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["descripti
                                                 <?php
                                                 foreach ($catalogList as $catalog) {
                                                     echo "<option value=" . $catalog["id"] . ">" . $catalog["nom"] . "</option>";
+                                                }
+                                                ?>
+                                            </select><br><br>
+                                            <label class="label-design" for="brand">Marque du produit</label>
+                                            <select name="brand">
+                                                <?php
+                                                foreach ($brandList as $brand) {
+                                                    echo "<option value=" . $brand["id"] . ">" . $brand["nom"] . "</option>";
                                                 }
                                                 ?>
                                             </select><br><br>

@@ -108,6 +108,18 @@ function getCatalogList() {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function getBrandList() {
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT * FROM marque";
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 
 
 function addProduct($name, $description, $price, $catalogID, $brandID, $specs) {
