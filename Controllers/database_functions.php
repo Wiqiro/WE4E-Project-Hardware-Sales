@@ -143,6 +143,9 @@ function addProduct($name, $description, $price, $catalogID, $brandID, $specs)
     $result = $conn->query($query);
     $prodID = $result->fetch_assoc()["ID"];
 
+    $query = "INSERT INTO historique_prix(prix, id_produit) VALUES (" . $price . "," . $prodID . ")";
+    $result = $conn->query($query);
+
 
     if ($specs) {
         $query = "INSERT INTO specification(id_produit, nom, valeur) VALUES ";
@@ -156,15 +159,36 @@ function addProduct($name, $description, $price, $catalogID, $brandID, $specs)
     }
 }
 
-function getProducts()
-{
+function getProducts() {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
+    $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
         $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
     }
     return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+function getProduct($id) {
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id = " . $id;
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+function removeProduct($id) {
+    global $conn, $error;
+    $error = NULL;
+    $query = "DELETE FROM produit WHERE id = '" . $id . "'";
+    $result = $conn->query($query);
+    if (!$result) {
+        $error = "Erreur lors de la suppression du catalogue " . $id . ", veuillez rééssayer";
+    }
 }

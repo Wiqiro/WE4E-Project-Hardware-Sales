@@ -9,7 +9,7 @@ $dayMoney = 1000;
 $monthMoney = 2000;
 
 
-if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"])) {    
+if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"])) {    
     $specs = NULL;
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
         for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
@@ -18,6 +18,8 @@ if (isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["descripti
         }
     }
     addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $specs);
+} elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
+    removeProduct($_POST["id"]);    
 }
 
 $catalogList = getCatalogList();

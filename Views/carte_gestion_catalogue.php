@@ -13,7 +13,7 @@ function showCatalogManagementCard($catalog) {
                             <img src="../Style/assets/catalog.jpg" class="img-fluid rounded-3" alt="image commande" style="width: 65px;">
                         </div>
                         <div class="ms-3">
-                            <a class="link-style" href="produit.php">
+                            <a class="link-style" href="catalogue.php">
                                 <h5><?php echo $catalog["nom"] ?></h5>
                             </a>
                             <p class="medium mb-3">

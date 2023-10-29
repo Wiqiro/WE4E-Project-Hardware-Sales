@@ -1,9 +1,18 @@
 <?php
+if (!isset($_GET["id"])) {
+  header("Location: index.php");
+}
+
 $catalog_name = 'Nom du catalogue';
-global $loginSuccessful, $userInfo, $id;
+global $loginSuccessful, $userInfo;
+
 
 include("../Controllers/initialize.php");
 include("carte_produit.php");
+
+$product = getProduct($_GET["id"]);
+print_r($product);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +42,7 @@ include("carte_produit.php");
       <div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="catalogue.php" class="back-catalog"><?php echo ($catalog_name); ?></a></div>
       <br>
       <div class="row gx-4 gx-lg-5 align-items-center">
-        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>  
+        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
         <div class="col-md-6">
           <div class="small mb-1">SKU: BST-498</div>
           <h1 class="display-5 fw-bolder">Shop item template</h1>
