@@ -1,7 +1,7 @@
 
 <?php
 
-function showProduct($id, $name, $price, $imageAddress) {
+function showProductCard($id, $name, $price, $imageAddress) {
 ?>
 <div class="col mb-5">
     <div class="card h-100">

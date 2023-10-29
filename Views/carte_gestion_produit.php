@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+function showProductCardCard($product) {
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Style/panier_style.css" />
-    <title>Card</title>
-</head>
+<link rel="stylesheet" href="../Style/panier_style.css" />
+
 
 <body>
     <div class="card mb-3">
@@ -18,9 +15,9 @@
                     </div>
                     <div class="ms-3">
                         <a class="link-style" href="produit.php">
-                            <h5>Nom du produit</h5>
+                            <h5><?php echo $product["nom"]?></h5>
                         </a>
-                        <p class="medium mb-3">Référence</p>
+                        <p class="medium mb-3"><?php $product["id"]?></p>
                         <p class="medium mb-3">Catégorie</p>
 
                     </div>
@@ -37,4 +34,6 @@
     </div>
 </body>
 
-</html>
+<?php
+}
+?>

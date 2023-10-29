@@ -107,3 +107,29 @@ function getCatalogList() {
     }
     return $result->fetch_all(MYSQLI_ASSOC);
 }
+
+
+
+function addProduct($name, $description, $price, $catalogID, $brandID, $specs) {
+    global $conn, $error;
+    $error = NULL;
+    $query = "INSERT INTO produit(nom, description, id_marque, id_catalogue) VALUES ('". $name . "','". $description . "',". $catalogID . ",". $brandID . ");";
+    $result = $conn->query($query);
+    
+    $query = "SELECT LAST_INSERT_ID() as ID";
+    $result = $conn->query($query);
+    $prodID = $result->fetch_assoc()["ID"];
+
+
+    if ($specs) {
+        $query = "INSERT INTO specification(id_produit, nom, valeur) VALUES ";
+    
+        $values = [];
+        foreach ($specs as $spec) {
+            $values[] = "(" . $prodID . ",'" . $spec["name"] . "','" . $spec["value"] . "')";
+        }
+        $query = $query . implode(",", $values);
+        $result = $conn->query($query);
+    }
+
+}

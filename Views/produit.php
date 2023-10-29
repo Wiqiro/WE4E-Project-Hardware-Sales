@@ -76,10 +76,10 @@ include("carte_produit.php");
       <h2 class="fw-bolder mb-4">Related products</h2>
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <?php
-        showProduct(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-        showProduct(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-        showProduct(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-        showProduct(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+        showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+        showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+        showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+        showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
         ?>
       </div>
     </div>
