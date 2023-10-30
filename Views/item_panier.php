@@ -1,8 +1,8 @@
 <?php
 
-function showCartItem($id, $quantity)
+function showCartItem($product)
 {
-    $product = getProduct($id);
+    $prix = $product["prix"] * $product["quantite"];
     ?>
     <div class="card mb-3">
         <div class="card-body">
@@ -20,13 +20,13 @@ function showCartItem($id, $quantity)
                 </div>
                 <div class="d-flex flex-row align-items-center">
                     <div style="width: 50px;">
-                        <h5 class="fw-normal mb-0"><?php echo $quantity ?></h5>
+                        <h5 class="fw-normal mb-0"><?php echo $product["quantite"] ?></h5>
                     </div>
                     <div style="width: 80px;">
-                        <h5 class="mb-0"><?php echo $product["prix"] ?>€</h5>
+                        <h5 class="mb-0"><?php echo $prix ?>€</h5>
                     </div>
                     <form action="" method="POST">
-                        <input type="hidden" name="remove-cart-item" value="<?php echo $id ?>">
+                        <input type="hidden" name="remove-cart-item" value="<?php echo $product["id"] ?>">
                         <button type="submit" class="btn btn-link p-0 border-0" style="color: #cecece;"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </div>

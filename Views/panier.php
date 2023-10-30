@@ -8,9 +8,8 @@ if (isset($_POST["remove-cart-item"])) {
   include("item_panier.php");
   
   
-  $cart = getCart();
-
-
+  
+  $products = getProductsFromCart(getCart());
 ?>
 
 
@@ -46,9 +45,9 @@ if (isset($_POST["remove-cart-item"])) {
                       <p class="mb-0">You have <?php echo getCartItemCount(); ?> items in your cart</p>
                     </div>
                   </div>
-                  <?php
-                  foreach ($cart as $item) {
-                    showCartItem($item["id"], $item["quantity"]);
+                  <?php 
+                  foreach ($products as $item) {
+                    showCartItem($item);
                   }
                   ?>
                 </div>

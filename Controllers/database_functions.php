@@ -181,7 +181,36 @@ function getProduct($id) {
         $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
     }
     return $result->fetch_assoc();
-}   
+}
+
+function getProductsFromCart($cart) {
+    if (!$cart) return array();
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id IN (";
+
+    $values = [];
+    foreach ($cart as $item) {
+        $values[] = $item["id"];
+    }
+    $query .= implode(",", $values) . ")";
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+
+    $products = $result->fetch_all(MYSQLI_ASSOC);
+
+    $products = array_map(function ($row, $cartItem) {
+        return $row + array("quantite" => $cartItem["quantity"]);
+    }, $products, $cart);
+    /* foreach ($result as $index => $prod) {
+        $result[$index] = array_merge($prod, $cart[$index]);
+    } */
+
+    return $products;
+}
 
 function removeProduct($id) {
     global $conn, $error;

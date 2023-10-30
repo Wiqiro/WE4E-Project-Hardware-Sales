@@ -45,5 +45,5 @@ function removeCartItem($id) {
     $cart = array_filter($cart, function ($item) use ($id) {
         return $item["id"] != $id;
     });
-    setCart($cart);
+    setCart(array_values($cart));
 }
