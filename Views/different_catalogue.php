@@ -1,53 +1,56 @@
 <?php
-if (isset($_POST["remove-cart-item"])) {
-    include("../Controllers/panier.php");
-    removeCartItem($_POST["remove-cart-item"]);
-    header("Refresh:0");
-} else {
-    require("../Controllers/initialize.php");
-    include("item_panier.php");
-
-
-
-    $products = getProductsFromCart(getCart());
+include("../Controllers/initialize.php");
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 
-    <!doctype html>
-    <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Catalogue</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="../Style/assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="../Style/styles.css" rel="stylesheet" />
+</head>
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Panier</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-        <link rel="stylesheet" href="../Style/panier_style.css" />
-    </head>
+<body>
+  <!-- Navigation-->
+  <?php require("nav_bar.php"); ?>
+  <!-- Section-->
 
-    <body>
-        <div class="sizing">
 
-            <div class="card bg-secondary text-white rounded-3 position">
-                <div class="card-body">
-                    <ul class="list-style">
-                        <li class="list-component"><a class="a-style" href="catalogue.php">Catalogue 1</a></li>
-                        <li class="list-component"><a class="a-style" href="catalogue.php">Catalogue 2</a></li>
-                        <li class="list-component"><a class="a-style" href="catalogue.php">Catalogue 3</a></li>
-                        <li class="list-component"><a class="a-style" href="catalogue.php">Catalogue 4</a></li>
-                        <li class="list-component"><a class="a-style" href="catalogue.php">Catalogue 5</a></li>
-                    </ul>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <?php
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          include("carte_different_catalogue.php");
+          ?>
         </div>
+      </div>
+    </section>
+  </div>
 
-        <!-- Footer-->
-        <?php require("footer.php"); ?>
+  <?php require('footer.php'); ?>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
 
-    </html>
-
-<?php
-}
-?>
+</html>
