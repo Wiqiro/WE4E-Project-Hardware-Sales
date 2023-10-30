@@ -13,7 +13,7 @@ if (!isset($_GET["id"])) {
 
 	include("../Controllers/initialize.php");
 	include("carte_produit.php");
-	$product = getProduct($_GET["id"]);
+	$product = getProductFromId($_GET["id"]);
 
 
 

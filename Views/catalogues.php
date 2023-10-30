@@ -2,6 +2,9 @@
 include "../Controllers/initialize.php";
 
 include "carte_catalogue.php";
+
+$catalogs = getCatalogList();
+print_r($catalogs);
 ?>
 
 <!DOCTYPE html>
@@ -32,15 +35,9 @@ include "carte_catalogue.php";
       <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
           <?php
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+          foreach($catalogs as $catalog) {
+            showCatalogCart($catalog["id"], $catalog["nom"], $catalog["nb_produits"], "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+          }
 ?>
         </div>
       </div>
