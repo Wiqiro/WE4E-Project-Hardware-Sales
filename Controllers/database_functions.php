@@ -181,7 +181,7 @@ function getProduct($id) {
         $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
     }
     return $result->fetch_assoc();
-}
+}   
 
 function removeProduct($id) {
     global $conn, $error;

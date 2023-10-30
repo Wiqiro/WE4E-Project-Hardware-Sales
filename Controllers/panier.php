@@ -1,9 +1,17 @@
 <?php
 function addProductToCart($id, $quantity) {
     $cart = getCart();
-    $cart[] = ["id" => $id, "quantity" => $quantity];
-    setcookie("cart", json_encode($cart, true), time() + 48 * 3600);
 
+    foreach ($cart as &$item) {
+        if ($item["id"] == $id) {
+            $item["quantity"] += $quantity;
+            setCart($cart);
+            return;
+        }
+    }
+
+    $cart[] = ["id" => $id, "quantity" => $quantity];
+    setCart($cart);
 }
 
 function getCart() {
@@ -12,6 +20,10 @@ function getCart() {
     } else {
         return array();
     }
+}
+
+function setCart($cart) {
+    setcookie("cart", json_encode($cart, true), time() + 48 * 3600);
 }
 
 function getCartItemCount() {
@@ -26,4 +38,12 @@ function getCartItemCount() {
 function emptyCart() {
     unset($_COOKIE['cart']);    
     setcookie("cart", NULL, -1);
+}
+
+function removeCartItem($id) {
+    $cart = getCart();
+    $cart = array_filter($cart, function ($item) use ($id) {
+        return $item["id"] != $id;
+    });
+    setCart($cart);
 }

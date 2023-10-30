@@ -1,6 +1,16 @@
 <?php 
-require("../Controllers/initialize.php");
-$nbItem = 6; 
+if (isset($_POST["remove-cart-item"])) {
+  include("../Controllers/panier.php");
+  removeCartItem($_POST["remove-cart-item"]);
+  header("Refresh:0");
+} else {
+  require("../Controllers/initialize.php");
+  include("item_panier.php");
+  
+  
+  $cart = getCart();
+
+
 ?>
 
 
@@ -33,15 +43,13 @@ $nbItem = 6;
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-1">Shopping cart</p>
-                      <p class="mb-0">You have <?php echo $nbItem; ?> items in your cart</p>
+                      <p class="mb-0">You have <?php echo getCartItemCount(); ?> items in your cart</p>
                     </div>
                   </div>
                   <?php
-                  include("item_panier.php");
-                  include("item_panier.php");
-                  include("item_panier.php");
-                  include("item_panier.php");
-                  include("item_panier.php");
+                  foreach ($cart as $item) {
+                    showCartItem($item["id"], $item["quantity"]);
+                  }
                   ?>
                 </div>
                 <div class="col-lg-5">
@@ -137,3 +145,7 @@ $nbItem = 6;
 </body>
 
 </html>
+
+<?php
+}
+?>
