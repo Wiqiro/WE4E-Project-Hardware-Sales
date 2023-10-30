@@ -26,48 +26,23 @@ include("../Controllers/initialize.php");
 
 
   <div class="container-fluid">
-    <div class="row">
-      <!-- Colonne de gauche (Partie de navigation) -->
-      <div class="col-md-2 test justify-content-center">
-        <ul class="testul">
-          <li><a href="index.html">Produit 1</a></li><br>
-          <br>
-          <li><a href="index.html">Produit 2</a></li><br>
-          <br>
-          <li><a href="index.html">Produit 3</a></li><br>
-          <br>
-          <li><a href="index.html">Produit 4</a></li><br>
-          <br>
-          <li><a href="index.html">Produit 5</a></li><br>
-          <br>
-        </ul>
-        <!-- Mettez ici votre contenu de navigation -->
-        <div class="container px-4 px-lg-5 mt-5">
-          <!-- ... (votre contenu de navigation) ... -->
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <?php
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          include("carte_catalogue.php");
+          ?>
         </div>
       </div>
-
-      <!-- Colonne de droite (Contenu) -->
-      <div class="col-md-10">
-        <section class="py-5">
-          <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <?php
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            include("carte_catalogue.php");
-            ?>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
+    </section>
   </div>
 
   <?php require('footer.php'); ?>
