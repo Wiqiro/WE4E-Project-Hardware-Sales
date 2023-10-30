@@ -7,7 +7,7 @@
             <div class="text-center">
                 <!-- Product name-->
                 <h5 class="fw-bolder">Catalogue</h5>
-                
+                nb produit(s)
             </div>
         </div>
         <!-- Product actions-->
