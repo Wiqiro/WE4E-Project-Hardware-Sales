@@ -1,5 +1,7 @@
 <?php
-include("../Controllers/initialize.php");
+include "../Controllers/initialize.php";
+
+include "carte_catalogue.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,31 +23,31 @@ include("../Controllers/initialize.php");
 
 <body>
   <!-- Navigation-->
-  <?php require("nav_bar.php"); ?>
+  <?php require "nav_bar.php";?>
   <!-- Section-->
 
 
   <div class="container-fluid">
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
           <?php
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          include("carte_different_catalogue.php");
-          ?>
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showCatalogCart(1, "Catalogue", 7, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+?>
         </div>
       </div>
     </section>
   </div>
 
-  <?php require('footer.php'); ?>
+  <?php require 'footer.php';?>
 
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

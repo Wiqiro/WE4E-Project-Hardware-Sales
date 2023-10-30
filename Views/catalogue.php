@@ -1,5 +1,10 @@
 <?php
-include("../Controllers/initialize.php");
+if (!isset($_GET["id"])) {
+	header("Location: index.php");
+} else {
+include "../Controllers/initialize.php";
+include "carte_produit.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +26,7 @@ include("../Controllers/initialize.php");
 
 <body>
   <!-- Navigation-->
-  <?php require("nav_bar.php"); ?>
+  <?php require "nav_bar.php";?>
   <!-- Section-->
 
 
@@ -30,22 +35,29 @@ include("../Controllers/initialize.php");
       <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
           <?php
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          include("carte_catalogue.php");
-          ?>
+showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(2, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(3, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(4, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(5, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(6, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(7, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(8, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(2, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(3, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(4, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(5, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(6, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(7, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+showProductCard(8, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+?>
         </div>
       </div>
     </section>
   </div>
 
-  <?php require('footer.php'); ?>
+  <?php require 'footer.php';?>
 
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -54,3 +66,7 @@ include("../Controllers/initialize.php");
 </body>
 
 </html>
+
+<?php
+}
+?>
