@@ -473,7 +473,7 @@ a.btn-signin:hover {
 }
 
 h1 {
-    color: #ffffff;
+    /* color: #ffffff; */
     font-size: 35px;
     font-weight: 300;
     text-align: center

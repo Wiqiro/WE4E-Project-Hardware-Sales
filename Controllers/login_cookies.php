@@ -10,4 +10,6 @@ function destroyLoginCookie() {
 
     setcookie("id", NULL, -1);
     setcookie("password", NULL, -1);
+
+    emptyCart();
 }

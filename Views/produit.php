@@ -10,11 +10,12 @@ if (!isset($_GET["id"])) {
 
 	global $loginSuccessful, $userInfo;
 	$catalog_name = 'Nom du catalogue';
+	$id = $_GET["id"];
 
 	include("../Controllers/initialize.php");
 	include("carte_produit.php");
-	$product = getProductFromId($_GET["id"]);
-
+	$product = getProductFromId($id);
+	$specs = getProductSpecifications($id);
 
 
 ?>
@@ -48,13 +49,20 @@ if (!isset($_GET["id"])) {
 				<div class="row gx-4 gx-lg-5 align-items-center">
 					<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
 					<div class="col-md-6">
-						<div class="small mb-1">SKU: BST-498</div>
-						<h1 class="display-5 fw-bolder">Shop item template</h1>
-						<div class="fs-5 mb-5">
-							<span class="text-decoration-line-through">$45.00</span>
-							<span>$40.00</span>
+					<h1 class="display-5 fw-bolder mb-4"><?php echo $product["nom"] ?></h1>
+					<h1 class="mb-5"><?php echo $product["prix"] ?>€</h1>
+
+						<h4 class="center mb-3">Description</h4>
+						<p class="lead mb-5"><?php echo $product["description"] ?></p>
+						<h4 class="center mb-3">Specifications</h4>
+						<div class="lead mb-5">
+							<?php
+							foreach ($specs as $spec) {
+								echo "<strong>".$spec["nom"]."</strong>: ".$spec["valeur"]."<br>";
+							}
+							?>
 						</div>
-						<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+
 						<?php if ($loginSuccessful == true) { ?>
 							<form action="" method="POST">
 								<div class="d-flex">

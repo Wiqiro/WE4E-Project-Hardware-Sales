@@ -217,11 +217,19 @@ function getProductsFromCart($cart) {
     $products = array_map(function ($row, $cartItem) {
         return $row + array("quantite" => $cartItem["quantity"]);
     }, $products, $cart);
-    /* foreach ($result as $index => $prod) {
-        $result[$index] = array_merge($prod, $cart[$index]);
-    } */
-
     return $products;
+}
+
+function getProductSpecifications($id) {
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT S.nom, S.valeur FROM produit AS P INNER JOIN specification AS S ON S.id_produit = P.id WHERE P.id = " . $id;
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_all(MYSQLI_ASSOC);
 }
 
 function removeProduct($id) {
