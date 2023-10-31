@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+function showCommandCard($command, $isAdmin) {
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Style/panier_style.css" />
-    <title>Card</title>
-</head>
-
-<body>
+?>
     <div class="card mb-3">
         <div class="card-body">
             <div class="d-flex justify-content-between">
@@ -18,13 +11,13 @@
                     </div>
                     <div class="ms-3">
                         <a class="link-style" href="produit.php">
-                            <h5>Numéro de commande</h5>
+                            <h5><?php echo "Commande n°" . $command["id"] ?></h5>
                         </a>
                         <?php if ($isAdmin) { ?>
                             <h6>Nom client</h6>
                         <?php } ?>
 
-                        <p class="medium mb-3">Date/Heure de commande</p>
+                        <p class="medium mb-3"><?php echo $command["date"] ?></p>
                         <div class="row">
                             <div class="col-lg-6">
                                 <p class="small mb-0">Produit 1</p>
@@ -48,7 +41,7 @@
                         <h5 class="fw-normal mb-0">3</h5>
                     </div>
                     <div style="width: 80px;">
-                        <h5 class="mb-0">$Total</h5>
+                        <h5 class="mb-0">1957€</h5>
                     </div>
                     <div>
                         <?php if ($isAdmin) { ?>
@@ -59,6 +52,6 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+<?php
+}
+?>
