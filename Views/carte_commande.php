@@ -14,7 +14,7 @@ function showCommandCard($command, $isAdmin) {
                             <h5><?php echo "Commande n°" . $command["id"] ?></h5>
                         </a>
                         <?php if ($isAdmin) { ?>
-                            <h6>Nom client</h6>
+                            <h6><?php echo $command["prenom"] . " " . $command["nom"] ?></h6>
                         <?php } ?>
 
                         <p class="medium mb-3"><?php echo $command["date"] ?></p>

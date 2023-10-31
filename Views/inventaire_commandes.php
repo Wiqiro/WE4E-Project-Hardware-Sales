@@ -1,4 +1,13 @@
-<?php $nbCommand = 2;
+<?php
+global $loginSuccessful, $userInfo;
+include("../Controllers/initialize.php");
+
+include("../Controllers/commandes.php");
+require("carte_commande.php");
+$commands = getCommands();
+
+$commandCount = count($commands);
+
 $isAdmin = true;
 $salesRevenue = 15000;
 ?>
@@ -12,10 +21,13 @@ $salesRevenue = 15000;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Commandes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="../Style/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="../Style/panier_style.css" />
+
 </head>
 
 <body>
+    <?php require("nav_bar.php"); ?>
     <section style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -33,8 +45,8 @@ $salesRevenue = 15000;
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
-                                            <p class="mb-0">Il y a <?php echo $nbCommand; ?>
-                                                <?php if ($nbCommand > 1) { ?>
+                                            <p class="mb-0">Il y a <?php echo $commandCount; ?>
+                                                <?php if ($commandCount > 1) { ?>
                                                     commandes</p>
                                         <?php } else { ?>
                                             commande </p>
@@ -43,8 +55,9 @@ $salesRevenue = 15000;
                                         <p>Le chiffre d'affaire total du mois est de <?php echo $salesRevenue; ?>$</p>
                                     </div>
 
-                                    <?php require("carte_commande.php"); ?>
-                                    <?php require("carte_commande.php"); ?>
+                                    <?php
+                                    showCommandCard($command, true);
+                                    ?>
                                 </div>
                             </div>
                         </div>
