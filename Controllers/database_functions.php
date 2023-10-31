@@ -159,7 +159,8 @@ function addProduct($name, $description, $price, $catalogID, $brandID, $specs)
     }
 }
 
-function getProducts() {
+function getProducts()
+{
     global $conn, $error;
     $error = NULL;
     $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id";
@@ -171,7 +172,8 @@ function getProducts() {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function getProductFromId($id) {
+function getProductFromId($id)
+{
     global $conn, $error;
     $error = NULL;
     $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id = " . $id;
@@ -183,7 +185,8 @@ function getProductFromId($id) {
     return $result->fetch_assoc();
 }
 
-function getCatalogProducts($catalogID) {
+function getCatalogProducts($catalogID)
+{
     global $conn, $error;
     $error = NULL;
     $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE C.id = " . $catalogID;
@@ -195,7 +198,8 @@ function getCatalogProducts($catalogID) {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function getProductsFromCart($cart) {
+function getProductsFromCart($cart)
+{
     if (!$cart) return array();
     global $conn, $error;
     $error = NULL;
@@ -220,7 +224,8 @@ function getProductsFromCart($cart) {
     return $products;
 }
 
-function getProductSpecifications($id) {
+function getProductSpecifications($id)
+{
     global $conn, $error;
     $error = NULL;
     $query = "SELECT S.nom, S.valeur FROM produit AS P INNER JOIN specification AS S ON S.id_produit = P.id WHERE P.id = " . $id;
@@ -232,7 +237,8 @@ function getProductSpecifications($id) {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function removeProduct($id) {
+function removeProduct($id)
+{
     global $conn, $error;
     $error = NULL;
     $query = "DELETE FROM produit WHERE id = '" . $id . "'";
@@ -242,3 +248,15 @@ function removeProduct($id) {
     }
 }
 
+function getCommandProducts($commandID)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT P.id, P.nom, C.quantite, H.prix FROM contenu_commande AS C INNER JOIN produit AS P ON C.id_produit = P.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE C.id_commande = " . $commandID;
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_all(MYSQLI_ASSOC);
+}

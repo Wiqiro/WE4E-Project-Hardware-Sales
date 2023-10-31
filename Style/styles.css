@@ -13251,6 +13251,10 @@ section#contact form#contactForm :-ms-input-placeholder {
   padding: 1.5em;
 }
 
+.color-red {
+  color: var(--bs-red);
+}
+
 .test {
   /* background-color: red; */
   padding-top: 8em;
@@ -13353,3 +13357,4 @@ section#contact form#contactForm :-ms-input-placeholder {
   left: 0px;
   top: 0px;
 }
+

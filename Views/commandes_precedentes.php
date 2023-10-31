@@ -7,7 +7,7 @@ require("carte_commande.php");
 $commands = getUserCommands($userInfo["id"]);
 
 $commandCount = count($commands);
-$isAdmin = false; 
+$isAdmin = false;
 ?>
 
 
@@ -24,7 +24,7 @@ $isAdmin = false;
 </head>
 
 <body>
-<?php require("nav_bar.php"); ?>
+  <?php require("nav_bar.php"); ?>
   <section style="background-color: #eee;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -54,8 +54,8 @@ $isAdmin = false;
                     </div>
                   </div>
 
-                  <?php 
-                  foreach($commands as $command) {
+                  <?php
+                  foreach ($commands as $command) {
                     showCommandCard($command, false);
                   }
                   ?>
