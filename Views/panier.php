@@ -113,10 +113,11 @@ if (isset($_POST["remove-cart-item"])) {
                           <p class="mb-2">$4818.00</p>
                         </div>
 
-                        
-                        <button class="btn btn-block btn-lg red">
-                          $4818.00 Checkout <i class="fas fa-long-arrow-alt-right"></i>
-                        </button>
+                        <form action="confirmation_commande.php" method="post">
+                          <button class="btn btn-block btn-lg red">
+                            $4818.00 Checkout <i class="fas fa-long-arrow-alt-right"></i>
+                          </button>
+                        </form>
 
                       </div>
                     </div>

@@ -38,7 +38,7 @@ global $loginSuccessful, $userInfo;
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="catalogues.php">Catalogue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogues.php">Catalogues</a></li>
                     <?php if ($loginSuccessful == false) { ?>
                         <li class="nav-item"><a class="nav-link cursor" onclick="openPopup()">Login</a></li>
                     <?php } else { ?>

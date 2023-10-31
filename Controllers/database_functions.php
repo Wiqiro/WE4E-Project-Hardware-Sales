@@ -241,3 +241,4 @@ function removeProduct($id) {
         $error = "Erreur lors de la suppression du catalogue " . $id . ", veuillez rééssayer";
     }
 }
+

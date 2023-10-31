@@ -67,7 +67,7 @@ if (!isset($_GET["id"])) {
 							<form action="" method="POST">
 								<div class="d-flex">
 									<input class="form-control text-center me-3" name="quantity" type="num" value="1" maxlength="2" style="max-width: 3rem" />
-									<button class="btn btn-outline-dark flex-shrink-0" name="add-to-card" , type="submit">
+									<button class="btn btn-outline-dark flex-shrink-0" name="add-to-cart" type="submit">
 										<i class="bi-cart-fill me-1"></i>
 										Ajouter au panier
 									</button>
