@@ -11,7 +11,7 @@ function showCommandCard($command, $isAdmin)
                         <img src="../Style/assets/commandes.png" class="img-fluid rounded-3" alt="image commande" style="width: 65px;">
                     </div>
                     <div class="ms-3">
-                        <h5 class="color-"><?php echo "Commande n°" . $command["id"] ?></h5>
+                        <h5 class="color-red"><?php echo "Commande n°" . $command["id"] ?></h5>
                         <?php if ($isAdmin) { ?>
                             <h6><?php echo $command["prenom"] . " " . $command["nom"] ?></h6>
                         <?php } ?>

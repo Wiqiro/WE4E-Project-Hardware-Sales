@@ -1,5 +1,9 @@
 <?php
+
+global $loginSuccessful, $userInfo;
+
 require("../Controllers/initialize.php");
+require("../Controllers/image_uploader.php");
 require("carte_gestion_produit.php");
 
 
@@ -9,13 +13,17 @@ $dayMoney = 1000;
 $monthMoney = 2000;
 
 
-if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"])) {    
+if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"]) && isset($_FILES["image"])) {    
     $specs = NULL;
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
         for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
             $specs[$i]["name"] = $_POST["specs-names"][$i];
             $specs[$i]["value"] = $_POST["specs-vals"][$i];
         }
+    }
+    $imagePath = null;
+    if (isBufferFileAdequate()) {
+        $imagePath = saveImage("product_images", $userInfo["id"]);
     }
     addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $specs);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
@@ -55,7 +63,7 @@ $productList = getProducts();
                                         } ?>
                                     </div>
                                     <div class="col-lg-6">
-                                        <form action="" method="POST">
+                                        <form enctype="multipart/form-data" action="" method="POST">
                                             <label class="label-design" for="name">Nom du produit</label>
                                             <input class="catalog-name product-style" name="name" type="text" placeholder="Nom du produit"><br><br>
                                             <label class="label-design" for="catalog">Catalogue du produit</label>
