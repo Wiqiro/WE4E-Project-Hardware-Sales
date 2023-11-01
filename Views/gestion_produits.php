@@ -25,7 +25,7 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
     if (isBufferFileAdequate()) {
         $imagePath = saveImage("product_images", $userInfo["id"]);
     }
-    addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $specs);
+    addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $imagePath, $specs);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
     removeProduct($_POST["id"]);    
 }

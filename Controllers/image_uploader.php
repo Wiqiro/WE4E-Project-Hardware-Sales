@@ -25,15 +25,12 @@ function saveImage($subfolder, $userID)
 
     $file = $_FILES['image']['name'];
     $path = pathinfo($file);
-    print_r($path);
     $ext = $path['extension'];
 
-    //Get the temp name of the file and build the destination path
     $temp_name = $_FILES['image']['tmp_name'];
     $new_filename = $userID . "_" . date("mdyHis");
     $path_filename_ext = "../uploads/" . $subfolder . "/" . $new_filename . "." . $ext;
 
-    // Check if file already exists
     if (file_exists($path_filename_ext)) {
         $error = "Error, the file already exists";
         return NULL;

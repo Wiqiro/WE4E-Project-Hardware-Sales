@@ -132,11 +132,12 @@ function getBrandList()
 
 
 
-function addProduct($name, $description, $price, $catalogID, $brandID, $specs)
+function addProduct($name, $description, $price, $catalogID, $brandID, $imagePath, $specs)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO produit(nom, description, id_marque, id_catalogue) VALUES ('" . $name . "','" . $description . "'," . $catalogID . "," . $brandID . ");";
+    $query = "INSERT INTO produit(nom, description, id_marque, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $catalogID . "," . $brandID . ",'" . $imagePath . "');";
+    echo $query;
     $result = $conn->query($query);
 
     $query = "SELECT LAST_INSERT_ID() as ID";
