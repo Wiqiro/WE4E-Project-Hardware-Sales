@@ -82,11 +82,11 @@ function updateUserInfo($userID, $firstname, $lastname, $username, $email, $birt
     }
 }
 
-function createCatalog($catalogName)
+function createCatalog($catalogName, $imagePath)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO catalogue(nom) VALUES ('" . $catalogName . "')";
+    $query = "INSERT INTO catalogue(nom, image) VALUES ('" . $catalogName . "', '" . $imagePath . "')";
     $result = $conn->query($query);
     if (!$result) {
         $error = "Erreur lors de la création du catalogue, veuillez rééssayer";
@@ -177,7 +177,7 @@ function getProductFromId($id)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id = " . $id;
+    $query = "SELECT P.id, P.nom, P.description, P.image, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id = " . $id;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -190,7 +190,7 @@ function getCatalogProducts($catalogID)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE C.id = " . $catalogID;
+    $query = "SELECT P.id, P.nom, P.image, P.description, H.prix as prix, M.nom as marque FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE C.id = " . $catalogID;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -204,7 +204,7 @@ function getProductsFromCart($cart)
     if (!$cart) return array();
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id IN (";
+    $query = "SELECT P.id, P.nom, P.description, P.image, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id IN (";
 
     $values = [];
     foreach ($cart as $item) {

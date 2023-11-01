@@ -41,7 +41,7 @@ if (!isset($_GET["id"])) {
             <?php
 
             foreach($products as $product) {
-             showProductCard($product["id"], $product["nom"], $product["prix"], "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+             showProductCard($product["id"], $product["nom"], $product["prix"], $product["image"]);
             }
             ?>
           </div>
