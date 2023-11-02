@@ -136,17 +136,13 @@ function addProduct($name, $description, $price, $catalogID, $brandID, $imagePat
 {
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO produit(nom, description, id_marque, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $catalogID . "," . $brandID . ",'" . $imagePath . "');";
+    $query = "INSERT INTO produit(nom, description, prix, id_marque, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $price . "," . $catalogID . "," . $brandID . ",'" . $imagePath . "');";
     echo $query;
     $result = $conn->query($query);
 
     $query = "SELECT LAST_INSERT_ID() as ID";
     $result = $conn->query($query);
     $prodID = $result->fetch_assoc()["ID"];
-
-    $query = "INSERT INTO historique_prix(prix, id_produit) VALUES (" . $price . "," . $prodID . ")";
-    $result = $conn->query($query);
-
 
     if ($specs) {
         $query = "INSERT INTO specification(id_produit, nom, valeur) VALUES ";
@@ -164,7 +160,7 @@ function getProducts()
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id";
+    $query = "SELECT P.id, P.nom, P.description, P.prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -177,7 +173,7 @@ function getProductFromId($id)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.image, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id = " . $id;
+    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id = " . $id;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -190,7 +186,7 @@ function getCatalogProducts($catalogID)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.image, P.description, H.prix as prix, M.nom as marque FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE C.id = " . $catalogID;
+    $query = "SELECT P.id, P.nom, P.image, P.description, P.prix, M.nom as marque FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE C.id = " . $catalogID;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -204,7 +200,7 @@ function getProductsFromCart($cart)
     if (!$cart) return array();
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.image, H.prix as prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE P.id IN (";
+    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id IN (";
 
     $values = [];
     foreach ($cart as $item) {
@@ -263,7 +259,7 @@ function getCommandProducts($commandID)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, C.quantite, H.prix FROM contenu_commande AS C INNER JOIN produit AS P ON C.id_produit = P.id INNER JOIN historique_prix AS H ON H.id_produit = P.id WHERE C.id_commande = " . $commandID;
+    $query = "SELECT P.id, P.nom, P.prix, C.quantite FROM contenu_commande AS C INNER JOIN produit AS P ON C.id_produit = P.id WHERE C.id_commande = " . $commandID;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
