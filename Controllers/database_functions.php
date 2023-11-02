@@ -219,10 +219,20 @@ function getProductsFromCart($cart)
 
     $products = $result->fetch_all(MYSQLI_ASSOC);
 
-    $products = array_map(function ($row, $cartItem) {
-        return $row + array("quantite" => $cartItem["quantity"]);
-    }, $products, $cart);
-    return $products;
+    $productsWithQuantity = array();
+
+    
+    foreach ($products as $product) {
+        foreach ($cart as $cartItem) {
+            if ($product['id'] == $cartItem['id']) {
+                $product['quantite'] = $cartItem['quantity'];
+                $productsWithQuantity[] = $product;
+                break;
+            }
+        }
+    }
+
+    return $productsWithQuantity;
 }
 
 function getProductSpecifications($id)
