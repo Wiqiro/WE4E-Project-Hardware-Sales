@@ -137,7 +137,6 @@ function addProduct($name, $description, $price, $catalogID, $brandID, $imagePat
     global $conn, $error;
     $error = NULL;
     $query = "INSERT INTO produit(nom, description, prix, id_marque, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $price . "," . $catalogID . "," . $brandID . ",'" . $imagePath . "');";
-    echo $query;
     $result = $conn->query($query);
 
     $query = "SELECT LAST_INSERT_ID() as ID";
@@ -160,7 +159,7 @@ function getProducts()
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
+    $query = "SELECT P.id, P.nom, P.description, P.prix, M.nom as marque, C.nom as catalogue FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -171,9 +170,10 @@ function getProducts()
 
 function getProductFromId($id)
 {
+
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id = " . $id;
+    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as catalogue, C.id AS catalogueID FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id = " . $id;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -182,11 +182,12 @@ function getProductFromId($id)
     return $result->fetch_assoc();
 }
 
-function getCatalogProducts($catalogID)
+function getCatalogProducts($catalogID, $page)
 {
+    $offset = ($page - 1) * 10;
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.image, P.description, P.prix, M.nom as marque FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE C.id = " . $catalogID;
+    $query = "SELECT P.id, P.nom, P.image, P.description, P.prix, M.nom as marque FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE C.id = " . $catalogID . " LIMIT 10 OFFSET " . $offset;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -200,7 +201,7 @@ function getProductsFromCart($cart)
     if (!$cart) return array();
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as categorie FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id IN (";
+    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as catalogue FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id IN (";
 
     $values = [];
     foreach ($cart as $item) {
@@ -217,7 +218,7 @@ function getProductsFromCart($cart)
 
     $productsWithQuantity = array();
 
-    
+
     foreach ($products as $product) {
         foreach ($cart as $cartItem) {
             if ($product['id'] == $cartItem['id']) {

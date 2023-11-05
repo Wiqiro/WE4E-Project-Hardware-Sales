@@ -1,14 +1,14 @@
 <?php
-if (!isset($_GET["id"])) {
+if (!isset($_GET["id"]) || !isset($_GET["page"])) {
   header("Location: index.php");
 } else {
   include "../Controllers/initialize.php";
   include "carte_produit.php";
 
   $id = $_GET["id"];
+  $page = $_GET["page"];
 
-  $products = getCatalogProducts($id);
-  print_r($products);
+  $products = getCatalogProducts($id, $page);
 ?>
 
   <!DOCTYPE html>

@@ -2,7 +2,6 @@
 
 function showCartItem($product)
 {
-    print_r($product);
     $prix = $product["prix"] * $product["quantite"];
     ?>
     <div class="card mb-3">

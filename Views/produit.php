@@ -44,13 +44,13 @@ if (!isset($_GET["id"])) {
 
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 my-5">
-				<div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="catalogue.php" class="back-catalog"><?php echo ($catalog_name); ?></a></div>
+				<div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="<?php echo "catalogue.php?id=" . $product["catalogueID"] . "&page=1" ?>" class="back-catalog"><?php echo ($catalog_name); ?></a></div>
 				<br>
 				<div class="row gx-4 gx-lg-5 align-items-center">
 					<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
 					<div class="col-md-6">
-					<h1 class="display-5 fw-bolder mb-4"><?php echo $product["nom"] ?></h1>
-					<h1 class="mb-5"><?php echo $product["prix"] ?>€</h1>
+						<h1 class="display-5 fw-bolder mb-4"><?php echo $product["nom"] ?></h1>
+						<h1 class="mb-5"><?php echo $product["prix"] ?>€</h1>
 
 						<h4 class="center mb-3">Description</h4>
 						<p class="lead mb-5"><?php echo $product["description"] ?></p>
@@ -58,7 +58,7 @@ if (!isset($_GET["id"])) {
 						<div class="lead mb-5">
 							<?php
 							foreach ($specs as $spec) {
-								echo "<strong>".$spec["nom"]."</strong>: ".$spec["valeur"]."<br>";
+								echo "<strong>" . $spec["nom"] . "</strong>: " . $spec["valeur"] . "<br>";
 							}
 							?>
 						</div>

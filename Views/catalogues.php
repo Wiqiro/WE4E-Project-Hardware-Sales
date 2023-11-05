@@ -4,7 +4,6 @@ include "../Controllers/initialize.php";
 include "carte_catalogue.php";
 
 $catalogs = getCatalogList();
-print_r($catalogs);
 ?>
 
 <!DOCTYPE html>

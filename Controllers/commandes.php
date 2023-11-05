@@ -24,7 +24,6 @@ function command($userID, $products)
         $values[] = "(" . $commandID . ",'" . $prod["id"] . "','" . $prod["quantite"] . "')";
     }
     $query = $query . implode(",", $values);
-    echo $query;
     $result = $conn->query($query);
 }
 

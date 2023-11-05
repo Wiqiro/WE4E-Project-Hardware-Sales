@@ -18,7 +18,7 @@ function showProductManagementCard($product) {
                             <h5><?php echo $product["nom"]?></h5>
                         </a>
                         <p class="medium mb-3">Identifiant: <?php echo $product["id"]?></p>
-                        <p class="medium mb-3">Catégorie: <?php echo $product["categorie"]?></p>
+                        <p class="medium mb-3">Catalogue: <?php echo $product["catalogue"]?></p>
                         <p class="medium mb-3">Marque: <?php echo $product["marque"]?></p>
 
                     </div>
