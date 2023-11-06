@@ -43,7 +43,7 @@ function getUserInfoFromCookie($userID, $password)
     $error = NULL;
 
 
-    $query = "SELECT DISTINCT * FROM utilisateur 
+    $query = "SELECT * FROM utilisateur 
     WHERE (id = '" . $userID . "') AND mot_de_passe = '" . $password . "'";
 
     $result = $conn->query($query);

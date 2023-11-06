@@ -23,7 +23,7 @@ elseif (isset($_POST["register-submit"])) {
         $email = $_POST["email"];
         $birthdate = $_POST["birthdate"];
         $address = $_POST["address"];
-        $password = $_POST["password"];
+        $password = md5($_POST["password"]);
         registerUser($firstname, $lastname, $username, $email, $birthdate, $address, $password);
         if ($error == NULL) {
             $userInfo = getUserInfoFromLogin($username, $password);
@@ -56,7 +56,7 @@ elseif (isset($_POST["register-submit"])) {
 //Données de connexion reçues via formulaire?
 elseif (isset($_POST["user"]) && isset($_POST["password"])) {
     $formUserInput = $_POST["user"];
-    $password = /* md5 */ ($_POST["password"]);
+    $password = md5($_POST["password"]);
     $userInfo = getUserInfoFromLogin($formUserInput, $password);
     $loginAttempted = true;
 }
