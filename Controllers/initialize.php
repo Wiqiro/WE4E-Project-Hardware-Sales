@@ -6,7 +6,7 @@ require("../Controllers/panier.php");
 
 connectDatabase();
 
-global $conn, $error, $userInfo, $loginSuccessful;
+global $conn, $error, $userInfo, $loginSuccessful, $loginAttempted;
 
 $loginAttempted = false;
 $error = NULL;

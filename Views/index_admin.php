@@ -1,6 +1,9 @@
 <?php
-global $loginSuccessful, $userInfo;
+global $loginSuccessful, $loginAttempted, $userInfo;
 include("../Controllers/initialize.php");
+if ($loginAttempted && $loginSuccessful && !$userInfo["admin"]) {
+  header("Location: index.php");
+}
 
 include("../Controllers/commandes.php");
 require("carte_commande.php");
@@ -8,8 +11,6 @@ $commands = getCommands();
 
 $commandCount = count($commands);
 
-$isLogin = true;
-$isAdmin = true;
 $dayMoney = 1000;
 $monthMoney = 2000;
 ?>
@@ -27,10 +28,11 @@ $monthMoney = 2000;
 </head>
 
 <body>
-<?php require("nav_bar.php"); ?>
-<section></section>
-<h1>Bienvenue sur la page administrateur</h1>
-  <?php if ($isLogin) { ?>
+  <?php require("nav_bar.php"); ?>
+  <section>
+    <h1 class="h1">Bienvenue sur la page administrateur</h1>
+  </section>
+  <?php if ($loginSuccessful) { ?>
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">

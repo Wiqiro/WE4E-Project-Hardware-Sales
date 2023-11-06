@@ -1,19 +1,23 @@
 <?php
-
-global $loginSuccessful, $userInfo;
+global $loginSuccessful, $loginAttempted, $userInfo;
 
 require("../Controllers/initialize.php");
+if ($loginAttempted) {
+    if ($loginSuccessful && !$userInfo["admin"]) {
+        header("Location: index.php");
+    }
+} else {
+    header("Location: index_admin.php");
+}
+
 require("../Controllers/image_uploader.php");
 require("carte_gestion_produit.php");
 
-
-$isLogin = true;
-$isAdmin = true;
 $dayMoney = 1000;
 $monthMoney = 2000;
 
 
-if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"]) && isset($_FILES["image"])) {    
+if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
     $specs = NULL;
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
         for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
@@ -27,7 +31,7 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
     }
     addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $imagePath, $specs);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
-    removeProduct($_POST["id"]);    
+    removeProduct($_POST["id"]);
 }
 
 $catalogList = getCatalogList();

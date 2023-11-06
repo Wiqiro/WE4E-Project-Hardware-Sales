@@ -1,6 +1,14 @@
 <?php
-global $loginSuccessful, $userInfo;
+global $loginSuccessful, $loginAttempted, $userInfo;
 include("../Controllers/initialize.php");
+if ($loginAttempted) {
+    if ($loginSuccessful && !$userInfo["admin"]) {
+        header("Location: index.php");
+    }
+} else {
+    header("Location: index_admin.php");
+}
+
 include("carte_gestion_catalogue.php");
 
 

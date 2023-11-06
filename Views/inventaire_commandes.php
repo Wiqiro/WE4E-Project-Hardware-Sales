@@ -1,6 +1,14 @@
 <?php
-global $loginSuccessful, $userInfo;
+global $loginSuccessful, $loginAttempted, $userInfo;
 include("../Controllers/initialize.php");
+
+if ($loginAttempted) {
+    if ($loginSuccessful && !$userInfo["admin"]) {
+        header("Location: index.php");
+    }
+} else {
+    header("Location: index_admin.php");
+}
 
 include("../Controllers/commandes.php");
 require("carte_commande.php");
@@ -8,7 +16,6 @@ $commands = getCommands();
 
 $commandCount = count($commands);
 
-$isAdmin = true;
 $salesRevenue = 15000;
 ?>
 
@@ -56,7 +63,9 @@ $salesRevenue = 15000;
                                     </div>
 
                                     <?php
-                                    showCommandCard($command, true);
+                                    foreach ($commands as $command) {
+                                        showCommandCard($command, true);
+                                    }
                                     ?>
                                 </div>
                             </div>

@@ -1,8 +1,6 @@
 <?php
 
 global $userInfo;
-
-
 ?>
 
 <!DOCTYPE html>
