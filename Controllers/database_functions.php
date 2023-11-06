@@ -82,11 +82,11 @@ function updateUserInfo($userID, $firstname, $lastname, $username, $email, $birt
     }
 }
 
-function createCatalog($catalogName, $imagePath)
+function createCatalog($catalogName)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO catalogue(nom, image) VALUES ('" . $catalogName . "', '" . $imagePath . "')";
+    $query = "INSERT INTO catalogue(nom) VALUES ('" . $catalogName . "')";
     $result = $conn->query($query);
     if (!$result) {
         $error = "Erreur lors de la création du catalogue, veuillez rééssayer";

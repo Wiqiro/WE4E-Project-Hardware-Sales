@@ -1,16 +1,11 @@
 <?php
 global $loginSuccessful, $userInfo;
 include("../Controllers/initialize.php");
-require("../Controllers/image_uploader.php");
 include("carte_gestion_catalogue.php");
 
 
-if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_FILES["image"])) {
-    $imagePath = null;
-    if (isBufferFileAdequate()) {
-        $imagePath = saveImage("catalog_images", $userInfo["id"]);
-    }
-    createCatalog($_POST["name"], $imagePath);
+if (isset($_POST["add"]) && isset($_POST["name"])) {
+    createCatalog($_POST["name"]);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
     removeCatalog($_POST["id"]);
 }
@@ -48,13 +43,11 @@ $catalogList = getCatalogList();
                                         ?>
                                     </div>
                                     <div class="col-lg-6">
-                                        <form enctype="multipart/form-data" action="" , method="POST">
+                                        <form action="" , method="POST">
                                         <label class="label-design" for="name">Nom du catalogue</label>
                                             <input class="catalog-name" name="name" type="text" placeholder="Nom du catalogue">
                                             <br>
                                             <br>
-                                            <label class="label-design" for="image">Image du catalogue</label>
-                                            <input class="product-image product-style" name="image" type="file" placeholder="Lien image">
                                             <br><br>
                                             <input type="submit" value="Ajouter le catalogue" name="add" />
                                         </form>
