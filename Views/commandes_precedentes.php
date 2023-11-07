@@ -1,6 +1,9 @@
 <?php
 global $loginSuccessful, $userInfo;
 include("../Controllers/initialize.php");
+if (!$loginSuccessful) {
+  header("Location: index.php");
+}
 
 include("../Controllers/commandes.php");
 require("carte_commande.php");
