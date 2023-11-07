@@ -1,9 +1,11 @@
 <?php
-global $loginSuccessful, $loginAttempted, $userInfo;
+global $loginSuccessful, $loginAttempted, $userInfo, $error;
 include("../Controllers/initialize.php");
 if ($loginAttempted && $loginSuccessful && !$userInfo["admin"]) {
   header("Location: index.php");
 }
+
+$loginError = $error;
 
 include("../Controllers/commandes.php");
 require("carte_commande.php");
@@ -73,7 +75,11 @@ $monthMoney = 2000;
         </div>
       </div>
     </div>
-  <?php } else { ?>
+  <?php } else {
+    if ($loginAttempted) {
+      echo "<p class='color-red h5 center mb-5'>" . $loginError . "</p>";
+    }
+    ?>
     <div class="container">
       <div class="frame">
         <h2 class="signin">Se connecter</h2>
