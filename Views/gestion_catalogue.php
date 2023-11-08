@@ -37,7 +37,7 @@ $catalogList = getCatalogList();
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <a href="index_admin.php"><button>Retour</button></a>
+                <a href="index_admin.php"><button class="generalBtn">Retour</button></a>
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">

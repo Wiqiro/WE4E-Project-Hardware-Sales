@@ -32,7 +32,7 @@ function showCommandCard($command, $isAdmin)
                     </div>
                     <div>
                         <?php if ($isAdmin) { ?>
-                            <button>Supprimer</button>
+                            <button class="generalBtn">Supprimer</button>
                         <?php } ?>
                     </div>
                 </div>

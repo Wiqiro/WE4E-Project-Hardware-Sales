@@ -12659,6 +12659,11 @@ p {
   font-weight: 700;
 }
 
+.generalBtn {
+  border: 1px solid grey;
+  border-radius: 0.2em;
+}
+
 .btn-social {
   height: 2.5rem;
   width: 2.5rem;

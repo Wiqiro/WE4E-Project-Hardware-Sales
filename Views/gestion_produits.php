@@ -55,7 +55,7 @@ $productList = getProducts();
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <a href="index_admin.php"><button>Retour</button></a>
+                <a href="index_admin.php"><button class="generalBtn">Retour</button></a>
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
@@ -96,7 +96,7 @@ $productList = getProducts();
                                             <div id="specs-inputs">
 
                                             </div>
-                                            <button type="button" onclick="addSpecInput()">Ajouter une caractéristique</button>
+                                            <button class="generalBtn" type="button" onclick="addSpecInput()">Ajouter une caractéristique</button>
                                             <br><br>
                                             <input type="submit" value="Ajouter le produit" name="add" />
                                         </form>

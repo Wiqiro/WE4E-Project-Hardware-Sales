@@ -38,7 +38,6 @@ $monthMoney = 2000;
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">
-
           <div class="card">
             <div class="card-body p-4">
 
@@ -46,16 +45,16 @@ $monthMoney = 2000;
                 <div class="col-lg-12 center">
                   <div class="row">
                     <div class="col-lg-6">
-                      <a class="btn-index-site" href="index.php"><button>Acceuil du site</button></a>
+                      <a class="btn-index-site" href="index.php"><button class="generalBtn">Acceuil du site</button></a>
                       <br><br>
                       <h5>Stats de la journée</h5>
                       <p><?php echo $dayMoney; ?>$</p>
                       <h5>Stats du mois</h5>
                       <p><?php echo $monthMoney; ?>$</p>
-                      <a href="gestion_catalogue.php"><button class="manage-btn">Gestion du catalogue</button></a>
+                      <a href="gestion_catalogue.php"><button class="generalBtn">Gestion du catalogue</button></a>
                       <br>
                       <br>
-                      <a href="gestion_produits.php"><button class="manage-btn">Gestion des produits</button></a>
+                      <a href="gestion_produits.php"><button class="generalBtn">Gestion des produits</button></a>
                     </div>
                     <div class="col-lg-6">
                       <?php
@@ -63,15 +62,13 @@ $monthMoney = 2000;
                         showCommandCard($command, true);
                       }
                       ?>
-                      <a href="inventaire_commandes.php"><button class="manage-btn center">Voir toutes les commandes</button></a>
+                      <a href="inventaire_commandes.php"><button class="generalBtn center">Voir toutes les commandes</button></a>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </div>

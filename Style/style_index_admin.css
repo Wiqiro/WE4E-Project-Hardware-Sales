@@ -594,3 +594,8 @@ a.btn-goback:hover {
 .btn-index-site {
     float: left;
 }
+
+.generalBtn {
+    border: 1px solid grey;
+    border-radius: 0.2em;
+}
