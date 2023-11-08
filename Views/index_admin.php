@@ -26,11 +26,12 @@ $monthMoney = 2000;
   <title>Page Gérant</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <link rel="stylesheet" href="../Style/style_index_admin.css" />
+  <link rel="stylesheet" href="../Style/popup_style.css">
+
   <link href="../Style/styles.css" rel="stylesheet" />
 </head>
 
 <body>
-  <?php require("nav_bar.php"); ?>
   <section>
     <h1 class="h1">Bienvenue sur la page administrateur</h1>
   </section>
@@ -87,9 +88,7 @@ $monthMoney = 2000;
             <label for="password">Mot de passe</label>
             <input class="form-styling" type="password" name="password" />
             <input type="checkbox" id="checkbox" />
-            <label for="checkbox"><span class="ui"></span>J'accepte les conditions d'utilisation</label>
             <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit" />
-            <button class="btn-animate-second">Fermer</button>
           </form>
         </div>
       </div>
