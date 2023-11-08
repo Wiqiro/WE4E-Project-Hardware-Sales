@@ -11,6 +11,10 @@ if ($loginAttempted) {
 }
 
 include("../Controllers/commandes.php");
+if (isset($_POST["delete-command"]) && isset($_POST["command-id"])) {
+    deleteCommand($_POST["command-id"]);
+}
+
 require("carte_commande.php");
 $commands = getCommands();
 

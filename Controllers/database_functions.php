@@ -294,7 +294,7 @@ function getCommandProducts($commandID)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.prix, C.quantite FROM contenu_commande AS C INNER JOIN produit AS P ON C.id_produit = P.id WHERE C.id_commande = " . $commandID;
+    $query = "SELECT P.id, P.nom, C.quantite FROM contenu_commande AS C INNER JOIN produit AS P ON C.id_produit = P.id WHERE C.id_commande = " . $commandID;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {

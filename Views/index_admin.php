@@ -1,6 +1,7 @@
 <?php
 global $loginSuccessful, $loginAttempted, $userInfo, $error;
 include("../Controllers/initialize.php");
+
 if ($loginAttempted && $loginSuccessful && !$userInfo["admin"]) {
   header("Location: index.php");
 }
@@ -9,6 +10,11 @@ $loginError = $error;
 
 include("../Controllers/commandes.php");
 require("carte_commande.php");
+
+if (isset($_POST["delete-command"]) && isset($_POST["command-id"])) {
+  deleteCommand($_POST["command-id"]);
+}
+
 $commands = getCommands();
 
 $commandCount = count($commands);

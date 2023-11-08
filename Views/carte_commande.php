@@ -20,7 +20,7 @@ function showCommandCard($command, $isAdmin)
                         <div class="row">
                                 <?php
                                 foreach ($products as $prod) {
-                                    echo '<p class="text-start small mb-0">' . $prod["nom"] . ' &nbsp&nbsp(' . $prod["quantite"] . 'x' . $prod["prix"] . '€)  </p>';
+                                    echo '<p class="text-start small mb-0">' . $prod["nom"] . ' &nbspx' . $prod["quantite"] . '</p>';
                                 }
                                 ?>
                         </div>
@@ -28,11 +28,14 @@ function showCommandCard($command, $isAdmin)
                 </div>
                 <div class="d-flex flex-row align-items-center">
                     <div style="width: 80px;">
-                        <h5 class="mb-0">1957€</h5>
+                        <h5 class="mb-0"><?php echo $command["prix_total"] ?>€</h5>
                     </div>
                     <div>
                         <?php if ($isAdmin) { ?>
-                            <button class="generalBtn">Supprimer</button>
+                            <form action="" method="post">
+                                <input type="hidden" name="command-id" value="<?php echo $command["id"] ?>">
+                                <button type="submit" name="delete-command" class="generalBtn">Supprimer</button>
+                            </form>
                         <?php } ?>
                     </div>
                 </div>
