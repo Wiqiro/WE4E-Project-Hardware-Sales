@@ -3,6 +3,10 @@ if (isset($_POST["remove-cart-item"])) {
   include("../Controllers/panier.php");
   removeCartItem($_POST["remove-cart-item"]);
   header("Refresh:0");
+} else if (isset($_POST["empty"])) {
+  include("../Controllers/panier.php");
+  emptyCart();
+  header("Refresh:0");
 } else {
   require("../Controllers/initialize.php");
   include("item_panier.php");
@@ -10,6 +14,11 @@ if (isset($_POST["remove-cart-item"])) {
 
 
   $products = getProductsFromCart(getCart());
+
+  $total = 0;
+  foreach ($products as $prod) {
+    $total += $prod["prix"] * $prod["quantite"];
+  }
 ?>
 
 
@@ -39,13 +48,13 @@ if (isset($_POST["remove-cart-item"])) {
 
                 <div class="row">
                   <div class="col-lg-7">
-                    <h5 class="mb-3"><a href="catalogue.php" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                    <h5 class="mb-3"><a href="catalogue.php" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Revenir</a></h5>
                     <hr>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                       <div>
-                        <p class="mb-1">Shopping cart</p>
-                        <p class="mb-0">You have <?php echo getCartItemCount(); ?> items in your cart</p>
+                        <p class="mb-3 h1">Panier</p>
+                        <p class="mb-0">Vous <?php echo getCartItemCount(); ?> item dans votre panier</p>
                       </div>
                     </div>
                     <?php
@@ -59,32 +68,31 @@ if (isset($_POST["remove-cart-item"])) {
                     <div class="card bg-secondary text-white rounded-3">
                       <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                          <h5 class="mb-0">Card details</h5>
-                          <img src="https://ik.imagekit.io/pimberly/595e406f0f15f30010780448/tr:w-1000,h-1000,cm-pad_resize/696d6cec/5d70c6b06cb2114d580001de.jpg?product_name=Coca-Cola-Soft-Drink-330ml-Can-(Pack-of-24)-402002.jpg" class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+                          <h5 class="mb-0">Informations bancaires</h5>
                         </div>
 
-                        <p class="small mb-2">Card type</p>
-                        <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                        <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-visa fa-2x me-2"></i></a>
-                        <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-amex fa-2x me-2"></i></a>
-                        <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                        <p class="small mb-2">Type de carte</p>
+                        <a type="submit" class="text-white"><i class="fab fa-cc-mastercard fa-2x me-2"></i></a>
+                        <a type="submit" class="text-white"><i class="fab fa-cc-visa fa-2x me-2"></i></a>
+                        <a type="submit" class="text-white"><i class="fab fa-cc-amex fa-2x me-2"></i></a>
+                        <a type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
 
                         <form class="mt-4">
                           <div class="form-outline form-white mb-4">
-                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17" placeholder="Cardholder's Name" />
-                            <label class="form-label" for="typeName">Cardholder's Name</label>
+                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17" placeholder="Détenteur de la carte" />
+                            <label class="form-label" for="typeName">Nom du détenteur de la carte</label>
                           </div>
 
                           <div class="form-outline form-white mb-4">
                             <input type="text" id="typeText" class="form-control form-control-lg" siez="17" placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                            <label class="form-label" for="typeText">Card Number</label>
+                            <label class="form-label" for="typeText">Numéro de carte</label>
                           </div>
 
                           <div class="row mb-4">
                             <div class="col-md-6">
                               <div class="form-outline form-white">
                                 <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YY" size="5" id="exp" minlength="5" maxlength="5" />
-                                <label class="form-label" for="typeExp">Expiration</label>
+                                <label class="form-label" for="typeExp">Date d'expiration</label>
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -100,33 +108,35 @@ if (isset($_POST["remove-cart-item"])) {
                         <hr class="my-4">
 
                         <div class="d-flex justify-content-between">
-                          <p class="mb-2">Subtotal</p>
-                          <p class="mb-2">$4798.00</p>
+                          <p class="mb-2">Sous-total</p>
+                          <p class="mb-2"><?php echo $total ?>€</p>
                         </div>
 
                         <div class="d-flex justify-content-between">
-                          <p class="mb-2">Shipping</p>
-                          <p class="mb-2">$20.00</p>
+                          <p class="mb-2">Frais de port</p>
+                          <p class="mb-2">0€</p>
                         </div>
 
                         <div class="d-flex justify-content-between mb-4">
-                          <p class="mb-2">Total (Incl. taxes)</p>
-                          <p class="mb-2">$4818.00</p>
+                          <p class="mb-2">Total</p>
+                          <p class="mb-2"><?php echo $total ?>€</p>
                         </div>
 
                         <form action="confirmation_commande.php" method="post">
                           <button class="btn btn-block btn-lg red">
-                            $4818.00 Checkout <i class="fas fa-long-arrow-alt-right"></i>
+                            <?php echo $total ?>€ Valider <i class="fas fa-long-arrow-alt-right"></i>
                           </button>
                         </form>
 
                       </div>
                     </div>
-                    <button type="button" class="btn btn-block btn-lg black margin">
-                      <div class="d-flex justify-content-between">
-                        Vider le panier
-                      </div>
-                    </button>
+                    <form action="" method="post">
+                      <button type="submit" name="empty" class="btn btn-block btn-lg black margin">
+                        <div class="d-flex justify-content-between">
+                          Vider le panier
+                        </div>
+                      </button>
+                    </form>
                   </div>
 
                 </div>

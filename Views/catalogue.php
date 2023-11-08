@@ -4,7 +4,10 @@ include "carte_produit.php";
 
 
 $listMode = true;
+$catalogName = "";
+$catalogSize = 0;
 $products = array();
+
 if (!isset($_GET["id"]) || !isset($_GET["page"])) {
   $products = getProductsOverviewByCatalog();
   $catalogs = array();
@@ -15,11 +18,12 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
   }
 } else {
   $listMode = false;
-  $id = $_GET["id"];
+  $id = (int)$_GET["id"];
   $page = $_GET["page"];
-  echo $id . " " . $page;
 
   $products = getCatalogProducts($id, $page);
+  $pageCount = (int)(getCatalogSize($id) / 10) + 1;
+  $catalogName = $products[0]["catalogue"];
 }
 ?>
 
@@ -44,12 +48,9 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
   <!-- Navigation-->
   <?php require "nav_bar.php"; ?>
   <!-- Section-->
-
-
   <div class="container-fluid">
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
-        <!-- <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> -->
         <?php
         if ($listMode) {
           foreach ($catalogs as $catalogName => $catalog) {
@@ -64,7 +65,8 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
           }
         } else {
             ?>
-            <p class="h1"><?php echo $products[0]["catalogue"] ?></p>
+            <div class="btn-back-catalog mb-5"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="catalogue.php" class="back-catalog">Catalogues</a></div>
+            <p class="h1"><?php echo $catalogName ?></p>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
               <?php
               foreach ($products as $product) {
@@ -72,17 +74,24 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
               } ?>
             </div>
             <div class="row align">
-                <a class="pageBtn" href="">1</a>
-                <a class="pageBtn" href="">2</a>
-                <a class="pageBtn" href="">3</a>
-                <div class="pageBtn">...</div>
-                <a class="pageBtn" href="">Next</a>
-                <a class="pageBtn" href="">Last</a>
+              <?php
+              for ($i = $page - 3; $i <= $page + 3; $i++) {
+                if ($i > 0 && $i <= $pageCount && $i != $page) {
+                  echo '<a class="pageBtn" href="catalogue.php?id=' . $id . '&page=' . $i . '">' . $i . '</a>';
+                }
+              }
+              ?>
+              <?php
+              if ($page < $pageCount) {
+                echo '<div class="pageBtn">...</div>
+                <a class="pageBtn" href="catalogue.php?id=' . $id . '&page=' . $page + 1 . '">Next</a>
+                <a class="pageBtn" href="catalogue.php?id=' . $id . '&page=' . $pageCount . '">Last</a>';
+              }
+              ?>
             </div>
           <?php
         }
           ?>
-          <!-- </div> -->
             </div>
     </section>
   </div>

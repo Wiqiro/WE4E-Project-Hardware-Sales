@@ -2,10 +2,14 @@
 
 if (!isset($_GET["id"])) {
 	header("Location: index.php");
-} elseif (isset($_POST["add-to-cart"]) && isset($_POST["quantity"])) {
+} elseif ((isset($_POST["add-to-cart"]) || isset($_POST["order"])) && isset($_POST["quantity"])) {
 	require("../Controllers/panier.php");
 	addProductToCart($_GET["id"], $_POST["quantity"]);
-	header("Refresh:0");
+	if (isset($_POST["order"])) {
+		header("Location: panier.php");
+	} else {
+		header("Refresh:0");
+	}
 } else {
 
 	global $loginSuccessful, $userInfo;
@@ -44,7 +48,7 @@ if (!isset($_GET["id"])) {
 
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 my-5">
-				<div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="<?php echo "catalogue.php?id=" . $product["catalogueID"] . "&page=1" ?>" class="back-catalog"><?php echo ($catalog_name); ?></a></div>
+				<div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="<?php echo "catalogue.php?id=" . $product["catalogueID"] . "&page=1" ?>" class="back-catalog"><?php echo ($product["catalogue"]); ?></a></div>
 				<br>
 				<div class="row gx-4 gx-lg-5 align-items-center">
 					<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
@@ -72,7 +76,7 @@ if (!isset($_GET["id"])) {
 										Ajouter au panier
 									</button>
 									<div class="space"></div>
-									<button class="btn btn-outline-dark flex-shrink-0" name="order" type="button">
+									<button class="btn btn-outline-dark flex-shrink-0" name="order" type="submit">
 										Commander maintenant
 									</button>
 								</div>

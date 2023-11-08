@@ -1,12 +1,10 @@
 <?php
-global $loginSuccessful, $userInfo;
+global $loginSuccessful, $userInfo, $loginAttempted;
 
 
 include("../Controllers/initialize.php");
 include("carte_produit.php");
 
-/* destroyLoginCookie();
- */
 ?>
 
 <!DOCTYPE html>

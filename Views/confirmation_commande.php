@@ -1,5 +1,5 @@
 <?php
-global $loginSuccessful, $userInfo;
+global $loginSuccessful, $userInfo, $error;
 
 require("../Controllers/initialize.php");
 include("../Controllers/commandes.php");
@@ -10,7 +10,11 @@ $products = getProductsFromCart(getCart());
 if (count($products) != 0) {
     command($userInfo["id"], $products);
     $successful = true;
+} else {
+    $error = "Votre panier est vide";
+    header("Location: panier.php");
 }
+emptyCart();
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +30,7 @@ if (count($products) != 0) {
 
 <body>
     <?php require('nav_bar.php'); ?>
-    <h1 style="margin-top: 5em;">Félicitation ! Merci de votre commande !</h1>
+    <h1 style="margin-top: 5em;">Félicitation, votre commande a bien été enregistrée ! Merci pour votre confiance !</h1>
     <?php //showCommandCard(null, true); 
     ?>
     <div class="centerBtn">
