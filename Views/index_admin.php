@@ -82,7 +82,7 @@ $monthMoney = 2000;
   ?>
     <div class="centerBtn">
       <p>Vous êtes ici sur la page administrateur de ce site web. Celle-ci n'est accessible qu'au membre administrateur. Veuillez retourner sur la page d'acceuil en cliquant sur le lien ci-dessous :</p>
-      <a href="index.html"><button class="generalBtn">Acceuil du site</button></a>
+      <a href="index.php"><button class="generalBtn">Acceuil du site</button></a>
     </div>
 
     <div class="container">
