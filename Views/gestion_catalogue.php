@@ -16,6 +16,8 @@ if (isset($_POST["add"]) && isset($_POST["name"])) {
     createCatalog($_POST["name"]);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
     removeCatalog($_POST["id"]);
+} elseif (isset($_POST["rename"]) && isset($_POST["id"]) && isset($_POST["new-name"])) {
+    renameCatalog($_POST["id"], $_POST["new-name"]);
 }
 
 $catalogList = getCatalogList();
@@ -45,7 +47,7 @@ $catalogList = getCatalogList();
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <?php 
+                                        <?php
                                         for ($i = 0; $i < count($catalogList); $i++) {
                                             showCatalogManagementCard($catalogList[$i]);
                                         }
@@ -53,7 +55,7 @@ $catalogList = getCatalogList();
                                     </div>
                                     <div class="col-lg-6">
                                         <form action="" , method="POST">
-                                        <label class="label-design" for="name">Nom du catalogue</label>
+                                            <label class="label-design" for="name">Nom du catalogue</label>
                                             <input class="catalog-name" name="name" type="text" placeholder="Nom du catalogue">
                                             <br>
                                             <br>
@@ -71,8 +73,8 @@ $catalogList = getCatalogList();
             </div>
         </div>
     </div>
-
     <?php require("footer.php"); ?>
+    <script src="js/catalog_scripts.js"></script>
 </body>
 
 </html>

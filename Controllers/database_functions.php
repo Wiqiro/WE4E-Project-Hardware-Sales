@@ -104,6 +104,17 @@ function removeCatalog($id)
     }
 }
 
+function renameCatalog($id, $newName)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "UPDATE catalogue SET nom='" . $newName . "' WHERE id = '" . $id . "'";
+    $result = $conn->query($query);
+    if (!$result) {
+        $error = "Erreur lors de la suppression du catalogue " . $id . ", veuillez rééssayer";
+    }
+}
+
 function getCatalogList()
 {
     global $conn, $error;

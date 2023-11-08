@@ -192,6 +192,10 @@ li {
     background: rgba(255, 255, 255, .2)
 }
 
+.hidden {
+    display: none;
+}
+
 label {
     font-weight: 400;
 
