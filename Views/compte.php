@@ -39,7 +39,7 @@ global $userInfo;
           <?php } else { ?>
             <a href="commandes_precedentes.php"><button class="btn-signup">Commandes précédentes</button></a>
           <?php } ?>
-          <button class="btn-animate-second" id="closeaccount" onclick="closeAccount()">Fermer</button>
+          <button type="button" class="btn-animate-second" onclick="closeAccount()">Fermer</button>
 
           <form action="" method="POST">
             <input type="submit" class="btn-animate-second" value="Se déconnecter" name="disconnect" />
@@ -62,13 +62,14 @@ global $userInfo;
           <label for="password">Entrez votre mot de passe pour valider</label>
           <input class="form-styling" type="password" name="password" value="" />
           <input type="submit" class="btn-animate-second" value="Mettre à jour" name="update-submit" />
-          <button class="btn-animate-second">FERMER</button>
+          <button type="button" class="btn-animate-second" onclick="closeAccount()">Fermer</button>
         </form>
       </div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="js/popup.js"></script>
+  
 </body>
 
 </html>

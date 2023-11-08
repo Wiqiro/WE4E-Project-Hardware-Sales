@@ -25,11 +25,11 @@
                     <label for="user">Nom d'utilisateur / email</label>
                     <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" />
                     <label for="password">Mot de passe</label>
-                    <input class="form-styling" type="password" name="password"/>
+                    <input class="form-styling" type="password" name="password" />
                     <input type="checkbox" id="checkbox" />
                     <label for="checkbox"><span class="ui"></span>J'accepte les conditions d'utilisation</label>
-                    <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit"/>
-                    <button class="btn-animate-second">Fermer</button>
+                    <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit" />
+                    <button type="button" class="btn-animate-second" onclick="closePopup()">Fermer</button>
                 </form>
                 <form class="form-signup" action="#" method="post" name="form">
                     <label for="firstname">Prénom</label>
@@ -48,8 +48,8 @@
                     <input class="form-styling" type="password" name="password" />
                     <label for="confirmpassword">Mot de passe (confirmer)</label>
                     <input class="form-styling" type="password" name="confirmpassword" />
-                    <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit"/>
-                    <button class="btn-animate-second">Fermer</button>
+                    <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit" />
+                    <button type="button" class="btn-animate-second" onclick="closePopup()">Fermer</button>
                 </form>
             </div>
         </div>
