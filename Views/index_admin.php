@@ -79,21 +79,22 @@ $monthMoney = 2000;
     if ($loginAttempted) {
       echo "<p class='color-red h5 center mb-5'>" . $loginError . "</p>";
     }
-    ?>
+  ?>
     <div class="container">
-      <div class="frame">
-        <h2 class="signin">Se connecter</h2>
-        <form class="form-signin" action="" method="post" name="form">
-          <label for="fullname">Email</label>
-          <input class="form-styling" type="text" name="username" placeholder="" />
-          <label for="password">Mot de passe</label>
-          <input class="form-styling" type="text" name="password" placeholder="" />
-          <input type="checkbox" id="checkbox" />
-          <label for="checkbox"><span class="ui"></span>Keep me signed in</label>
-
-          <div class="btn-animate">
-            <a class="btn-signin">Login to your account</a>
-          </div>
+      <div class="frame frame-mid-short">
+        <div class="signin-active center mg-top"><a class="btn" onclick="newUser()">Connexion</a></div>
+        <div ng-app ng-init="checked = false">
+          <form class="form-signin" action="" method="post" name="form">
+            <label for="user">Nom d'utilisateur / email</label>
+            <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" />
+            <label for="password">Mot de passe</label>
+            <input class="form-styling" type="password" name="password" />
+            <input type="checkbox" id="checkbox" />
+            <label for="checkbox"><span class="ui"></span>J'accepte les conditions d'utilisation</label>
+            <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit" />
+            <button class="btn-animate-second">Fermer</button>
+          </form>
+        </div>
       </div>
     </div>
   <?php } ?>
