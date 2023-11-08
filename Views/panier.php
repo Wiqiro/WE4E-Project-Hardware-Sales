@@ -3,6 +3,10 @@ if (isset($_POST["remove-cart-item"])) {
   include("../Controllers/panier.php");
   removeCartItem($_POST["remove-cart-item"]);
   header("Refresh:0");
+} else if (isset($_POST["empty"])) {
+  include("../Controllers/panier.php");
+  emptyCart();
+  header("Refresh:0");
 } else {
   require("../Controllers/initialize.php");
   include("item_panier.php");
@@ -125,11 +129,13 @@ if (isset($_POST["remove-cart-item"])) {
 
                       </div>
                     </div>
-                    <button type="button" class="btn btn-block btn-lg black margin">
-                      <div class="d-flex justify-content-between">
-                        Vider le panier
-                      </div>
-                    </button>
+                    <form action="" method="post">
+                      <button type="submit" name="empty" class="btn btn-block btn-lg black margin">
+                        <div class="d-flex justify-content-between">
+                          Vider le panier
+                        </div>
+                      </button>
+                    </form>
                   </div>
 
                 </div>
