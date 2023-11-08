@@ -64,16 +64,24 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
           }
         } else {
             ?>
-            <p class="h1"><?php echo $products[0]["catalogue"]?></p>
+            <p class="h1"><?php echo $products[0]["catalogue"] ?></p>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <?php
-            foreach ($products as $product) {
-              showProductCard($product["id"], $product["nom"], $product["prix"], $product["image"]);
-            }
-            echo "</div>";
-          }
-            ?>
-            <!-- </div> -->
+              <?php
+              foreach ($products as $product) {
+                showProductCard($product["id"], $product["nom"], $product["prix"], $product["image"]);
+              } ?>
+            </div>
+            <div class="row align">
+                <a class="pageBtn" href="">1</a>
+                <a class="pageBtn" href="">2</a>
+                <a class="pageBtn" href="">3</a>
+                <a class="pageBtn" href="">Next</a>
+                <a class="pageBtn" href="">Last</a>
+            </div>
+          <?php
+        }
+          ?>
+          <!-- </div> -->
             </div>
     </section>
   </div>
