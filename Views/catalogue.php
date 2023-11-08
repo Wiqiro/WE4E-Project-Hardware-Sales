@@ -4,10 +4,6 @@ include "carte_produit.php";
 
 
 $listMode = true;
-$catalogName = "";
-$catalogSize = 0;
-$products = array();
-
 if (!isset($_GET["id"]) || !isset($_GET["page"])) {
   $products = getProductsOverviewByCatalog();
   $catalogs = array();
@@ -21,7 +17,10 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
   $id = (int)$_GET["id"];
   $page = $_GET["page"];
 
-  $products = getCatalogProducts($id, $page);
+  $order = isset($_POST["change-order"]) ? $_POST["change-order"] : "nom ASC";
+
+
+  $products = getCatalogProducts($id, $page, $order);
   $pageCount = (int)(getCatalogSize($id) / 10) + 1;
   $catalogName = $products[0]["catalogue"];
 }
@@ -67,27 +66,16 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
             ?>
             <div class="btn-back-catalog mb-5"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="catalogue.php" class="back-catalog">Catalogues</a></div>
             <div class="row inline-display">
-              <p class="h1"><?php echo $catalogName ?></p>
-              <div class="popFilters">
-                  <button class="filters generalBtn-black" onclick="openFilters()">
-                    Filtres
-                    <img class="icon-arrow" src="../Style/assets/down-arrow-icon.png" alt="Fleche ouverture filtre">
-                  </button>
-                <div class="filters-box" id="filters-box">
-                  <div class="filters-list">
-                    <input id="filter-1" name="filter-element" type="radio">
-                    <label for="filter-1" style="color: black;">filter 1</label>
-                  </div>
-                  <div class="filters-list">
-                    <input id="filter-2" name="filter-element" type="radio">
-                    <label for="filter-2" style="color: black;">filter 2</label>
-                  </div>
-                  <div class="filters-list">
-                    <input id="filter-3" name="filter-element" type="radio">
-                    <label for="filter-3" style="color: black;">filter 3</label>
-                  </div>
-                </div>
-              </div>
+              <p class="h1 mb-5"><?php echo $catalogName ?></p>
+                  <form action="" method="post">
+                    <label for="change-order"></label>
+                    <select name="change-order">
+                      <option value="nom ASC">A à Z</option>
+                      <option value="prix DESC">Du plus cher au moins cher</option>
+                      <option value="prix ASC">Du moins cher au plus cher</option>
+                    </select>
+                    <input type="submit" value="Filtrer" />
+                  </form>
             </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
               <?php

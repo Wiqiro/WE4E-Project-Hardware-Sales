@@ -31,7 +31,7 @@ emptyCart();
 <body>
     <?php require('nav_bar.php'); ?>
     <h1 style="margin-top: 5em;">Félicitation, votre commande a bien été enregistrée ! Merci pour votre confiance !</h1>
-    <?php //showCommandCard(null, true); 
+    <?php showCommandCard(null, true); 
     ?>
     <div class="centerBtn">
         <a href="commandes_precedentes.php"><button class="btn btn-primary btn-xl text-uppercase center">Mes commandes</button></a>

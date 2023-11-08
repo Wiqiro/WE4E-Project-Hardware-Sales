@@ -49,15 +49,3 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   });
 });
-
-function openForm() {
-  document.getElementById("popupLogin").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("popupLogin").style.display = "none";
-}
-
-function openFilters() {
-  document.getElementById("filters-box").style.display = "block";
-}

@@ -215,12 +215,12 @@ function getProductsOverviewByCatalog()
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function getCatalogProducts($catalogID, $page)
+function getCatalogProducts($catalogID, $page, $orderParam)
 {
     $offset = ($page - 1) * 10;
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.image, P.description, P.prix, M.nom as marque, C.nom as catalogue FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE C.id = " . $catalogID . " LIMIT 10 OFFSET " . $offset;
+    $query = "SELECT P.id, P.nom, P.image, P.description, P.prix, M.nom as marque, C.nom as catalogue FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE C.id = " . $catalogID . " ORDER BY " . $orderParam . " LIMIT 10 OFFSET " . $offset;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
