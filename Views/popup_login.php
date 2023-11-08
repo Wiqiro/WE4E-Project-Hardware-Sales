@@ -48,7 +48,9 @@
                     <input class="form-styling" type="password" name="password" />
                     <label for="confirmpassword">Mot de passe (confirmer)</label>
                     <input class="form-styling" type="password" name="confirmpassword" />
-                    <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit"/>
+                    <div class="error">Les mots de passes ne sont pas identiques</div>
+                    <button onclick="verificationPassword()">Verif</button>
+                    <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit" onclick="verificationPassword()"/>
                     <button class="btn-animate-second">Fermer</button>
                 </form>
             </div>
@@ -56,6 +58,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="js/popup.js"></script>
+    <script src="js/verification_password.js"></script>
 </body>
 
 </html>

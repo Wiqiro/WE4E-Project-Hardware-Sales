@@ -19,6 +19,7 @@ if (count($products) != 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../Style/assets/favicon.ico" />
     <title>Confirmation</title>
     <link href="../Style/styles.css" rel="stylesheet" />
 </head>
@@ -29,7 +30,7 @@ if (count($products) != 0) {
     <?php //showCommandCard(null, true); 
     ?>
     <div class="centerBtn">
-        <a href="inventaire_commandes.php"><button class="btn btn-primary btn-xl text-uppercase center">Mes commandes</button></a>
+        <a href="commandes_precedentes.php"><button class="btn btn-primary btn-xl text-uppercase center">Mes commandes</button></a>
     </div>
 </body>
 

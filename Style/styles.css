@@ -113,6 +113,10 @@ hr {
   opacity: 0.25;
 }
 
+.mgTop {
+  margin-top: 8em;
+}
+
 h6,
 .h6,
 h5,
@@ -13389,4 +13393,5 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .centerBtn {
   text-align: center;
+  margin-bottom: 2em;
 }
