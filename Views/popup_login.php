@@ -7,8 +7,6 @@
     <style></style>
     <title>Document</title>
     <link rel="stylesheet" href="../Style/popup_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"> -->
 </head>
 
 <body>
@@ -26,10 +24,12 @@
                     <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" />
                     <label for="password">Mot de passe</label>
                     <input class="form-styling" type="password" name="password" />
+                    <p class="error mb-3"><?php if (isset($error)) echo $error ?></p>
+
                     <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit" />
                     <button type="button" class="btn-animate-second" onclick="closePopup()">Fermer</button>
                 </form>
-                <form class="form-signup" action="#" method="post" name="form">
+                <form class="form-signup" id="form-signup" action="#" method="post" name="form" onsubmit="return verificationPassword()">
                     <label for="firstname">Prénom</label>
                     <input class="form-styling" type="text" name="firstname" placeholder="Prenom" />
                     <label for="lastname">Nom</label>
@@ -43,12 +43,12 @@
                     <label for="address">Adresse</label>
                     <input class="form-styling" type="text" name="address" placeholder="1 rue de la Montagne, Belfort" />
                     <label for="password">Mot de passe</label>
-                    <input class="form-styling" type="password" name="password" />
+                    <input class="form-styling" type="password" name="password" id="password" />
                     <label for="confirmpassword">Mot de passe (confirmer)</label>
-                    <input class="form-styling" type="password" name="confirmpassword" />
-                    <div class="error">Les mots de passes ne sont pas identiques</div>
-                    <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit" onclick="verificationPassword()"/>
-                    <button class="btn-animate-second">Fermer</button>
+                    <input class="form-styling" type="password" name="confirmpassword" id="confirmpassword" />
+                    <p class="error mb-3" id="errorMessage"></p>
+                    <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit" />
+                    <button type="button" class="btn-animate-second" onclick="closePopup()">Fermer</button>
                 </form>
             </div>
         </div>

@@ -5,9 +5,6 @@ function openPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
-
-document.getElementById("openPopup").addEventListener("click", openPopup);
-
 function newUser() {
   jQuery(".form-signin").toggleClass("form-signin-left");
   jQuery(".form-signup").toggleClass("form-signup-left");
@@ -26,5 +23,3 @@ function closeAccount() {
   var popup = document.querySelector(".account");
   popup.style.display = "none";
 }
-
-document.getElementById("closeaccount").addEventListener("click", closeAccount);

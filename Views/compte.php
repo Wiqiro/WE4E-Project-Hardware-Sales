@@ -12,8 +12,6 @@ global $userInfo;
   <style></style>
   <title>Document</title>
   <link rel="stylesheet" href="../Style/popup_style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"> -->
 </head>
 
 <body>
