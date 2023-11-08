@@ -47,7 +47,6 @@
                     <label for="confirmpassword">Mot de passe (confirmer)</label>
                     <input class="form-styling" type="password" name="confirmpassword" />
                     <div class="error">Les mots de passes ne sont pas identiques</div>
-                    <button onclick="verificationPassword()">Verif</button>
                     <input type="submit" class="btn-animate-second" value="S'inscrire" name="register-submit" onclick="verificationPassword()"/>
                     <button class="btn-animate-second">Fermer</button>
                 </form>
