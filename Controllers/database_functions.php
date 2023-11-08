@@ -253,7 +253,6 @@ function getProductsFromCart($cart)
 
     $productsWithQuantity = array();
 
-
     foreach ($products as $product) {
         foreach ($cart as $cartItem) {
             if ($product['id'] == $cartItem['id']) {
