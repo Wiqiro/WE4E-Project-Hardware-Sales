@@ -12,7 +12,7 @@ function showCartItem($product)
                         <img src="<?php echo $product["image"] ?>" class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
                     </div>
                     <div class="ms-3">
-                        <a class="link-style" href="produit.php">
+                        <a class="link-style" href="produit.php?id=<?php echo $product["id"] ?>">
                             <h5><?php echo $product["nom"] ?></h5>
                         </a>
                         <p class="small mb-0"><?php echo $product["description"] ?></p>
