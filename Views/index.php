@@ -5,8 +5,6 @@ global $loginSuccessful, $userInfo, $loginAttempted;
 include("../Controllers/initialize.php");
 include("carte_produit.php");
 
-print_r($_POST);
-echo $error;
 ?>
 
 <!DOCTYPE html>

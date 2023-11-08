@@ -2,10 +2,14 @@
 
 if (!isset($_GET["id"])) {
 	header("Location: index.php");
-} elseif (isset($_POST["add-to-cart"]) && isset($_POST["quantity"])) {
+} elseif ((isset($_POST["add-to-cart"]) || isset($_POST["order"])) && isset($_POST["quantity"])) {
 	require("../Controllers/panier.php");
 	addProductToCart($_GET["id"], $_POST["quantity"]);
-	header("Refresh:0");
+	if (isset($_POST["order"])) {
+		header("Location: panier.php");
+	} else {
+		header("Refresh:0");
+	}
 } else {
 
 	global $loginSuccessful, $userInfo;
@@ -72,7 +76,7 @@ if (!isset($_GET["id"])) {
 										Ajouter au panier
 									</button>
 									<div class="space"></div>
-									<button class="btn btn-outline-dark flex-shrink-0" name="order" type="button">
+									<button class="btn btn-outline-dark flex-shrink-0" name="order" type="submit">
 										Commander maintenant
 									</button>
 								</div>
