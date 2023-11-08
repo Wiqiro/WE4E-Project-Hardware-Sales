@@ -75,6 +75,7 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
                 <a class="pageBtn" href="">1</a>
                 <a class="pageBtn" href="">2</a>
                 <a class="pageBtn" href="">3</a>
+                <div class="pageBtn">...</div>
                 <a class="pageBtn" href="">Next</a>
                 <a class="pageBtn" href="">Last</a>
             </div>
