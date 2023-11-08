@@ -12,3 +12,25 @@ if (count($products) != 0) {
     $successful = true;
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <link href="../Style/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <?php require('nav_bar.php'); ?>
+    <h1 style="margin-top: 5em;">Félicitation ! Merci de votre commande !</h1>
+    <?php //showCommandCard(null, true); 
+    ?>
+    <div class="centerBtn">
+        <a href="inventaire_commandes.php"><button class="btn btn-primary btn-xl text-uppercase center">Mes commandes</button></a>
+    </div>
+</body>
+
+</html>

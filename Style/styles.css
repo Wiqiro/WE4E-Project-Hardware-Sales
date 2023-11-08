@@ -13386,3 +13386,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   text-decoration: none;
   color: red;
 }
+
+.centerBtn {
+  text-align: center;
+}
