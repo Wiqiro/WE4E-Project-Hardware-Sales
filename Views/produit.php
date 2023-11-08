@@ -44,7 +44,7 @@ if (!isset($_GET["id"])) {
 
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 my-5">
-				<div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="<?php echo "catalogue.php?id=" . $product["catalogueID"] . "&page=1" ?>" class="back-catalog"><?php echo ($catalog_name); ?></a></div>
+				<div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="<?php echo "catalogue.php?id=" . $product["catalogueID"] . "&page=1" ?>" class="back-catalog"><?php echo ($product["catalogue"]); ?></a></div>
 				<br>
 				<div class="row gx-4 gx-lg-5 align-items-center">
 					<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>

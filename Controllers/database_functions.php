@@ -117,6 +117,19 @@ function getCatalogList()
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function getCatalogSize($catalogID)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT COUNT(*) as taille FROM produit  WHERE id_catalogue = " . $catalogID;
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_assoc()["taille"];
+}
+
 function getBrandList()
 {
     global $conn, $error;
@@ -215,6 +228,8 @@ function getCatalogProducts($catalogID, $page)
     }
     return $result->fetch_all(MYSQLI_ASSOC);
 }
+
+
 
 function getProductsFromCart($cart)
 {

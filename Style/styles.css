@@ -13371,7 +13371,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .pageBtn {
   margin: 3px;
-  width: 10%;
+  width: 5%;
   text-align: center;
   border: 1px solid black;
   text-decoration: none;
@@ -13380,7 +13380,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .pageBtn:hover {
   margin: 3px;
-  width: 10%;
+  width: 5%;
   text-align: center;
   border: 1px solid red;
   text-decoration: none;
