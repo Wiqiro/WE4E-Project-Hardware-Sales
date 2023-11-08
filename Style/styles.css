@@ -13395,3 +13395,56 @@ section#contact form#contactForm :-ms-input-placeholder {
   text-align: center;
   margin-bottom: 2em;
 }
+
+.inline-display {
+  padding-right: 20em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.popFilters {
+  width: auto;
+}
+
+.filters {
+  border-radius: 0.3em;
+  width: 5em;
+  height: 1.5em;
+  border: 1px solid var(--bs-red);
+  margin-bottom: 0.1em;
+}
+
+.filters-box {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+  border-radius: 0.3em;
+  text-align: center;
+  display: none;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--bs-red);
+  margin-bottom: 0.1em;
+  padding-left: 0.1em;
+}
+
+.filters-list {
+  color: black;
+  display: flex;
+}
+
+input .filter-element {
+  color: black;
+  display: flex;
+}
+
+.icon-arrow {
+  width: 1em;
+  height: 1em;
+}
+
+.generalBtn-black {
+  color: black;
+  background-color: white;
+}

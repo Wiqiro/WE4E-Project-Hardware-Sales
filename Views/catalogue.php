@@ -66,7 +66,29 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
         } else {
             ?>
             <div class="btn-back-catalog mb-5"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="catalogue.php" class="back-catalog">Catalogues</a></div>
-            <p class="h1"><?php echo $catalogName ?></p>
+            <div class="row inline-display">
+              <p class="h1"><?php echo $catalogName ?></p>
+              <div class="popFilters">
+                  <button class="filters generalBtn-black" onclick="openFilters()">
+                    Filtres
+                    <img class="icon-arrow" src="../Style/assets/down-arrow-icon.png" alt="Fleche ouverture filtre">
+                  </button>
+                <div class="filters-box" id="filters-box">
+                  <div class="filters-list">
+                    <input id="filter-1" name="filter-element" type="radio">
+                    <label for="filter-1" style="color: black;">filter 1</label>
+                  </div>
+                  <div class="filters-list">
+                    <input id="filter-2" name="filter-element" type="radio">
+                    <label for="filter-2" style="color: black;">filter 2</label>
+                  </div>
+                  <div class="filters-list">
+                    <input id="filter-3" name="filter-element" type="radio">
+                    <label for="filter-3" style="color: black;">filter 3</label>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
               <?php
               foreach ($products as $product) {
