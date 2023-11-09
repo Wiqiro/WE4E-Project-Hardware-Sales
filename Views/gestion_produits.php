@@ -35,7 +35,6 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
 }
 
 $catalogList = getCatalogList();
-$brandList = getBrandList();
 $productList = getProducts();
 ?>
 
@@ -76,14 +75,6 @@ $productList = getProducts();
                                                 <?php
                                                 foreach ($catalogList as $catalog) {
                                                     echo "<option value=" . $catalog["id"] . ">" . $catalog["nom"] . "</option>";
-                                                }
-                                                ?>
-                                            </select><br><br>
-                                            <label class="label-design" for="brand">Marque du produit</label>
-                                            <select name="brand">
-                                                <?php
-                                                foreach ($brandList as $brand) {
-                                                    echo "<option value=" . $brand["id"] . ">" . $brand["nom"] . "</option>";
                                                 }
                                                 ?>
                                             </select><br><br>

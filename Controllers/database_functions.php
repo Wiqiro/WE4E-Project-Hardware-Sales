@@ -141,26 +141,12 @@ function getCatalogSize($catalogID)
     return $result->fetch_assoc()["taille"];
 }
 
-function getBrandList()
-{
-    global $conn, $error;
-    $error = NULL;
-    $query = "SELECT * FROM marque";
-    $result = $conn->query($query);
-
-    if (!$result || $result->num_rows == 0) {
-        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
-    }
-    return $result->fetch_all(MYSQLI_ASSOC);
-}
-
-
 
 function addProduct($name, $description, $price, $catalogID, $brandID, $imagePath, $specs)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO produit(nom, description, prix, id_marque, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $price . "," . $catalogID . "," . $brandID . ",'" . $imagePath . "');";
+    $query = "INSERT INTO produit(nom, description, prix, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $price . "," . $catalogID . "," . $brandID . ",'" . $imagePath . "');";
     $result = $conn->query($query);
 
     $query = "SELECT LAST_INSERT_ID() as ID";
@@ -183,7 +169,7 @@ function getProducts()
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.prix, M.nom as marque, C.nom as catalogue FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
+    $query = "SELECT P.id, P.nom, P.description, P.prix, C.nom as catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -197,7 +183,7 @@ function getProductFromId($id)
 
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as catalogue, C.id AS catalogueID FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id = " . $id;
+    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, C.nom as catalogue, C.id AS catalogueID FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id = " . $id;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -231,7 +217,7 @@ function getCatalogProducts($catalogID, $page, $orderParam)
     $offset = ($page - 1) * 10;
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.image, P.description, P.prix, M.nom as marque, C.nom as catalogue FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE C.id = " . $catalogID . " ORDER BY " . $orderParam . " LIMIT 10 OFFSET " . $offset;
+    $query = "SELECT P.id, P.nom, P.image, P.description, P.prix, C.nom as catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE C.id = " . $catalogID . " ORDER BY " . $orderParam . " LIMIT 10 OFFSET " . $offset;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -247,7 +233,7 @@ function getProductsFromCart($cart)
     if (!$cart) return array();
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, M.nom as marque, C.nom as catalogue FROM produit AS P INNER JOIN marque AS M ON P.id_marque = M.ID INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id IN (";
+    $query = "SELECT P.id, P.nom, P.description, P.image, P.prix, C.nom AS catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id WHERE P.id IN (";
 
     $values = [];
     foreach ($cart as $item) {
