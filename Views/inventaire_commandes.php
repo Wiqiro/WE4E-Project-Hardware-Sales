@@ -35,13 +35,13 @@ $revenue = monthRevenue();
     <title>Commandes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link href="../Style/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../Style/panier_style.css" />
+    <link rel="stylesheet" href="../Style/style_index_admin.css" />
 
 </head>
 
 <body>
-    <?php require("nav_bar.php"); ?>
-    <section style="background-color: #eee;">
+    <h1>Gestion de catalogue</h1>
+
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">
@@ -96,7 +96,6 @@ $revenue = monthRevenue();
             }
             ?>
         </div>
-    </section>
 
     <!-- Footer-->
     <?php require("footer.php"); ?>

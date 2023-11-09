@@ -485,6 +485,7 @@ a.btn-signin:hover {
 h1 {
     text-align: center;
     margin-top: 3em;
+    font-weight: 600;
 }
 
 .btn-goback {

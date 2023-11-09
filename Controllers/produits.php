@@ -119,7 +119,7 @@ function getProductsOverviewByCatalog()
         SELECT COUNT(*)
         FROM produit AS P2
         WHERE P2.id_catalogue = P.id_catalogue AND P2.id <= P.id
-    ) <= 4";
+    ) <= 4 ORDER BY C.nom, P.nom";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -186,8 +186,8 @@ function getProductSpecifications($id)
     $query = "SELECT S.nom, S.valeur FROM produit AS P INNER JOIN specification AS S ON S.id_produit = P.id WHERE P.id = " . $id;
     $result = $conn->query($query);
 
-    if (!$result || $result->num_rows == 0) {
-        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    if (!$result) {
+        $error = "Erreur lors de la récupération des spécifications du produit, veuillez rééssayer";
     }
     return $result->fetch_all(MYSQLI_ASSOC);
 }

@@ -8,7 +8,10 @@ if (isset($_POST["remove-cart-item"])) {
   emptyCart();
   header("Refresh:0");
 } else {
+  global $loginSuccessful, $userInfo;
   require("../Controllers/initialize.php");
+  if (!$loginSuccessful) header("Location: index.php");
+
   require("../Controllers/produits.php");
   include("item_panier.php");
 

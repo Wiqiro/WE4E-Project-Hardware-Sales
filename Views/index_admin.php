@@ -62,7 +62,7 @@ $commandCount = count($commands);
                       <p><?php echo dayRevenue() ?>$</p>
                       <h5>Chiffre du mois</h5>
                       <p><?php echo monthRevenue() ?>$</p>
-                      <a href="gestion_catalogue.php"><button class="generalBtn">Gestion du catalogue</button></a>
+                      <a href="gestion_catalogue.php"><button class="generalBtn">Gestion des catalogues</button></a>
                       <br>
                       <br>
                       <a href="gestion_produits.php"><button class="generalBtn">Gestion des produits</button></a>
@@ -91,7 +91,7 @@ $commandCount = count($commands);
     }
   ?>
     <div class="centerBtn">
-      <p>Vous êtes ici sur la page administrateur de ce site web. Celle-ci n'est accessible qu'au membre administrateur. Veuillez retourner sur la page d'accueil en cliquant sur le lien ci-dessous :</p>
+      <p>Vous êtes ici sur la page administrateur de ce site web. Cette section du site n'est accessible qu'aux membres administrateurs. Veuillez retourner sur la page d'accueil en cliquant sur le lien ci-dessous: </p>
       <a href="index.php"><button class="generalBtn">Accueil du site</button></a>
     </div>
 

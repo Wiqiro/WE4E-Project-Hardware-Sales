@@ -1,5 +1,4 @@
 <?php
-
 if (!isset($_GET["id"])) {
 	header("Location: index.php");
 } elseif ((isset($_POST["add-to-cart"]) || isset($_POST["order"])) && isset($_POST["quantity"])) {
@@ -22,7 +21,6 @@ if (!isset($_GET["id"])) {
 	include("carte_produit.php");
 	$product = getProductFromId($id);
 	$specs = getProductSpecifications($id);
-
 
 ?>
 
