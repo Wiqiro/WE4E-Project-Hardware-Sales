@@ -3,8 +3,10 @@ global $loginSuccessful, $userInfo, $loginAttempted;
 
 
 include("../Controllers/initialize.php");
+require("../Controllers/produits.php");
 include("carte_produit.php");
 
+$randomProds = getRandomProducts(8);
 ?>
 
 <!DOCTYPE html>
@@ -51,14 +53,9 @@ include("carte_produit.php");
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                 <?php
-                showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-                showProductCard(2, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-                showProductCard(3, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-                showProductCard(4, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-                showProductCard(5, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-                showProductCard(6, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-                showProductCard(7, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-                showProductCard(8, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+                foreach ($randomProds as $product) {
+                    showProductCard($product["id"], $product["nom"], $product["prix"], $product["image"]);
+                  }
 
                 ?>
             </div>

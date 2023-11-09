@@ -36,6 +36,19 @@ function getProducts()
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function getRandomProducts($count)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT P.id, P.nom, P.description, P.prix, P.image, C.nom as catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id LIMIT " . $count;
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 function renameProduct($id, $newName)
 {
     global $conn, $error;

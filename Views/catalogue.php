@@ -48,7 +48,7 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
   <!-- Navigation-->
   <?php require "nav_bar.php"; ?>
   <!-- Section-->
-  <div class="container-fluid">
+  <div class="container-fluid mt-4">
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
         <?php
@@ -56,7 +56,7 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
           foreach ($catalogs as $catalogName => $catalog) {
         ?>
             <a class="h1 text-black" href=<?php echo "catalogue.php?id=" . $catalog[0]["catalogueID"] . "&page=1" ?>><?php echo $catalogName ?></a>
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center mt-3">
             <?php
             foreach ($catalog as $product) {
               showProductCard($product["id"], $product["nom"], $product["prix"], $product["image"]);
