@@ -111,7 +111,7 @@ $productList = getProducts($page);
                                     <div class="col-lg-6">
                                         <form id="product-form" enctype="multipart/form-data" action="" method="POST" style="display: none">
                                             <label class="label-design" for="name">Nom du produit</label>
-                                            <input class="catalog-name product-style" name="name" type="text" placeholder="Nom du produit" value="<?php if (isset($modifProduct)) echo $modifProduct["nom"] ?>"><br><br>
+                                            <input class="catalog-name product-style" name="name" type="text" placeholder="Nom du produit" value="<?php if (isset($modifProduct)) echo $modifProduct["nom"] ?>" required><br><br>
                                             <label class="label-design" for="catalog">Catalogue du produit</label>
                                             <select name="catalog">
                                                 <?php
@@ -126,9 +126,9 @@ $productList = getProducts($page);
                                                 ?>
                                             </select><br><br>
                                             <label class="label-design" for="description">Description</label>
-                                            <textarea name="description" cols="30" rows="5" maxlength="500"><?php if (isset($modifProduct)) echo $modifProduct["description"] ?></textarea><br><br>
+                                            <textarea name="description" cols="30" rows="5" maxlength="500" required><?php if (isset($modifProduct)) echo $modifProduct["description"] ?></textarea><br><br>
                                             <label class="label-design" for="price">Prix du produit</label>
-                                            <input class="product-price product-style" name="price" type="number" placeholder="Prix" value="<?php if (isset($modifProduct)) echo (float)$modifProduct["prix"] ?>"><br><br>
+                                            <input class="product-price product-style" name="price" type="number" placeholder="Prix" value="<?php if (isset($modifProduct)) echo (float)$modifProduct["prix"] ?>" required><br><br>
                                             <label class="label-design" for="image">Image du produit</label>
                                             <input class="product-image product-style" name="image" type="file" placeholder="Lien image">
                                             <br><br>

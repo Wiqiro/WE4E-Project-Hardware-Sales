@@ -69,7 +69,7 @@ $catalogList = getCatalogList();
                                     </div>
                                     <div class="col-lg-6">
                                         <form id="catalog-form" action="" , method="POST" style="display: none">
-                                            <label class="label-design" for="name">Nom du catalogue</label>
+                                            <label class="label-design" for="name" required>Nom du catalogue</label>
                                             <input class="catalog-name" name="name" type="text" placeholder="Nom du catalogue">
                                             <br><br>
                                             <input type="submit" value="Ajouter le catalogue" name="add" />

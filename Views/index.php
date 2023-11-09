@@ -9,7 +9,9 @@ include("carte_produit.php");
 require("carte_commande.php");
 
 $randomProds = getRandomProducts(8);
-$lastCommand = getUserLastCommand($userInfo["id"]);
+if ($loginSuccessful && $userInfo["id"]) {
+    $lastCommand = getUserLastCommand($userInfo["id"]);
+}
 ?>
 
 <!DOCTYPE html>
