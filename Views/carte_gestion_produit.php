@@ -30,6 +30,7 @@ function showProductManagementCard($product)
                                 <p class="medium mb-3"><?php echo $product["prix"] ?>€</p>
                                 <input type="hidden" name="id" , value="<?php echo $product["id"] ?>">
                                 <input type="button" class="rename-button" value="Renommer" name="rename" onclick="showRenameInput(this)" />
+                                <input type="submit" value="Modifier" name="modify-form" />
                                 <input type="submit" value="Supprimer" name="remove" />
                             </div>
                         </div>

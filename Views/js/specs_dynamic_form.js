@@ -1,4 +1,4 @@
-function addSpecInput() {
+function addSpecInput(name, value) {
     const inputContainer = document.getElementById("specs-inputs");
     const newInputDiv = document.createElement("div");
 
@@ -8,12 +8,16 @@ function addSpecInput() {
     nameInput.setAttribute("type", "text");
     nameInput.setAttribute("name", "specs-names[]");
     nameInput.setAttribute("placeholder", "Nom");
+    nameInput.setAttribute("value", name);
+
     specInput.appendChild(nameInput);
 
     const valInput = document.createElement("input");
     valInput.setAttribute("type", "text");
     valInput.setAttribute("name", "specs-vals[]");
-    valInput.setAttribute("placeholder", "Value");
+    valInput.setAttribute("placeholder", "Valeur");
+    valInput.setAttribute("value", value);
+
     specInput.appendChild(valInput);
 
     newInputDiv.appendChild(specInput);

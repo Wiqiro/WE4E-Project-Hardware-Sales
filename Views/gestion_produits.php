@@ -17,7 +17,8 @@ $dayMoney = 1000;
 $monthMoney = 2000;
 
 
-if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["brand"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
+
+if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
     $specs = NULL;
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
         for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
@@ -25,15 +26,18 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
             $specs[$i]["value"] = $_POST["specs-vals"][$i];
         }
     }
-    $imagePath = null;
+    $imagePath = "./";
     if (isBufferFileAdequate()) {
         $imagePath = saveImage("product_images", $userInfo["id"]);
     }
-    addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $imagePath, $specs);
+    addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["catalog"], $imagePath, $specs);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
     removeProduct($_POST["id"]);
 } elseif (isset($_POST["rename"]) && isset($_POST["id"]) && isset($_POST["new-name"])) {
     renameProduct($_POST["id"], $_POST["new-name"]);
+} else if (isset($_POST["modify-form"]) && isset($_POST["id"])) {
+    $modifProduct = getProductFromId($_POST["id"]);
+    $modifProductSpecs = getProductSpecifications($_POST["id"]);
 }
 
 $catalogList = getCatalogList();
@@ -71,7 +75,7 @@ $productList = getProducts();
                                     <div class="col-lg-6">
                                         <form enctype="multipart/form-data" action="" method="POST">
                                             <label class="label-design" for="name">Nom du produit</label>
-                                            <input class="catalog-name product-style" name="name" type="text" placeholder="Nom du produit"><br><br>
+                                            <input class="catalog-name product-style" name="name" type="text" placeholder="Nom du produit" value="<?php if (isset($modifProduct)) echo $modifProduct["nom"] ?>"><br><br>
                                             <label class="label-design" for="catalog">Catalogue du produit</label>
                                             <select name="catalog">
                                                 <?php
@@ -81,18 +85,24 @@ $productList = getProducts();
                                                 ?>
                                             </select><br><br>
                                             <label class="label-design" for="description">Description</label>
-                                            <textarea name="description" cols="30" rows="5" maxlength="500"></textarea><br><br>
+                                            <textarea name="description" cols="30" rows="5" maxlength="500"><?php if (isset($modifProduct)) echo $modifProduct["description"] ?></textarea><br><br>
                                             <label class="label-design" for="price">Prix du produit</label>
-                                            <input class="product-price product-style" name="price" type="number" placeholder="Prix"><br><br>
+                                            <input class="product-price product-style" name="price" type="number" placeholder="Prix" value="<?php if (isset($modifProduct)) echo (float)$modifProduct["prix"] ?>"><br><br>
                                             <label class="label-design" for="image">Image du produit</label>
                                             <input class="product-image product-style" name="image" type="file" placeholder="Lien image">
                                             <br><br>
                                             <div id="specs-inputs">
 
                                             </div>
-                                            <button class="generalBtn" type="button" onclick="addSpecInput()">Ajouter une caractéristique</button>
+                                            <button class="generalBtn" type="button" onclick="addSpecInput('', '')">Ajouter une caractéristique</button>
                                             <br><br>
-                                            <input type="submit" value="Ajouter le produit" name="add" />
+                                            <?php if (isset($modifProduct)) { ?>
+                                                <input type="submit" value="Modifier le produit" name="modify" />
+                                            <?php } else { ?>
+                                                <input type="submit" value="Ajouter le produit" name="add" />
+                                            <?php } ?>
+
+
                                         </form>
                                     </div>
                                 </div>
@@ -107,6 +117,14 @@ $productList = getProducts();
     <?php require("footer.php"); ?>
     <script src="js/specs_dynamic_form.js"></script>
     <script src="js/products_scripts.js"></script>
+    <?php if (isset($modifProductSpecs)) {
+    ?>
+        <script>
+            <?php foreach ($modifProductSpecs as $spec) { ?>
+                addSpecInput("<?php echo $spec["nom"] ?>", "<?php echo $spec["valeur"] ?>");
+            <?php } ?>
+        </script>
+    <?php } ?>
 
 </body>
 
