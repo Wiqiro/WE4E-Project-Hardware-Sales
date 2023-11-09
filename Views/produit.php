@@ -21,6 +21,7 @@ if (!isset($_GET["id"])) {
 	include("carte_produit.php");
 	$product = getProductFromId($id);
 	$specs = getProductSpecifications($id);
+	$randomProds = getRandomProducts(4);
 
 ?>
 
@@ -98,13 +99,12 @@ if (!isset($_GET["id"])) {
 		<!-- Related items section-->
 		<section class="py-5 bg-light">
 			<div class="container px-4 px-lg-5 mt-5">
-				<h2 class="fw-bolder mb-4">Related products</h2>
+				<h2 class="fw-bolder mb-4">Ces produits pourraient vous intéresser</h2>
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 					<?php
-					showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-					showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-					showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
-					showProductCard(1, "Product", 12.45, "https://dummyimage.com/450x300/dee2e6/6c757d.jpg");
+					foreach ($randomProds as $product) {
+						showProductCard($product["id"], $product["nom"], $product["prix"], $product["image"]);
+					}
 					?>
 				</div>
 			</div>
