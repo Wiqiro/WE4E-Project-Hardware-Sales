@@ -86,11 +86,9 @@ if (!isset($_GET["id"])) {
 								<span class="shadow-text">Pour commander, vous
 									devez être un utilisateur inscrit. Cliquez ce lien pour créer un compte et commencer vos
 									achats !</span>
-								<a href="popup_login.php">
-									<button class="btn btn-outline-dark flex-shrink-0" type="button">
-										Login
-									</button>
-								</a>
+								<button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="openPopup()">
+									Login
+								</button>
 							</div>
 						<?php } ?>
 					</div>
@@ -118,6 +116,7 @@ if (!isset($_GET["id"])) {
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 		<!-- Core theme JS-->
 		<script src="js/scripts.js"></script>
+		<script src="js/popup.js"></script>
 	</body>
 
 	</html>
