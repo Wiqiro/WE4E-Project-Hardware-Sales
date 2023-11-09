@@ -1,5 +1,4 @@
 function showRenameInput(button) {
-  console.log("salut");
   let form = button.closest(".card-body").querySelector(".catalog-form");
   let name = form.querySelector(".catalog-name");
   let input = form.querySelector(".rename-input");

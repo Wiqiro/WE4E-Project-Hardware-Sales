@@ -32,6 +32,8 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
     addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["brand"], $_POST["catalog"], $imagePath, $specs);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
     removeProduct($_POST["id"]);
+} elseif (isset($_POST["rename"]) && isset($_POST["id"]) && isset($_POST["new-name"])) {
+    renameProduct($_POST["id"], $_POST["new-name"]);
 }
 
 $catalogList = getCatalogList();
@@ -104,6 +106,8 @@ $productList = getProducts();
 
     <?php require("footer.php"); ?>
     <script src="js/specs_dynamic_form.js"></script>
+    <script src="js/products_scripts.js"></script>
+
 </body>
 
 </html>

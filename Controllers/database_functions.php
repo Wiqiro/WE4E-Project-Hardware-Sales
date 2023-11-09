@@ -178,6 +178,17 @@ function getProducts()
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function renameProduct($id, $newName)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "UPDATE produit SET nom='" . $newName . "' WHERE id = '" . $id . "'";
+    $result = $conn->query($query);
+    if (!$result) {
+        $error = "Erreur lors du renommage du produit " . $id . ", veuillez rééssayer";
+    }
+}
+
 function getProductFromId($id)
 {
 
