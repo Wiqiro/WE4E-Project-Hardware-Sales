@@ -1,10 +1,10 @@
 <?php
 
-function addProduct($name, $description, $price, $catalogID, $imagePath, $specs)
+function addProduct($name, $description, $price, $catalogID, $specs)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "INSERT INTO produit(nom, description, prix, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $price . "," . $catalogID . ", '" . $imagePath . "');";
+    $query = "INSERT INTO produit(nom, description, prix, id_catalogue) VALUES ('" . $name . "','" . $description . "'," . $price . "," . $catalogID . ");";
     $result = $conn->query($query);
 
     $query = "SELECT LAST_INSERT_ID() as ID";
@@ -21,6 +21,8 @@ function addProduct($name, $description, $price, $catalogID, $imagePath, $specs)
         $query = $query . implode(",", $values);
         $result = $conn->query($query);
     }
+
+    return $prodID;
 }
 
 
@@ -45,6 +47,14 @@ function modifyProduct($id, $name, $description, $price, $catalogID, $specs)
         $query = $query . implode(",", $values);
         $result = $conn->query($query);
     }
+}
+
+function changeProductImage($id, $imagePath) {
+    global $conn, $error;
+    $error = NULL;
+    $query = "UPDATE produit SET image='" . $imagePath . "' WHERE id=" . $id;
+
+    $result = $conn->query($query);
 }
 
 function getProducts()

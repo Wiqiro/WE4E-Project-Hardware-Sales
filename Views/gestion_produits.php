@@ -16,7 +16,7 @@ require("../Controllers/image_uploader.php");
 require("carte_gestion_produit.php");
 
 
-if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
+if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"])) {
     $specs = NULL;
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
         for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
@@ -24,13 +24,11 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
             $specs[$i]["value"] = $_POST["specs-vals"][$i];
         }
     }
-    $imagePath = "./";
-    if (isBufferFileAdequate()) {
-        $imagePath = saveImage("product_images", $userInfo["id"]);
-    }
-    addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["catalog"], $imagePath, $specs);
+
+    $prodID = addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["catalog"], $specs);
 } elseif (isset($_POST["modify"]) && isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
     $specs = NULL;
+    $prodID = $_POST["id"];
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
         for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
             $specs[$i]["name"] = $_POST["specs-names"][$i];
@@ -45,6 +43,14 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
 } else if (isset($_POST["modify-form"]) && isset($_POST["id"])) {
     $modifProduct = getProductFromId($_POST["id"]);
     $modifProductSpecs = getProductSpecifications($_POST["id"]);
+}
+
+if (isset($prodID) && isset($_FILES["image"])) {
+    $imagePath = "./";
+    if (isBufferFileAdequate()) {
+        $imagePath = saveImage("product_images", $userInfo["id"]);
+    }
+    changeProductImage($prodID, $imagePath);
 }
 
 $catalogList = getCatalogList();
@@ -109,8 +115,8 @@ $productList = getProducts();
                                             </div>
                                             <?php if (isset($modifProduct)) {
                                                 echo '<input type="hidden" name="id" value="' . $modifProduct["id"] . '">';
-                                            }?>
-                                            
+                                            } ?>
+
                                             <button class="generalBtn" type="button" onclick="addSpecInput('', '')">Ajouter une caractéristique</button>
                                             <br><br>
                                             <?php if (isset($modifProduct)) { ?>
