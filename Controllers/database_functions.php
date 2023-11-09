@@ -142,15 +142,3 @@ function getCatalogSize($catalogID)
 }
 
 
-function getCommandProducts($commandID)
-{
-    global $conn, $error;
-    $error = NULL;
-    $query = "SELECT P.id, P.nom, C.quantite FROM contenu_commande AS C INNER JOIN produit AS P ON C.id_produit = P.id WHERE C.id_commande = " . $commandID;
-    $result = $conn->query($query);
-
-    if (!$result || $result->num_rows == 0) {
-        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
-    }
-    return $result->fetch_all(MYSQLI_ASSOC);
-}

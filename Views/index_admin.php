@@ -16,11 +16,7 @@ if (isset($_POST["delete-command"]) && isset($_POST["command-id"])) {
 }
 
 $commands = array_slice(getCommands(1), 0, 5);
-
 $commandCount = count($commands);
-
-$dayMoney = 1000;
-$monthMoney = 2000;
 ?>
 
 <!doctype html>
@@ -72,7 +68,7 @@ $monthMoney = 2000;
                         showCommandCard($command, true);
                       }
                       ?>
-                      <a href="inventaire_commandes.php"><button class="generalBtn center">Voir toutes les commandes</button></a>
+                      <a href="inventaire_commandes.php?page=1"><button class="generalBtn center">Voir toutes les commandes</button></a>
                     </div>
                   </div>
                 </div>

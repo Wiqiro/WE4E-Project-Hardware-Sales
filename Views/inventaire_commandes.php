@@ -2,21 +2,24 @@
 global $loginSuccessful, $loginAttempted, $userInfo;
 include("../Controllers/initialize.php");
 
-if ($loginAttempted) {
-    if ($loginSuccessful && !$userInfo["admin"]) {
+if ($loginAttempted && isset($_GET["page"])) {
+    if (!$loginSuccessful || !$userInfo["admin"]) {
         header("Location: index.php");
     }
 } else {
     header("Location: index_admin.php");
 }
-
 include("../Controllers/commandes.php");
 if (isset($_POST["delete-command"]) && isset($_POST["command-id"])) {
     deleteCommand($_POST["command-id"]);
 }
 
 require("carte_commande.php");
-$commands = getCommands(1);
+
+$page = $_GET["page"];
+$pageCount = (int)(getCommandCount() / 10) + 1;
+
+$commands = getCommands($page);
 $commandCount = count($commands);
 $revenue = monthRevenue();
 ?>
@@ -76,6 +79,22 @@ $revenue = monthRevenue();
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row align">
+            <?php
+            for ($i = $page - 3; $i <= $page + 3; $i++) {
+                if ($i > 0 && $i <= $pageCount && $i != $page) {
+                    echo '<a class="pageBtn" href="inventaire_commandes.php?page=' . $i . '">' . $i . '</a>';
+                }
+            }
+            ?>
+            <?php
+            if ($page < $pageCount) {
+                echo '<div class="pageBtn">...</div>
+                    <a class="pageBtn" href="inventaire_commandes.php?page=' . $page + 1 . '">Next</a>
+                    <a class="pageBtn" href="inventaire_commandes.php?page=' . $pageCount . '">Last</a>';
+            }
+            ?>
         </div>
     </section>
 
