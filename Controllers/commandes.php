@@ -54,11 +54,13 @@ function getCommand($id)
     return $result->fetch_assoc();
 }
 
-function getCommands()
+function getCommands($page)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT C.id, C.date, C.prix_total, U.nom, U.prenom FROM commande AS C INNER JOIN utilisateur AS U ON C.id_utilisateur = U.id ORDER BY date DESC, id DESC";
+
+    $offset = ($page - 1) * 10;
+    $query = "SELECT C.id, C.date, C.prix_total, U.nom, U.prenom FROM commande AS C INNER JOIN utilisateur AS U ON C.id_utilisateur = U.id ORDER BY date DESC, id DESC LIMIT 10 OFFSET " . $offset;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -77,4 +79,30 @@ function deleteCommand($id)
     if (!$result) {
         $error = "Erreur lors de suppression de la commande, veuillez rééssayer";
     }
+}
+
+function monthRevenue()
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT SUM(prix_total) sum FROM commande WHERE YEAR(date) = YEAR(CURDATE()) AND MONTH(date) = MONTH(CURDATE())";
+    $result = $conn->query($query);
+
+    if (!$result) {
+        $error = "Erreur lors de suppression de la commande, veuillez rééssayer";
+    }
+    return $result->fetch_assoc()["sum"];
+}
+
+function dayRevenue()
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT SUM(prix_total) sum FROM commande WHERE YEAR(date) = YEAR(CURDATE()) AND MONTH(date) = MONTH(CURDATE()) AND DAY(date) = DAY(CURDATE())";
+    $result = $conn->query($query);
+
+    if (!$result) {
+        $error = "Erreur lors de suppression de la commande, veuillez rééssayer";
+    }
+    return $result->fetch_assoc()["sum"];
 }

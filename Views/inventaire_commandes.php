@@ -16,11 +16,9 @@ if (isset($_POST["delete-command"]) && isset($_POST["command-id"])) {
 }
 
 require("carte_commande.php");
-$commands = getCommands();
-
+$commands = getCommands(1);
 $commandCount = count($commands);
-
-$salesRevenue = 15000;
+$revenue = monthRevenue();
 ?>
 
 
@@ -64,7 +62,7 @@ $salesRevenue = 15000;
                                             commande </p>
                                         <?php } ?>
                                         </div>
-                                        <p>Le chiffre d'affaire total du mois est de <?php echo $salesRevenue; ?>$</p>
+                                        <p>Le chiffre d'affaire total du mois est de <?php echo $revenue ?>€</p>
                                     </div>
 
                                     <?php

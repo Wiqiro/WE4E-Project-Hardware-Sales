@@ -5,7 +5,6 @@ function addProduct($name, $description, $price, $catalogID, $imagePath, $specs)
     global $conn, $error;
     $error = NULL;
     $query = "INSERT INTO produit(nom, description, prix, id_catalogue, image) VALUES ('" . $name . "','" . $description . "'," . $price . "," . $catalogID . ", '" . $imagePath . "');";
-    echo $query;
     $result = $conn->query($query);
 
     $query = "SELECT LAST_INSERT_ID() as ID";

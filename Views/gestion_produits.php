@@ -63,10 +63,10 @@ $productList = getProducts();
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <a href="index_admin.php"><button class="generalBtn">Retour</button></a>
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
+                            <a class="mb-3" href="index_admin.php"><button class="generalBtn">Retour</button></a>
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">

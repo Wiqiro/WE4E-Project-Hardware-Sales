@@ -15,7 +15,7 @@ if (isset($_POST["delete-command"]) && isset($_POST["command-id"])) {
   deleteCommand($_POST["command-id"]);
 }
 
-$commands = getCommands();
+$commands = array_slice(getCommands(1), 0, 5);
 
 $commandCount = count($commands);
 
@@ -54,18 +54,19 @@ $monthMoney = 2000;
                 <div class="col-lg-12 center">
                   <div class="row">
                     <div class="col-lg-6">
-                      <a class="btn-index-site" href="index.php"><button class="generalBtn">Acceuil du site</button></a>
+                      <a class="btn-index-site" href="index.php"><button class="generalBtn">Accueil du site</button></a>
                       <br><br>
-                      <h5>Stats de la journée</h5>
-                      <p><?php echo $dayMoney; ?>$</p>
-                      <h5>Stats du mois</h5>
-                      <p><?php echo $monthMoney; ?>$</p>
+                      <h5>Chiffre de la journée</h5>
+                      <p><?php echo dayRevenue() ?>$</p>
+                      <h5>Chiffre du mois</h5>
+                      <p><?php echo monthRevenue() ?>$</p>
                       <a href="gestion_catalogue.php"><button class="generalBtn">Gestion du catalogue</button></a>
                       <br>
                       <br>
                       <a href="gestion_produits.php"><button class="generalBtn">Gestion des produits</button></a>
                     </div>
                     <div class="col-lg-6">
+                      <p class="h3 mb-4">Dernières commandes</p>
                       <?php
                       foreach ($commands as $command) {
                         showCommandCard($command, true);
@@ -87,8 +88,8 @@ $monthMoney = 2000;
     }
   ?>
     <div class="centerBtn">
-      <p>Vous êtes ici sur la page administrateur de ce site web. Celle-ci n'est accessible qu'au membre administrateur. Veuillez retourner sur la page d'acceuil en cliquant sur le lien ci-dessous :</p>
-      <a href="index.php"><button class="generalBtn">Acceuil du site</button></a>
+      <p>Vous êtes ici sur la page administrateur de ce site web. Celle-ci n'est accessible qu'au membre administrateur. Veuillez retourner sur la page d'accueil en cliquant sur le lien ci-dessous :</p>
+      <a href="index.php"><button class="generalBtn">Accueil du site</button></a>
     </div>
 
     <div class="container">
