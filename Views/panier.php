@@ -9,9 +9,8 @@ if (isset($_POST["remove-cart-item"])) {
   header("Refresh:0");
 } else {
   require("../Controllers/initialize.php");
+  require("../Controllers/produits.php");
   include("item_panier.php");
-
-
 
   $products = getProductsFromCart(getCart());
 

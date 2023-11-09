@@ -17,6 +17,8 @@ if (!isset($_GET["id"])) {
 	$id = $_GET["id"];
 
 	include("../Controllers/initialize.php");
+	require("../Controllers/produits.php");
+
 	include("carte_produit.php");
 	$product = getProductFromId($id);
 	$specs = getProductSpecifications($id);

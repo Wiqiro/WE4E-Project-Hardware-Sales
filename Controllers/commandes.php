@@ -25,13 +25,14 @@ function command($userID, $products)
     }
     $query = $query . implode(",", $values);
     $result = $conn->query($query);
+    return $commandID;
 }
 
 function getUserCommands($userID)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT id, date, prix_total FROM commande WHERE id_utilisateur = " . $userID;
+    $query = "SELECT id, date, prix_total FROM commande WHERE id_utilisateur = " . $userID . " ORDER BY date DESC, id DESC";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -40,11 +41,24 @@ function getUserCommands($userID)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function getCommand($id)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT id, date, prix_total FROM commande WHERE id = " . $id . " ORDER BY date DESC, id DESC";
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des commandes, veuillez rééssayer";
+    }
+    return $result->fetch_assoc();
+}
+
 function getCommands()
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT C.id, C.date, C.prix_total, U.nom, U.prenom FROM commande AS C INNER JOIN utilisateur AS U ON C.id_utilisateur = U.id";
+    $query = "SELECT C.id, C.date, C.prix_total, U.nom, U.prenom FROM commande AS C INNER JOIN utilisateur AS U ON C.id_utilisateur = U.id ORDER BY date DESC, id DESC";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {

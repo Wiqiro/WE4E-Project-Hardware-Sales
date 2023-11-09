@@ -2,13 +2,16 @@
 global $loginSuccessful, $userInfo, $error;
 
 require("../Controllers/initialize.php");
+require("../Controllers/produits.php");
 include("../Controllers/commandes.php");
+require("carte_commande.php");
 
 $successful = false;
 
 $products = getProductsFromCart(getCart());
 if (count($products) != 0) {
-    command($userInfo["id"], $products);
+    $commandID = command($userInfo["id"], $products);
+    $command = getCommand($commandID);
     $successful = true;
 } else {
     $error = "Votre panier est vide";
@@ -31,8 +34,17 @@ emptyCart();
 <body>
     <?php require('nav_bar.php'); ?>
     <h1 style="margin-top: 5em;">Félicitation, votre commande a bien été enregistrée ! Merci pour votre confiance !</h1>
-    <?php showCommandCard(null, true); 
-    ?>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+
+                                <?php showCommandCard($command, false);
+                                ?>
+
+            </div>
+        </div>
+    </div>
+
     <div class="centerBtn">
         <a href="commandes_precedentes.php"><button class="btn btn-primary btn-xl text-uppercase center">Mes commandes</button></a>
     </div>

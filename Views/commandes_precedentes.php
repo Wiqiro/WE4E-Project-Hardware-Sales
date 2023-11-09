@@ -32,10 +32,8 @@ $isAdmin = false;
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">
-
           <div class="card">
             <div class="card-body p-4">
-
               <div class="row">
                 <div class="col-lg-12">
                   <h5 class="mb-3">

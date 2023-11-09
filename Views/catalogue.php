@@ -1,5 +1,6 @@
 <?php
 include "../Controllers/initialize.php";
+require("../Controllers/produits.php");
 include "carte_produit.php";
 
 

@@ -2,6 +2,8 @@
 global $loginSuccessful, $loginAttempted, $userInfo;
 
 require("../Controllers/initialize.php");
+require("../Controllers/produits.php");
+
 if ($loginAttempted) {
     if ($loginSuccessful && !$userInfo["admin"]) {
         header("Location: index.php");
