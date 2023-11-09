@@ -99,7 +99,12 @@ $productList = getProducts();
                                             <select name="catalog">
                                                 <?php
                                                 foreach ($catalogList as $catalog) {
-                                                    echo "<option value=" . $catalog["id"] . ">" . $catalog["nom"] . "</option>";
+                                                    if ($catalog["id"]==$modifProduct["catalogueID"]) {
+                                                        echo '<option selected="selected"';
+                                                    } else {
+                                                        echo '<option';
+                                                    }
+                                                    echo " value=" . $catalog["id"] . ">" . $catalog["nom"] . "</option>";
                                                 }
                                                 ?>
                                             </select><br><br>

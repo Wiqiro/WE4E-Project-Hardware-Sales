@@ -132,7 +132,7 @@ function getCatalogSize($catalogID)
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT COUNT(*) as taille FROM produit  WHERE id_catalogue = " . $catalogID;
+    $query = "SELECT COUNT(*) as taille FROM produit WHERE id_catalogue = " . $catalogID;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
