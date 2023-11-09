@@ -32,7 +32,7 @@ function showCommandCard($command, $isAdmin)
                     </div>
                     <div>
                         <?php if ($isAdmin) { ?>
-                            <form action="" method="post">
+                            <form action="" method="post" onsubmit="return confirmDeleteCommand()">
                                 <input type="hidden" name="command-id" value="<?php echo $command["id"] ?>">
                                 <button type="submit" name="delete-command" class="generalBtn">Supprimer</button>
                             </form>

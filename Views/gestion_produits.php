@@ -178,6 +178,7 @@ $productList = getProducts($page);
     <?php require("footer.php"); ?>
     <script src="js/specs_dynamic_form.js"></script>
     <script src="js/products_scripts.js"></script>
+    <script src="js/confirmations.js"></script>
     <?php if (isset($modifProductSpecs)) { ?>
         <script>
             <?php foreach ($modifProductSpecs as $spec) { ?>

@@ -13,13 +13,13 @@ function showCatalogManagementCard($catalog)
                         <div>
                             <img src="../Style/assets/catalog.jpg" class="img-fluid rounded-3" alt="image commande" style="width: 65px;">
                         </div>
-                        <form class="catalog-form" action="" , method="POST">
+                        <form class="catalog-form" action="" method="POST" onsubmit="return confirmDeleteCatalog(event)">
                             <div class="ms-3">
                                 <a class="link-style catalog-name" href="catalogue.php">
-                                    <h5><?php echo $catalog["nom"] ?></h5>
+                                    <h5 class="text-start"><?php echo $catalog["nom"] ?></h5>
                                 </a>
                                 <input class="rename-input hidden" name="new-name" type="text" value="<?php echo $catalog["nom"] ?>">
-                                <p class="medium mb-3">
+                                <p class="smaller mb-3">
                                     <?php
                                     if ($catalog["nb_produits"] == 0) {
                                         echo "Le catalogue ne contient pas de produit";
@@ -30,7 +30,6 @@ function showCatalogManagementCard($catalog)
                                     }
                                     ?>
                                 </p>
-
                             </div>
                     </div>
                     <div class="d-flex flex-row align-items-center">

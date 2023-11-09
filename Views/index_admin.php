@@ -111,8 +111,9 @@ $commandCount = count($commands);
       </div>
     </div>
   <?php } ?>
-
   <?php require("footer.php"); ?>
+  <script src="js/confirmations.js"></script>
+
 </body>
 
 </html>

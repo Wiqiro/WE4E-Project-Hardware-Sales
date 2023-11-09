@@ -9,19 +9,19 @@ function showProductManagementCard($product)
     <body>
         <div class="card mb-3">
             <div class="card-body">
-                <form class="product-form" action="" , method="POST">
+                <form class="product-form" action="" method="POST" onsubmit="return confirmDeleteProduct(event)">
                     <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
+                        <div class="d-flex flex-row align-items-center text-start">
                             <div>
                                 <img src="../Style/assets/catalog.jpg" class="img-fluid rounded-3" alt="image commande" style="width: 65px;">
                             </div>
                             <div class="ms-3">
                                 <a class="link-style product-name" href="produit.php?id=<?php echo $product["id"] ?>">
-                                    <h5><?php echo $product["nom"] ?></h5>
+                                    <h5 class="mb-3"><?php echo $product["nom"] ?></h5>
                                 </a>
                                 <input class="rename-input hidden" name="new-name" type="text" value="<?php echo $product["nom"] ?>">
-                                <p class="medium mb-3">Identifiant: <?php echo $product["id"] ?></p>
-                                <p class="medium mb-3">Catalogue: <?php echo $product["catalogue"] ?></p>
+                                <p class="smaller mb-1">Identifiant: <?php echo $product["id"] ?></p>
+                                <p class="smaller mb-1">Catalogue: <?php echo $product["catalogue"] ?></p>
 
                             </div>
                         </div>
