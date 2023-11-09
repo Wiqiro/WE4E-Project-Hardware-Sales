@@ -57,11 +57,12 @@ function changeProductImage($id, $imagePath) {
     $result = $conn->query($query);
 }
 
-function getProducts()
+function getProducts($page)
 {
+    $offset = ($page - 1) * 10;
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.prix, C.nom as catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id ORDER BY nom ASC";
+    $query = "SELECT P.id, P.nom, P.description, P.prix, C.nom as catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id ORDER BY nom ASC LIMIT 10 OFFSET " . $offset;
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
@@ -201,4 +202,16 @@ function removeProduct($id)
     if (!$result) {
         $error = "Erreur lors de la suppression du catalogue " . $id . ", veuillez rééssayer";
     }
+}
+
+function getProductsCount() {
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT COUNT(*) as taille FROM produit";
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    }
+    return $result->fetch_assoc()["taille"];
 }

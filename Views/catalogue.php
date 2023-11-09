@@ -22,7 +22,8 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
 
 
   $products = getCatalogProducts($id, $page, $order);
-  $pageCount = (int)(getCatalogSize($id) / 10) + 1;
+  $pCount = getCatalogSize($id);
+  $pageCount = $pCount % 10 === 0 ? floor($pCount / 10) : ceil($pCount / 10);
   $catalogName = $products[0]["catalogue"];
 }
 ?>

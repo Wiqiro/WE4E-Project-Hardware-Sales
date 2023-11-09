@@ -1,8 +1,17 @@
 <?php
 global $loginSuccessful, $loginAttempted, $userInfo;
 
+if (!isset($_GET["page"])) {
+    header("Location: gestion_produits.php?page=1");
+}
+$page = $_GET["page"];
+
 require("../Controllers/initialize.php");
 require("../Controllers/produits.php");
+$pCount = getProductsCount();
+$pageCount = $pCount % 10 == 0 ? floor($pCount / 10) : ceil($pCount / 10);
+
+
 
 if ($loginAttempted) {
     if ($loginSuccessful && !$userInfo["admin"]) {
@@ -54,7 +63,7 @@ if (isset($prodID) && isset($_FILES["image"])) {
 }
 
 $catalogList = getCatalogList();
-$productList = getProducts();
+$productList = getProducts($page);
 ?>
 
 <!doctype html>
@@ -66,6 +75,8 @@ $productList = getProducts();
     <title>Page Gérant</title>
     <link rel="icon" type="image/x-icon" href="../Style/assets/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link href="../Style/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="../Style/style_index_admin.css" />
 </head>
 
@@ -95,6 +106,7 @@ $productList = getProducts();
                                         <?php foreach ($productList as $product) {
                                             showProductManagementCard($product);
                                         } ?>
+
                                     </div>
                                     <div class="col-lg-6">
                                         <form id="product-form" enctype="multipart/form-data" action="" method="POST" style="display: none">
@@ -145,6 +157,22 @@ $productList = getProducts();
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row align">
+        <?php
+        for ($i = $page - 3; $i <= $page + 3; $i++) {
+            if ($i > 0 && $i <= $pageCount && $i != $page) {
+                echo '<a class="pageBtn" href="gestion_produits.php?page=' . $i . '">' . $i . '</a>';
+            }
+        }
+        ?>
+        <?php
+        if ($page < $pageCount) {
+            echo '<div class="pageBtn">...</div>
+                <a class="pageBtn" href="gestion_produits.php?page=' . $page + 1 . '">Next</a>
+                <a class="pageBtn" href="gestion_produits.php?page=' . $pageCount . '">Last</a>';
+        }
+        ?>
     </div>
 
     <?php require("footer.php"); ?>
