@@ -12,7 +12,7 @@ if ($loginAttempted == true && $loginSuccessful == false) {
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="index.php">LD<span class="color-red">LD</span></a>
+        <a class="navbar-brand" href="index.php"><span>LD</span><span class="color-red">LD</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ms-1"></i>

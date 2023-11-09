@@ -4325,6 +4325,7 @@ fieldset:disabled .btn {
   color: var(--bs-navbar-brand-color);
   text-decoration: none;
   white-space: nowrap;
+  font-weight: 900;
 }
 
 .navbar-brand:hover,

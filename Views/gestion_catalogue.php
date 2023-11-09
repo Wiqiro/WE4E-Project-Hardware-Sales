@@ -36,6 +36,7 @@ $catalogList = getCatalogList();
 </head>
 
 <body>
+
     <h1>Gestion de catalogue</h1>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -43,13 +44,18 @@ $catalogList = getCatalogList();
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
-                        <h5 class="mb-3">
-                                        <a href="index_admin.php" class="text-body">
-                                            <i class="fas fa-long-arrow-alt-left me-2"></i>
-                                            Retour
-                                        </a>
-                                    </h5>
-                                    <hr>
+                            <div class="col-10">
+                                <h5 class="mb-3">
+                                    <a href="index_admin.php" class="text-body">
+                                        <i class="fas fa-long-arrow-alt-left me-2"></i>
+                                        Retour
+                                    </a>
+                                </h5>
+                            </div>
+                            <div class="col-2">
+                                <button id="show-form-button" class="generalBtn" type="button" onclick="showForm()">Ajouter un catalogue</button>
+                            </div>
+                            <hr>
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -60,11 +66,9 @@ $catalogList = getCatalogList();
                                         ?>
                                     </div>
                                     <div class="col-lg-6">
-                                        <form action="" , method="POST">
+                                        <form id="catalog-form" action="" , method="POST" style="display: none">
                                             <label class="label-design" for="name">Nom du catalogue</label>
                                             <input class="catalog-name" name="name" type="text" placeholder="Nom du catalogue">
-                                            <br>
-                                            <br>
                                             <br><br>
                                             <input type="submit" value="Ajouter le catalogue" name="add" />
                                         </form>

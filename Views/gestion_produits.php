@@ -77,12 +77,17 @@ $productList = getProducts();
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
-                            <h5 class="mb-3">
-                                <a href="index_admin.php" class="text-body">
-                                    <i class="fas fa-long-arrow-alt-left me-2"></i>
-                                    Retour
-                                </a>
-                            </h5>
+                            <div class="col-10">
+                                <h5 class="mb-3">
+                                    <a href="index_admin.php" class="text-body">
+                                        <i class="fas fa-long-arrow-alt-left me-2"></i>
+                                        Retour
+                                    </a>
+                                </h5>
+                            </div>
+                            <div class="col-2">
+                                <button id="show-form-button" class="generalBtn" type="button" onclick="showForm()">Ajouter un produit</button>
+                            </div>
                             <hr>
                             <div class="col-lg-12 center">
                                 <div class="row">
@@ -92,14 +97,14 @@ $productList = getProducts();
                                         } ?>
                                     </div>
                                     <div class="col-lg-6">
-                                        <form enctype="multipart/form-data" action="" method="POST">
+                                        <form id="product-form" enctype="multipart/form-data" action="" method="POST" style="display: none">
                                             <label class="label-design" for="name">Nom du produit</label>
                                             <input class="catalog-name product-style" name="name" type="text" placeholder="Nom du produit" value="<?php if (isset($modifProduct)) echo $modifProduct["nom"] ?>"><br><br>
                                             <label class="label-design" for="catalog">Catalogue du produit</label>
                                             <select name="catalog">
                                                 <?php
                                                 foreach ($catalogList as $catalog) {
-                                                    if ($catalog["id"]==$modifProduct["catalogueID"]) {
+                                                    if ($catalog["id"] == $modifProduct["catalogueID"]) {
                                                         echo '<option selected="selected"';
                                                     } else {
                                                         echo '<option';
@@ -145,14 +150,17 @@ $productList = getProducts();
     <?php require("footer.php"); ?>
     <script src="js/specs_dynamic_form.js"></script>
     <script src="js/products_scripts.js"></script>
-    <?php if (isset($modifProductSpecs)) {
-    ?>
+    <?php if (isset($modifProductSpecs)) { ?>
         <script>
             <?php foreach ($modifProductSpecs as $spec) { ?>
                 addSpecInput("<?php echo $spec["nom"] ?>", "<?php echo $spec["valeur"] ?>");
             <?php } ?>
         </script>
-    <?php } ?>
+    <?php
+    }
+    if (isset($modifProduct)) {
+        echo '<script>showForm();</script>';
+    } ?>
 
 </body>
 

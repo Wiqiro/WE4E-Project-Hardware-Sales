@@ -1,3 +1,4 @@
+
 function showRenameInput(button) {
   let form = button.closest(".card-body").querySelector(".catalog-form");
   let name = form.querySelector(".catalog-name");
@@ -10,4 +11,9 @@ function showRenameInput(button) {
     name.style.display = "none";
     input.style.display = "block";
   }
+}
+
+function showForm() {
+  document.getElementById("catalog-form").style.display = "block";
+  document.getElementById("show-form-button").style.display = "none";
 }
