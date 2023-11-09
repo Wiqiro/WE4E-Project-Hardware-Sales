@@ -43,7 +43,13 @@ $catalogList = getCatalogList();
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
-                            <a class="mb-3" href="index_admin.php"><button class="generalBtn">Retour</button></a>
+                        <h5 class="mb-3">
+                                        <a href="index_admin.php" class="text-body">
+                                            <i class="fas fa-long-arrow-alt-left me-2"></i>
+                                            Retour
+                                        </a>
+                                    </h5>
+                                    <hr>
                             <div class="col-lg-12 center">
                                 <div class="row">
                                     <div class="col-lg-6">

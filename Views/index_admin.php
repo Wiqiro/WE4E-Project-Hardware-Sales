@@ -38,7 +38,7 @@ $commandCount = count($commands);
   <?php require("nav_bar.php"); ?>
   <div class="mgTop">
     <h1 class="h1">Bienvenue sur la page administrateur</h1>
-</div>
+  </div>
   <?php if ($loginSuccessful) { ?>
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -50,7 +50,13 @@ $commandCount = count($commands);
                 <div class="col-lg-12 center">
                   <div class="row">
                     <div class="col-lg-6">
-                      <a class="btn-index-site" href="index.php"><button class="generalBtn">Accueil du site</button></a>
+                      <h5 class="mb-3">
+                        <a href="index.php" class="text-body">
+                          <i class="fas fa-long-arrow-alt-left me-2"></i>
+                          Accueil du site
+                        </a>
+                      </h5>
+                      <hr>
                       <br><br>
                       <h5>Chiffre de la journée</h5>
                       <p><?php echo dayRevenue() ?>$</p>
@@ -62,7 +68,8 @@ $commandCount = count($commands);
                       <a href="gestion_produits.php"><button class="generalBtn">Gestion des produits</button></a>
                     </div>
                     <div class="col-lg-6">
-                      <p class="h3 mb-4">Dernières commandes</p>
+                      <p class="h5 ">Dernières commandes</p>
+                      <hr>
                       <?php
                       foreach ($commands as $command) {
                         showCommandCard($command, true);
