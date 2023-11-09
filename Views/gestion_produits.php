@@ -15,10 +15,6 @@ if ($loginAttempted) {
 require("../Controllers/image_uploader.php");
 require("carte_gestion_produit.php");
 
-$dayMoney = 1000;
-$monthMoney = 2000;
-
-
 
 if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
     $specs = NULL;
@@ -33,6 +29,15 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
         $imagePath = saveImage("product_images", $userInfo["id"]);
     }
     addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["catalog"], $imagePath, $specs);
+} elseif (isset($_POST["modify"]) && isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
+    $specs = NULL;
+    if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
+        for ($i = 0; $i < count($_POST["specs-names"]); $i++) {
+            $specs[$i]["name"] = $_POST["specs-names"][$i];
+            $specs[$i]["value"] = $_POST["specs-vals"][$i];
+        }
+    }
+    modifyProduct($_POST["id"], $_POST["name"], $_POST["description"], $_POST["price"], $_POST["catalog"], $specs);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
     removeProduct($_POST["id"]);
 } elseif (isset($_POST["rename"]) && isset($_POST["id"]) && isset($_POST["new-name"])) {
@@ -102,6 +107,10 @@ $productList = getProducts();
                                             <div id="specs-inputs">
 
                                             </div>
+                                            <?php if (isset($modifProduct)) {
+                                                echo '<input type="hidden" name="id" value="' . $modifProduct["id"] . '">';
+                                            }?>
+                                            
                                             <button class="generalBtn" type="button" onclick="addSpecInput('', '')">Ajouter une caractéristique</button>
                                             <br><br>
                                             <?php if (isset($modifProduct)) { ?>

@@ -23,11 +23,35 @@ function addProduct($name, $description, $price, $catalogID, $imagePath, $specs)
     }
 }
 
+
+function modifyProduct($id, $name, $description, $price, $catalogID, $specs)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "UPDATE produit SET nom='" . $name . "', description='" . $description . "', prix=" . $price . ", id_catalogue=" . $catalogID . " WHERE id=" . $id;
+
+    $result = $conn->query($query);
+
+    $query = "DELETE FROM specification WHERE id_produit=" . $id;
+    $result = $conn->query($query);
+
+    if ($specs) {
+        $query = "INSERT INTO specification(id_produit, nom, valeur) VALUES ";
+
+        $values = [];
+        foreach ($specs as $spec) {
+            $values[] = "(" . $id . ",'" . $spec["name"] . "','" . $spec["value"] . "')";
+        }
+        $query = $query . implode(",", $values);
+        $result = $conn->query($query);
+    }
+}
+
 function getProducts()
 {
     global $conn, $error;
     $error = NULL;
-    $query = "SELECT P.id, P.nom, P.description, P.prix, C.nom as catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id";
+    $query = "SELECT P.id, P.nom, P.description, P.prix, C.nom as catalogue FROM produit AS P INNER JOIN catalogue AS C ON P.id_catalogue = C.id ORDER BY nom ASC";
     $result = $conn->query($query);
 
     if (!$result || $result->num_rows == 0) {
