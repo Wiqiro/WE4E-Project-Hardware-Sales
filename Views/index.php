@@ -2,11 +2,14 @@
 global $loginSuccessful, $userInfo, $loginAttempted;
 
 
-include("../Controllers/initialize.php");
+require("../Controllers/initialize.php");
 require("../Controllers/produits.php");
+require("../Controllers/commandes.php");
 include("carte_produit.php");
+require("carte_commande.php");
 
 $randomProds = getRandomProducts(8);
+$lastCommand = getUserLastCommand($userInfo["id"]);
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +51,17 @@ $randomProds = getRandomProducts(8);
             <a class="btn btn-primary btn-xl text-uppercase" href="catalogue.php">C'est parti !</a>
         </div>
     </header>
+    <?php if ($loginSuccessful && $lastCommand != null) { ?>
+        <h3 class="mt-5 mb-4 text-center">Votre dernière commande</h3>
+        <div class="container h-100">
+            <div class="col">
+                <?php showCommandCard($lastCommand, false); ?>
+            </div>
+        </div>
+        <div class="center">
+            <a href="commandes_precedentes.php"><button class="btn btn-primary btn-xl text-uppercase">Commandes</button></a>
+        </div>
+    <?php } ?>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -61,7 +75,6 @@ $randomProds = getRandomProducts(8);
                 <a href="catalogue.php"><button class="btn btn-primary btn-xl text-uppercase">Voir plus</button></a>
             </div>
         </div>
-
     </section>
 
     <!-- Footer-->

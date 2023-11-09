@@ -55,6 +55,19 @@ function getUserCommands($userID)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function getUserLastCommand($userID)
+{
+    global $conn, $error;
+    $error = NULL;
+    $query = "SELECT id, date, prix_total FROM commande WHERE id_utilisateur = " . $userID . " ORDER BY date DESC, id DESC LIMIT 1";
+    $result = $conn->query($query);
+
+    if (!$result || $result->num_rows == 0) {
+        $error = "Erreur lors de la récupération de la commande, veuillez rééssayer";
+    }
+    return $result->fetch_assoc();
+}
+
 function getCommand($id)
 {
     global $conn, $error;
