@@ -86,7 +86,7 @@ if (!isset($_GET["id"])) {
 								<span class="shadow-text">Pour commander, vous
 									devez être un utilisateur inscrit. Cliquez ce lien pour créer un compte et commencer vos
 									achats !</span>
-								<a href="compte.php">
+								<a href="popup_login.php">
 									<button class="btn btn-outline-dark flex-shrink-0" type="button">
 										Login
 									</button>
