@@ -24,7 +24,7 @@
                     <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" minlength="6" required />
                     <label for="password">Mot de passe</label>
                     <input class="form-styling" type="password" name="password" minlength="6" required/>
-                    <p class="error mb-3"><?php if (isset($error)) echo $error ?></p>
+                    <p class="error mb-3"><?php if (isset($loginError)) echo $loginError ?></p>
 
                     <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit" />
                     <button type="button" class="btn-animate-second" onclick="closePopup()">Fermer</button>

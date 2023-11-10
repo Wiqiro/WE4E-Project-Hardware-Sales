@@ -8,6 +8,7 @@ require("../Controllers/commandes.php");
 include("carte_produit.php");
 require("carte_commande.php");
 
+
 $randomProds = getRandomProducts(8);
 if ($loginSuccessful && $userInfo["id"]) {
     $lastCommand = getUserLastCommand($userInfo["id"]);

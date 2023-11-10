@@ -32,6 +32,7 @@ global $userInfo;
           <label for="email" class="margin">Email: <?php echo $userInfo["email"] ?></label>
           <label for="birthdate" class="margin">Date de naissance: <?php echo $userInfo["date_naissance"] ?></label>
           <label for="address" class="margin">Adresse: <?php echo $userInfo["adresse"] ?></label>
+          <p class="error mb-3"><?php if (isset($updateError)) echo $updateError ?></p>
           <?php if ($userInfo["admin"]) { ?>
             <a href="index_admin.php"><button class="btn-signup">Gestion du site</button></a>
           <?php } else { ?>

@@ -6,7 +6,6 @@ if ($loginAttempted && $loginSuccessful && !$userInfo["admin"]) {
   header("Location: index.php");
 }
 
-$loginError = $error;
 
 include("../Controllers/commandes.php");
 require("carte_commande.php");
@@ -17,6 +16,8 @@ if (isset($_POST["delete-command"]) && isset($_POST["command-id"])) {
 
 $commands = array_slice(getCommands(1), 0, 5);
 $commandCount = count($commands);
+
+$adminPage = true;
 ?>
 
 <!doctype html>
@@ -86,8 +87,8 @@ $commandCount = count($commands);
       </div>
     </div>
   <?php } else {
-    if ($loginAttempted) {
-      echo "<p class='color-red h5 center mb-5'>" . $loginError . "</p>";
+    if ($error) {
+      echo "<p class='color-red h5 center mb-5'>" . $error . "</p>";
     }
   ?>
     <div class="centerBtn">
@@ -100,12 +101,14 @@ $commandCount = count($commands);
         <div class="signin-active center mg-top"><a class="btn" onclick="newUser()">Connexion</a></div>
         <div ng-app ng-init="checked = false">
           <form class="form-signin" action="" method="post" name="form">
-            <label for="user">Nom administrateur / email</label>
-            <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" />
+            <label for="user">Nom d'utilisateur / email</label>
+            <input class="form-styling" type="text" name="user" placeholder="adresse@example.com" minlength="6" required />
             <label for="password">Mot de passe</label>
-            <input class="form-styling" type="password" name="password" />
-            <input type="checkbox" id="checkbox" />
+            <input class="form-styling" type="password" name="password" minlength="6" required />
+            <p class="error mb-3"><?php if (isset($loginError)) echo $loginError ?></p>
+
             <input type="submit" class="btn-animate-second" value="Se connecter" name="login-submit" />
+            <button type="button" class="btn-animate-second" onclick="closePopup()">Fermer</button>
           </form>
         </div>
       </div>

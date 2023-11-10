@@ -22,63 +22,71 @@ function disconnectDatabase()
 
 function getUserInfoFromLogin($usernameOrEmail, $password)
 {
-    global $conn, $error;
-    $error = NULL;
+    global $conn, $loginError;
+    $loginError = NULL;
 
 
     $query = "SELECT DISTINCT * FROM utilisateur 
     WHERE (pseudo = '" . $usernameOrEmail . "' OR email = '" . $usernameOrEmail . "')
     AND mot_de_passe = '" . $password . "'";
 
-    $result = $conn->query($query);
-    if (!$result || $result->num_rows == 0) {
-        $error = "Erreur lors de la connexion, veuillez rééssayer";
+    try {
+        $result = $conn->query($query);
+        if ($result->num_rows == 0) {
+            $loginError = "Erreur lors de la connexion, veuillez rééssayer";
+        } else {
+            return $result->fetch_assoc();
+        }
+    } catch (mysqli_sql_exception $e) {
+        $loginError = $e->getMessage();
     }
-    return $result->fetch_assoc();
 }
 
 function getUserInfoFromCookie($userID, $password)
 {
-    global $conn, $error;
-    $error = NULL;
+    global $conn, $loginError;
+    $loginError = NULL;
 
 
     $query = "SELECT * FROM utilisateur 
     WHERE (id = '" . $userID . "') AND mot_de_passe = '" . $password . "'";
 
-    $result = $conn->query($query);
-    if (!$result || $result->num_rows == 0) {
-        $error = "Erreur lors de la connexion, veuillez rééssayer";
+    try {
+        $result = $conn->query($query);
+        return $result->fetch_assoc();
+    } catch (mysqli_sql_exception $e) {
+        $loginError = $e->getMessage();
     }
-    return $result->fetch_assoc();
 }
 
 
 function registerUser($firstname, $lastname, $username, $email, $birthdate, $address, $password)
 {
-    global $conn, $error;
-    $error = NULL;
+    global $conn, $loginError;
+    $loginError = NULL;
 
     $query = "INSERT INTO utilisateur(nom, prenom, pseudo, email, date_naissance, adresse, mot_de_passe) 
     VALUES ('" . $lastname . "','" . $firstname . "','" . $username . "','" . $email . "','" . $birthdate . "','" . $address . "','" . $password . "')";
 
-    $result = $conn->query($query);
-    if (!$result) {
-        $error = "Erreur lors de l'inscription, veuillez rééssayer";
+    try {
+        $conn->query($query);
+    } catch (mysqli_sql_exception $e) {
+        $loginError = $e->getMessage();
     }
 }
 
 function updateUserInfo($userID, $firstname, $lastname, $username, $email, $birthdate, $address)
 {
-    global $conn, $error;
-    $error = NULL;
+    global $conn, $updateError;
+    $updateError = NULL;
 
     $query = "UPDATE utilisateur
     SET nom = '" . $lastname . "',prenom = '" . $firstname . "',pseudo = '" . $username . "',email = '" . $email . "', date_naissance = '" . $birthdate . "',adresse = '" . $address . "' WHERE id = '" . $userID . "'";
 
-    $result = $conn->query($query);
-    if (!$result) {
-        $error = "Erreur lors de la mise à jour du profil, veuillez rééssayer";
+    try {
+        $conn->query($query);
+    } catch (mysqli_sql_exception $e) {
+        $updateError = $e->getMessage();
     }
 }
 
@@ -87,9 +95,11 @@ function createCatalog($catalogName)
     global $conn, $error;
     $error = NULL;
     $query = "INSERT INTO catalogue(nom) VALUES ('" . $catalogName . "')";
-    $result = $conn->query($query);
-    if (!$result) {
-        $error = "Erreur lors de la création du catalogue, veuillez rééssayer";
+
+    try {
+        $conn->query($query);
+    } catch (mysqli_sql_exception $e) {
+        $error = $e->getMessage();
     }
 }
 
@@ -98,9 +108,11 @@ function removeCatalog($id)
     global $conn, $error;
     $error = NULL;
     $query = "DELETE FROM catalogue WHERE id = '" . $id . "'";
-    $result = $conn->query($query);
-    if (!$result) {
-        $error = "Erreur lors de la suppression du catalogue " . $id . ", veuillez rééssayer";
+
+    try {
+        $conn->query($query);
+    } catch (mysqli_sql_exception $e) {
+        $error = $e->getMessage();
     }
 }
 
@@ -109,9 +121,11 @@ function renameCatalog($id, $newName)
     global $conn, $error;
     $error = NULL;
     $query = "UPDATE catalogue SET nom='" . $newName . "' WHERE id = '" . $id . "'";
-    $result = $conn->query($query);
-    if (!$result) {
-        $error = "Erreur lors de la suppression du catalogue " . $id . ", veuillez rééssayer";
+
+    try {
+        $conn->query($query);
+    } catch (mysqli_sql_exception $e) {
+        $error = $e->getMessage();
     }
 }
 
@@ -120,12 +134,13 @@ function getCatalogList()
     global $conn, $error;
     $error = NULL;
     $query = "SELECT C.id AS id, C.nom AS nom, COUNT(P.id) AS nb_produits FROM catalogue AS C LEFT JOIN produit AS P ON C.id = P.id_catalogue GROUP BY C.id";
-    $result = $conn->query($query);
 
-    if (!$result || $result->num_rows == 0) {
-        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    try {
+        $result = $conn->query($query);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } catch (mysqli_sql_exception $e) {
+        $error = $e->getMessage();
     }
-    return $result->fetch_all(MYSQLI_ASSOC);
 }
 
 function getCatalogSize($catalogID)
@@ -133,12 +148,11 @@ function getCatalogSize($catalogID)
     global $conn, $error;
     $error = NULL;
     $query = "SELECT COUNT(*) as taille FROM produit WHERE id_catalogue = " . $catalogID;
-    $result = $conn->query($query);
 
-    if (!$result || $result->num_rows == 0) {
-        $error = "Erreur lors de la récupération de la liste des catalogues, veuillez rééssayer";
+    try {
+        $result = $conn->query($query);
+        return $result->fetch_assoc()["taille"];
+    } catch (mysqli_sql_exception $e) {
+        $error = $e->getMessage();
     }
-    return $result->fetch_assoc()["taille"];
 }
-
-

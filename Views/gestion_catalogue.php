@@ -11,13 +11,17 @@ if ($loginAttempted) {
 
 include("carte_gestion_catalogue.php");
 
-
+$error = null;
 if (isset($_POST["add"]) && isset($_POST["name"])) {
     createCatalog($_POST["name"]);
 } elseif (isset($_POST["remove"]) && isset($_POST["id"])) {
     removeCatalog($_POST["id"]);
 } elseif (isset($_POST["rename"]) && isset($_POST["id"]) && isset($_POST["new-name"])) {
     renameCatalog($_POST["id"], $_POST["new-name"]);
+}
+
+if ($error) {
+    $dbError = $error;
 }
 
 $catalogList = getCatalogList();
@@ -46,13 +50,19 @@ $catalogList = getCatalogList();
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
-                            <div class="col-10">
+                        <div class="col-2">
                                 <h5 class="mb-3">
                                     <a href="index_admin.php" class="text-body">
                                         <i class="fas fa-long-arrow-alt-left me-2"></i>
                                         Retour
                                     </a>
                                 </h5>
+                            </div>
+                            <div class="col-8">
+                                <?php if (isset($dbError)) {
+                                    echo "<p class='color-red h5 center mb-5'>" . $dbError . "</p>";
+                                }
+                                ?>
                             </div>
                             <div class="col-2">
                                 <button id="show-form-button" class="generalBtn" type="button" onclick="showForm()">Ajouter un catalogue</button>

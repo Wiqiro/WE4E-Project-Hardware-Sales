@@ -1,6 +1,7 @@
 <?php
 global $loginSuccessful, $loginAttempted, $userInfo;
 
+
 if (!isset($_GET["page"])) {
     header("Location: gestion_produits.php?page=1");
 }
@@ -54,7 +55,11 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
     $modifProductSpecs = getProductSpecifications($_POST["id"]);
 }
 
-if (isset($prodID) && isset($_FILES["image"])) {
+if ($error) {
+    $dbError = $error;
+}
+
+if (isset($prodID) && isset($_FILES["image"]) && $error != null) {
     $imagePath = "./";
     if (isBufferFileAdequate()) {
         $imagePath = saveImage("product_images", $userInfo["id"]);
@@ -88,13 +93,19 @@ $productList = getProducts($page);
                 <div class="card">
                     <div class="card-body p-4">
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-2">
                                 <h5 class="mb-3">
                                     <a href="index_admin.php" class="text-body">
                                         <i class="fas fa-long-arrow-alt-left me-2"></i>
                                         Retour
                                     </a>
                                 </h5>
+                            </div>
+                            <div class="col-8">
+                                <?php if (isset($dbError)) {
+                                    echo "<p class='color-red h5 center mb-5'>" . $dbError . "</p>";
+                                }
+                                ?>
                             </div>
                             <div class="col-2">
                                 <button id="show-form-button" class="generalBtn" type="button" onclick="showForm()">Ajouter un produit</button>

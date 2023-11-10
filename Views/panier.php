@@ -125,7 +125,7 @@ if (isset($_POST["remove-cart-item"])) {
                         </div>
 
                         <form action="confirmation_commande.php" method="post">
-                          <button class="btn btn-block btn-lg red">
+                          <button class="btn btn-block btn-lg red" <?php if (getCartItemCount() == 0) echo "disabled" ?>>
                             <?php echo $total ?>€ Valider <i class="fas fa-long-arrow-alt-right"></i>
                           </button>
                         </form>

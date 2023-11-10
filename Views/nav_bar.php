@@ -1,10 +1,16 @@
 <?php
 global $loginSuccessful, $loginAttempted, $userInfo;
 
-if ($loginAttempted == true && $loginSuccessful == false) {
+if ($loginAttempted == true && $loginSuccessful == false && !isset($adminPage)) {
     echo "<script>
     document.addEventListener('DOMContentLoaded', function() {
         openPopup();
+    });
+</script>";
+} else if (isset($updateError) && $updateError != "") {
+    echo "<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        openAccount();
     });
 </script>";
 }

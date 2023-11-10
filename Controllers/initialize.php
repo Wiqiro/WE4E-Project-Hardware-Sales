@@ -6,10 +6,10 @@ require("../Controllers/panier.php");
 
 connectDatabase();
 
-global $conn, $error, $userInfo, $loginSuccessful, $loginAttempted;
+global $conn, $loginError, $userInfo, $loginSuccessful, $loginAttempted;
 
 $loginAttempted = false;
-$error = NULL;
+$loginError = NULL;
 
 if (isset($_POST["disconnect"])) {
     destroyLoginCookie();
@@ -25,18 +25,18 @@ elseif (isset($_POST["register-submit"])) {
         $address = $_POST["address"];
         $password = md5($_POST["password"]);
         registerUser($firstname, $lastname, $username, $email, $birthdate, $address, $password);
-        if ($error == NULL) {
+        if ($loginError == NULL) {
             $userInfo = getUserInfoFromLogin($username, $password);
             $loginAttempted = true;
         }
     } else {
-        $error = "Erreur lors de l'inscrition, veuillez rééssayer";
+        $loginError = "Erreur lors de l'inscrition, veuillez rééssayer";
     }
 } elseif (isset($_POST["update-submit"])) {
     if (isset($_COOKIE["id"]) && isset($_COOKIE["password"])) {
         $userID = $_COOKIE["id"];
         $password = $_COOKIE["password"];
-        if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["birthdate"]) && isset($_POST["address"]) && isset($_POST["password"]) && $password == $_POST["password"]) {
+        if (isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["birthdate"]) && isset($_POST["address"]) && isset($_POST["password"]) && $password == md5($_POST["password"])) {
             $firstname = $_POST["firstname"];
             $lastname = $_POST["lastname"];
             $username = $_POST["username"];
@@ -45,12 +45,12 @@ elseif (isset($_POST["register-submit"])) {
             $address = $_POST["address"];
             updateUserInfo($userID, $firstname, $lastname, $username, $email, $birthdate, $address);
         } else {
-            $error = "Erreur lors de la mise à jour du profil, veuillez rééssayer";
+            $updateError = "Erreur lors de la mise à jour du profil, veuillez rééssayer";
         }
         $userInfo = getUserInfoFromCookie($userID, $password);
         $loginAttempted = true;
     } else {
-        $error = "Erreur lors de la mise à jour du profil, veuillez rééssayer";
+        $updateError = "Erreur lors de la mise à jour du profil, veuillez rééssayer";
     }
 }
 //Données de connexion reçues via formulaire?
@@ -70,7 +70,7 @@ elseif (isset($_COOKIE["id"]) && isset($_COOKIE["password"])) {
     $loginAttempted = false;
 }
 
-if ($loginAttempted && $error == NULL) {
+if ($loginAttempted && $loginError == NULL) {
     createLoginCookie($userInfo["id"], $userInfo["mot_de_passe"]);
     $loginSuccessful = true;
 }

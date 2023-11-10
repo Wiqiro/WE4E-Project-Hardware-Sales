@@ -47,9 +47,10 @@ if (!isset($_GET["id"])) {
 		<?php require("nav_bar.php"); ?>
 		<!-- Product section-->
 
+		<div class="container-fluid mt-4">
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 my-5">
-				<div class="btn-back-catalog"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="<?php echo "catalogue.php?id=" . $product["catalogueID"] . "&page=1" ?>" class="back-catalog"><?php echo ($product["catalogue"]); ?></a></div>
+				<div class="btn-back-catalog mb-5"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="<?php echo "catalogue.php?id=" . $product["catalogueID"] . "&page=1" ?>" class="back-catalog"><?php echo ($product["catalogue"]); ?></a></div>
 				<br>
 				<div class="row gx-4 gx-lg-5 align-items-center">
 					<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<?php echo $product["image"] ?>" alt="Image du produit introuvable" /></div>
@@ -109,6 +110,7 @@ if (!isset($_GET["id"])) {
 				</div>
 			</div>
 		</section>
+		</div>
 
 		<?php require('footer.php'); ?>
 
