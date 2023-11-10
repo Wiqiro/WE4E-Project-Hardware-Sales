@@ -16,6 +16,9 @@ if (!isset($_GET["id"])) {
 	$id = $_GET["id"];
 
 	include("../Controllers/initialize.php");
+	if ($loginSuccessful && $userInfo["admin"]) {
+		header("Location: index_admin.php");
+	}
 	require("../Controllers/produits.php");
 
 	include("carte_produit.php");

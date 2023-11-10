@@ -3,6 +3,9 @@ global $loginSuccessful, $userInfo, $loginAttempted;
 
 
 require("../Controllers/initialize.php");
+if ($loginSuccessful && $userInfo["admin"]) {
+    header("Location: index_admin.php");
+}
 require("../Controllers/produits.php");
 require("../Controllers/commandes.php");
 include("carte_produit.php");

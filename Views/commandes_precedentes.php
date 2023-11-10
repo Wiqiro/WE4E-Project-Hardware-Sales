@@ -1,6 +1,9 @@
 <?php
 global $loginSuccessful, $userInfo;
 include("../Controllers/initialize.php");
+if ($loginSuccessful && $userInfo["admin"]) {
+  header("Location: index_admin.php");
+}
 if (!$loginSuccessful) {
   header("Location: index.php");
 }

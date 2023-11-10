@@ -10,7 +10,9 @@ if (isset($_POST["remove-cart-item"])) {
 } else {
   global $loginSuccessful, $userInfo;
   require("../Controllers/initialize.php");
-  if (!$loginSuccessful) header("Location: index.php");
+  if ($loginSuccessful && $userInfo["admin"]) {
+    header("Location: index_admin.php");
+  }
 
   require("../Controllers/produits.php");
   include("carte_panier.php");

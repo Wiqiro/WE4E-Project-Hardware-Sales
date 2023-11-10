@@ -1,7 +1,6 @@
 <?php
 global $loginSuccessful, $loginAttempted, $userInfo;
 
-
 if (!isset($_GET["page"])) {
     header("Location: gestion_produits.php?page=1");
 }
@@ -38,7 +37,7 @@ if (isset($_POST["add"]) && isset($_POST["name"]) && isset($_POST["catalog"]) &&
     }
 
     $prodID = addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["catalog"], $specs);
-} elseif (isset($_POST["modify"]) && isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_FILES["image"])) {
+} elseif (isset($_POST["modify"]) && isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["catalog"]) && isset($_POST["description"]) && isset($_POST["price"])) {
     $specs = NULL;
     $prodID = $_POST["id"];
     if (isset($_POST["specs-names"]) && isset($_POST["specs-vals"])) {
@@ -61,10 +60,10 @@ if ($error) {
     $dbError = $error;
 }
 
-if (isset($prodID) && isset($_FILES["image"]) && $error != null) {
+if (isset($prodID) && isset($_FILES["image"]) && !$error) {
     $imagePath = "./";
     if (isBufferFileAdequate()) {
-        $imagePath = saveImage("product_images", $userInfo["id"]);
+        $imagePath = saveImage("./", $userInfo["id"]);
     }
     changeProductImage($prodID, $imagePath);
 }
