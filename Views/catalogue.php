@@ -68,7 +68,7 @@ if (!isset($_GET["id"]) || !isset($_GET["page"])) {
         } else {
             ?>
             <div class="btn-back-catalog mb-5"><img class="back-arrow" src="../Style/assets/img/back.png" alt="back arrow"> <a href="catalogue.php" class="back-catalog">Catalogues</a></div>
-            <div class="row inline-display">
+            <div class="row inline-display" style="width: 30em; text-align: center;">
               <p class="h1 mb-5"><?php echo $catalogName ?></p>
                   <form action="" method="post">
                     <label for="change-order"></label>

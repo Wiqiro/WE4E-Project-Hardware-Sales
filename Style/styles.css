@@ -13400,7 +13400,6 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 .inline-display {
-  padding-right: 20em;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -13451,4 +13450,3 @@ input .filter-element {
   color: black;
   background-color: white;
 }
-
