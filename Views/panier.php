@@ -13,7 +13,7 @@ if (isset($_POST["remove-cart-item"])) {
   if (!$loginSuccessful) header("Location: index.php");
 
   require("../Controllers/produits.php");
-  include("item_panier.php");
+  include("carte_panier.php");
 
   $products = getProductsFromCart(getCart());
 
