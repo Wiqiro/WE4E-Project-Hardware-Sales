@@ -21,7 +21,7 @@ function showProductCard($id, $name, $price, $imageAddress) {
                     <div class="bi-star-fill"></div>
                 </div>
                 <!-- Product price-->
-                <?php echo "$".$price ?>
+                <?php echo $price." €"?>
             </div>
         </div>
         <!-- Product actions-->

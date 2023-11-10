@@ -195,6 +195,10 @@ h5,
   font-size: 1.25rem;
 }
 
+h5:hover {
+  color: var(--bs-red);
+}
+
 h6,
 .h6 {
   font-size: 1rem;

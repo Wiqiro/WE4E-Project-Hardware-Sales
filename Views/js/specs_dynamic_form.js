@@ -23,7 +23,8 @@ function addSpecInput(name, value) {
     newInputDiv.appendChild(specInput);
 
     const removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
+    removeButton.textContent = "Supprimer";
+    removeButton.setAttribute("class", "generalBtn mb-2");
     removeButton.onclick = function () {
         inputContainer.removeChild(newInputDiv);
     };
