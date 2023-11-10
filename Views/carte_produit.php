@@ -6,7 +6,7 @@ function showProductCard($id, $name, $price, $imageAddress) {
 <div class="col mb-5">
     <div class="card h-100">
         <!-- Product image-->
-        <img class="card-img-top" src="<?php echo $imageAddress?>" alt="Unable to find image" />
+        <img class="card-img-top" src="<?php echo $imageAddress?>" alt="Image du produit introuvable" />
         <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">

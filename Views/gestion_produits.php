@@ -9,6 +9,8 @@ $page = $_GET["page"];
 
 require("../Controllers/initialize.php");
 require("../Controllers/produits.php");
+require("../Controllers/catalogs.php");
+
 $pCount = getProductsCount();
 $pageCount = $pCount % 10 == 0 ? floor($pCount / 10) : ceil($pCount / 10);
 

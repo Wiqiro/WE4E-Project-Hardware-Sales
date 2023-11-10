@@ -9,6 +9,7 @@ if ($loginAttempted) {
     header("Location: index_admin.php");
 }
 
+include("../Controllers/catalogs.php");
 include("carte_gestion_catalogue.php");
 
 $error = null;
